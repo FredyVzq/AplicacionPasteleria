@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="709.0" styleClass="background_app" stylesheets="@css/MenuPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorMenu">
+   <children>
+      <ImageView fitHeight="223.0" fitWidth="240.0" layoutX="98.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logopast.png" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="62.0" prefWidth="709.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="488.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="234.0" prefHeight="54.0" prefWidth="240.0" styleClass="text_app" text="Menu Principal">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Accordion layoutX="505.0" layoutY="81.0" prefHeight="392.0" prefWidth="204.0" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+        <panes>
+          <TitledPane animated="false" prefHeight="127.0" prefWidth="156.0" text="Persona">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="109.0" prefWidth="154.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#clickClientes" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Clientes" />
+                        <Button fx:id="btnUsuarios" mnemonicParsing="false" onAction="#clickUsuarios" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Usuarios" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </content>
+            </TitledPane>
+          <TitledPane animated="false" text="Productos">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnProductos" mnemonicParsing="false" onAction="#clickProductos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Productos" />
+                        <Button fx:id="btnCategorias" mnemonicParsing="false" onAction="#clickCategorias" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Categorias" />
+                        <Button fx:id="btnBases" mnemonicParsing="false" onAction="#clickBases" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Bases" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="149.0" prefWidth="156.0" text="Inventario">
+               <content>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Inventario" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="322.0" prefWidth="204.0" text="Mas">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="btnMarcas" mnemonicParsing="false" onAction="#clickMarcas" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Marcas" />
+                     </children>
+                  </VBox>
+               </content></TitledPane>
+        </panes>
+      </Accordion>
+      <Pane layoutY="488.0" prefHeight="62.0" prefWidth="709.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="488.0">
+         <children>
+            <Button fx:id="btnSalir" layoutX="523.0" layoutY="10.0" mnemonicParsing="false" onAction="#salir" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Salir">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblUsuario" layoutX="109.0" layoutY="16.0" prefHeight="30.0" prefWidth="106.0" styleClass="texto" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHora" layoutX="309.0" layoutY="16.0" prefHeight="30.0" prefWidth="223.0" styleClass="texto" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

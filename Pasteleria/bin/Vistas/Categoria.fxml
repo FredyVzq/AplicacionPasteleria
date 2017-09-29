@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="973.0" styleClass="background_app" stylesheets="@css/Categoria.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorCategorias">
+   <children>
+      <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Nuevo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Nueva categoría" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickGuardar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Guardar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Guardar" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eliminar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Eliminar registro" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnEditar" disable="true" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Modificar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Editar" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Cancelar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Cancelar" />
+               </tooltip>
+            </Button>
+            <Label prefHeight="47.0" prefWidth="539.0" text="Categorias">
+               <padding>
+                  <Insets left="450.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="54.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/categoria.png" />
+               </image>
+            </ImageView>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
+      <TitledPane animated="false" collapsible="false" layoutX="56.0" layoutY="151.0" prefHeight="213.0" prefWidth="396.0" text="Datos Generales">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="394.0">
+               <children>
+                  <Text layoutX="96.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="57.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <TextField fx:id="tfNombre" disable="true" layoutX="96.0" layoutY="68.0" prefHeight="25.0" prefWidth="203.0" />
+                  <Text fill="RED" layoutX="153.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="57.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="491.0" layoutY="104.0" prefHeight="307.0" prefWidth="375.0" text="Datos registrados">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tablaCategoria" prefHeight="277.0" prefWidth="375.0">
+                     <columns>
+                        <!--
+                        <TableColumn prefWidth="150.0" text="ID" >
+                        <cellValueFactory>
+                              <PropertyValueFactory property="id" />
+                           </cellValueFactory>
+                        </TableColumn>
+                         -->
+                        <TableColumn prefWidth="224.0" text="Nombre">
+                        <cellValueFactory>
+                              <PropertyValueFactory property="nombre" />
+                           </cellValueFactory>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

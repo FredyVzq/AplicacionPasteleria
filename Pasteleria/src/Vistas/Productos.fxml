@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="1208.0" styleClass="background_app" stylesheets="@css/Productos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorProductos">
+   <children>
+      <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Nuevo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Nuevo Registro" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickGuardar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Guardar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Guardar" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#clickEliminar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eliminar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Eliminar registro" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnEditar" disable="true" mnemonicParsing="false" onAction="#clickEditar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Modificar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Guardar informacion modificada" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Cancelar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Eliminar" />
+               </tooltip>
+            </Button>
+            <Label prefHeight="47.0" prefWidth="751.0" text="Producto">
+               <padding>
+                  <Insets left="650.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/productos.png" />
+               </image>
+            </ImageView>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0">
+         <items>
+            <Label prefHeight="26.0" prefWidth="1140.0" text="Usuario Activo" />
+            <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ayuda" opacity="0.72">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/if_help-browser_118806.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Ayuda" />
+               </tooltip>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </items></ToolBar>
+      <TitledPane animated="false" collapsible="false" layoutX="44.0" layoutY="116.0" prefHeight="307.0" prefWidth="544.0" text="Datos generales">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="542.0">
+               <children>
+                  <Text layoutX="273.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca" />
+                  <Text layoutX="17.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoría" />
+                  <Text layoutX="424.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" />
+                  <TextField fx:id="tfPrecio" disable="true" layoutX="440.0" layoutY="40.0" prefHeight="25.0" prefWidth="57.0" />
+                  <Text layoutX="222.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                  <TextField fx:id="tfNombre" disable="true" layoutX="222.0" layoutY="40.0" prefHeight="25.0" prefWidth="170.0" />
+                  <ComboBox fx:id="cbCategoria" disable="true" layoutX="15.0" layoutY="129.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Text layoutX="17.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código" />
+                  <TextField fx:id="tfCodigo" disable="true" layoutX="16.0" layoutY="40.0" prefHeight="25.0" prefWidth="170.0" />
+                  <Button fx:id="btnNuevaMarca" disable="true" layoutX="457.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickIrMarca" prefHeight="1.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/nuevo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Agregar marca" />
+                     </tooltip>
+                  </Button>
+                  <ComboBox fx:id="cbMarca" disable="true" layoutX="273.0" layoutY="131.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Text layoutX="424.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" wrappingWidth="9.46875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="17.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" />
+                  <TextField fx:id="tfTipo" disable="true" layoutX="16.0" layoutY="195.0" prefHeight="25.0" prefWidth="170.0" />
+
+                  <Text fill="#f20000" layoutX="56.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="#f20000" layoutX="268.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="#f20000" layoutX="457.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="#f20000" layoutX="40.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Button fx:id="btnNuevaCategoria" disable="true" layoutX="197.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickIrCategoria" prefHeight="1.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/nuevo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Agregar Categoría" />
+                     </tooltip>
+                  </Button>
+                  <Button layoutX="486.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickMandarDatos">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/183252-16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Enviar datos a los campos" />
+                     </tooltip>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="641.0" layoutY="116.0" prefHeight="307.0" prefWidth="509.0" text="Datos registrados">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tableView" onSort="#clickTableView" prefHeight="277.0" prefWidth="509.0">
+                     <columns>
+                        <TableColumn maxWidth="180.0" prefWidth="180.0" text="Nombre">
+							<cellValueFactory>
+                              <PropertyValueFactory property="nombre" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="165.0" text="Tipo">
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="tipo" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="162.0" text="Precio">
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="precio" />
+                           </cellValueFactory>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <Label layoutX="14.0" layoutY="442.0" text="(*) Campos obligatorios" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Clientes.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorClientes">
+   <children>
+      <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Nuevo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickGuardar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Guardar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" >
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eliminar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnEditar" disable="true" mnemonicParsing="false" onAction="#clickEditar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Modificar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Cancelar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="53.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/cliente.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="26.0" prefWidth="822.0" text="Clientes">
+               <padding>
+                  <Insets left="750.0" />
+               </padding></Label>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="109.0" prefHeight="242.0" prefWidth="544.0" text="Datos Generales">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
+               <children>
+                  <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                  <TextField fx:id="txtNombre" disable="true" layoutX="4.0" layoutY="22.0" prefHeight="25.0" prefWidth="165.0" />
+                  <Text layoutX="11.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" />
+                  <TextField fx:id="txtCiudad" disable="true" layoutX="4.0" layoutY="81.0" prefWidth="165.0" />
+                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno:" />
+                  <TextField fx:id="txtApePat" disable="true" layoutX="184.0" layoutY="22.0" prefHeight="25.0" prefWidth="168.0" />
+                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno:" />
+                  <TextField fx:id="txtApeMat" disable="true" layoutX="360.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" />
+                  <Text layoutX="184.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle" />
+                  <Text layoutX="362.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Celular" />
+                  <Text layoutX="8.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Casa" />
+                  <TextField fx:id="txtCalle" disable="true" layoutX="184.0" layoutY="81.0" prefWidth="165.0" />
+                  <TextField fx:id="txtNumCel" disable="true" layoutX="360.0" layoutY="81.0" prefWidth="165.0" />
+                  <TextField fx:id="txtNumCasa" disable="true" layoutX="4.0" layoutY="154.0" prefWidth="165.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="109.0" prefHeight="265.0" prefWidth="660.0" text="Datos Registrados">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tablaCliente" onSort="#clickTableView" prefHeight="239.0" prefWidth="660.0">
+                     <columns>
+                        <TableColumn prefWidth="88.0" text="Nombre">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="nombre" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="121.0" text="Apellido Paterno">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="apPat" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn minWidth="0.0" prefWidth="126.0" text="Apellido Materno">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="apMat" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="91.0" text="Ciudad">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="ciudad" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="76.0" text="Calle">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="calle" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="81.0" text="Num. Celular" >
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="numerocel" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="81.0" text="Num. Casa" >
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="numerocasa" />
+                           </cellValueFactory>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
