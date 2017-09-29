@@ -70,7 +70,7 @@ public class DAOCategoria {
 
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "insert into categoria values(default,?)";
+	            	String sql = "insert into categoria values(default,?,true)";
 	                comando = con.getConexion().prepareStatement(sql);
 	                comando.setString(1, this.nombre);
 	                bandera = comando.execute();
@@ -94,12 +94,13 @@ public class DAOCategoria {
 	        ResultSet rs = null;
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "select nombre from categoria";
+	            	String sql = "select * from categoria";
 	                comando = con.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){
 	                	cat = new DAOCategoria();
 	                	cat.nombre = rs.getString("nombre");
+	                	cat.id = rs.getInt("id");
 	                	lista.add(cat);
 	                }
 	            }
@@ -125,7 +126,6 @@ public class DAOCategoria {
 	 			}
 	 			else{
 	 				return false;
-
 	 			}
 	 		} catch (Exception e) {
 	 			return false;

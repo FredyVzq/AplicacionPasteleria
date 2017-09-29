@@ -40,6 +40,7 @@ public class ControladorProductos implements Initializable{
 	@FXML TextField txtBuscador;
 	@FXML TextField tfNombre;
 	@FXML TextField tfPrecio;
+	@FXML TextField tfId;
 	@FXML ComboBox<DAOCategoria> cbCategoria;
 	@FXML ComboBox<DAOMarcas> cbMarca;
 	@FXML Button btnNuevaMarca;
@@ -226,12 +227,15 @@ public class ControladorProductos implements Initializable{
 						this.datosProducto.setCodigo(tfCodigo.getText());
 						this.datosProducto.setTipo(tfTipo.getText());
 						this.datosProducto.setPrecio(tfPrecio.getText());
+						this.datosProducto.setIdProducto(Integer.parseInt(tfId.getText()));
 
 						if(datosProducto.editar()){
 							Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos Modificados",
 		    						"Los datos se han modificado de manera exitosa", SUCCESS_ICON);
 
 							editar();
+							listadeProductos=datosProducto.mostrar();
+							tableView.setItems(datosProducto.mostrar());
 
 						}
 						else{
@@ -251,6 +255,7 @@ public class ControladorProductos implements Initializable{
 			tfTipo.setText(datosProducto.getTipo());
 			tfPrecio.setText(datosProducto.getPrecio());
 			tfCodigo.setText(datosProducto.geCodigo());
+			tfId.setText(String.valueOf(datosProducto.getIdProducto()));
 			editar();
 			btnNuevo.setDisable(true);
 			btnGuardar.setDisable(true);
@@ -265,6 +270,7 @@ public class ControladorProductos implements Initializable{
 		        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar este producto??");
 
 		        if (confirmarEliminar == 0) {
+		        	this.datosProducto.setIdProducto(Integer.parseInt(tfId.getText()));
 		            datosProducto.eliminar();
 		            System.out.println("Realizado Eliminado");
 		            listadeProductos=datosProducto.mostrar();

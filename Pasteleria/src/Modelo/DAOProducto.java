@@ -144,6 +144,7 @@ public class DAOProducto {
 		                	product.codigo = rs.getString("codigo");
 		                	product.tipo = rs.getString("tipo");
 		                	product.precio=rs.getString("precio");
+		                	product.id_producto=rs.getInt("id");
 		                	lista.add(product);
 		                }
 		            }

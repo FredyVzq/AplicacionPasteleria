@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 public class ControladorCategorias implements Initializable{
 
 	@FXML TextField tfNombre;
+	@FXML TextField tfId;
 	@FXML Button btnBuscar;
 	@FXML Button btnNuevo;
 	@FXML Button btnGuardar;
@@ -73,6 +74,55 @@ public class ControladorCategorias implements Initializable{
         		System.out.println("Error al insertar los datos");
         	}
 		}
+	}
+	@FXML public void clickTableView(){
+		if(tablaCategoria.getSelectionModel().getSelectedItem() != null){
+			categoria = tablaCategoria.getSelectionModel().getSelectedItem();
+			tfNombre.setText(categoria.getNombre());
+			tfId.setText(String.valueOf(categoria.getIdCategoria()));
+			btnNuevo.setDisable(true);
+			btnGuardar.setDisable(true);
+			btnEditar.setDisable(false);
+			tfNombre.setDisable(false);
+		}
+			else{
+
+			}
+
+	}
+	@FXML public void clickEditar(){
+		if(tfNombre.getText().trim().isEmpty()){
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("DATOS FALTANTES");
+				alert.setHeaderText(null);
+				alert.setContentText("Por favor llena todos los campos.");
+				alert.showAndWait();
+			}
+			else{
+				boolean confirmar2=false;
+				if(confirmar2==false){
+						this.categoria.setNombre(tfNombre.getText());
+						this.categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
+
+						if(categoria.editar()==true){
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("Exitoso");
+							alert.setHeaderText(null);
+							alert.setContentText("Se han modificado los datos exitosamente");
+							alert.showAndWait();
+							listaCategoria=categoria.mostrar();
+							tablaCategoria.setItems(categoria.mostrar());
+							tfNombre.setText("");
+						}
+						else{
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Error");
+							alert.setHeaderText(null);
+							alert.setContentText("La información no se ha podido editar.");
+							alert.showAndWait();
+						}
+				}
+			}
 	}
 }
 

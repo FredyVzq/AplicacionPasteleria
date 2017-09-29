@@ -167,6 +167,7 @@
                         <Tooltip text="Enviar datos a los campos" />
                      </tooltip>
                   </Button>
+                  <TextField fx:id="tfId" layoutX="233.0" layoutY="203.0" prefWidth="81.0" visible="false" />
                </children>
             </AnchorPane>
          </content>
