@@ -124,16 +124,6 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TextField layoutX="926.0" layoutY="84.0" prefHeight="25.0" prefWidth="193.0" />
-      <Button layoutX="1128.0" layoutY="88.0" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/buscar.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Text layoutX="592.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos obligatorios">
          <font>
             <Font name="Arial Bold" size="24.0" />
