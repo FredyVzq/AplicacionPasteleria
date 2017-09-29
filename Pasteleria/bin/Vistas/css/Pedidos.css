@@ -1,0 +1,130 @@
+.background_app{
+    -fx-background-color: #E3DEE2;
+}
+
+/* cajas de texto */
+.text_app{
+    -fx-background-color: #7f112f;
+    -fx-text-fill: #fff;
+    -fx-prompt-text-fill: #ffacdc;
+    -fx-text-box-border: transparent;        
+    -fx-background-radius: 0;
+    -fx-padding: 8;
+    -fx-font-size:14px;
+    -fx-alignment: CENTER;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.text_app:focused {
+    -fx-text-fill: #7f112f;
+    -fx-background-color: #ffacdc;     
+}
+
+/*botones*/
+.button_app{
+    -fx-background-color: #7f112f;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #ffacdc;    
+    -fx-alignment: CENTER;
+}
+.button_app:hover{
+    -fx-background-color: #F78DEA;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #7f112f;    
+    -fx-alignment: CENTER;
+}
+
+/**Titulo*/
+.textb_app{
+    -fx-text-fill: #7f112f;
+    -fx-font-size:36px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 0,0,3,3 );
+}
+
+.titled-pane {
+    -fx-animated: true;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 50, 0.0 , 0 , 0 );
+    -fx-padding: 0px;
+}
+
+.titled-pane> .title  {
+    -fx-background-radius: 0, 0, 0;
+    -fx-font: bold 14px System;
+    -fx-border-color:transparent;
+    -fx-padding: 0;
+    -fx-background-color: #7f112f;
+    -fx-pref-height: 30px;
+}
+
+.image-view{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) ,4, 0.0 , 0 , 2 );
+    -fx-border-radius: 10px;
+    -fx-opacity:1;
+}
+.text-field {
+    -fx-background-color: #727272 , #FFF , #FFF;
+    -fx-font-family: "Roboto";
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;  
+    -fx-text-fill: #727272;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: #B6B6B6;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;
+    -fx-pref-height: 40px;
+    -fx-padding: 0;
+}
+
+.text-field:focused {
+    -fx-background-color: #D32F2F , #FFF , #FFF;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;
+    -fx-background-size: 10px;
+}
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Roboto Bk";
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;    
+    -fx-background-radius:5px;
+
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: white;
+
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:focused {
+
+    -fx-text-fill: white;
+}
+.label {
+    -fx-font-size: 13pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.label2 {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+
+}
+.labelFolio {
+    -fx-font-size: 13pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-color:black;
+    -fx-text-fill: #000000;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}

@@ -16,7 +16,6 @@ public class Main extends Application {
 		ventanas.setPrimaryStage(primaryStage);
 		ventanas.asignarModal("../Vistas/LoginView.fxml","Login");
 	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}

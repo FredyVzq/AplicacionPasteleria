@@ -51,6 +51,9 @@ public class ControladorMenu  implements Initializable{
 	@FXML public void clickClientes(){
 		ins.asignarModal("../Vistas/Clientes.fxml","Clientes");
 	}
+	@FXML public void clickPedidos(){
+		ins.asignarModal("../Vistas/Pedidos.fxml","Pedidos");
+	}
 	@FXML public void salir(){
 		Icon icono = new ImageIcon(getClass().getResource("../Vistas/images/exit.png"));
 		int resultado = JOptionPane.showConfirmDialog(null, "Desea salir de la Aplicación?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,icono);

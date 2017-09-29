@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Pedidos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorPedidos">
+   <children>
+      <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Nuevo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Guardar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eliminar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Modificar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Cancelar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label prefHeight="47.0" prefWidth="806.0" text="Pedidos">
+               <padding>
+                  <Insets left="730.0" />
+               </padding>
+            </Label>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="86.0" prefHeight="366.0" prefWidth="544.0" text="Datos Generales">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="542.0" style="-fx-background-color: #7f112f;">
+               <children>
+                  <TabPane layoutX="42.0" layoutY="68.0" prefHeight="335.0" prefWidth="542.0" style="-fx-background-color: #7f112f;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Cliente">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="310.0" prefWidth="523.0" style="-fx-background-color: #fff;">
+                                 <children>
+                                    <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
+                                    <Text layoutX="20.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo de pedido" />
+                                    <Text layoutX="291.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de entrega" />
+                                    <TextField fx:id="lbCodigo" disable="true" layoutX="20.0" layoutY="45.0" />
+                                    <DatePicker disable="true" layoutX="291.0" layoutY="45.0" />
+                                    <ComboBox fx:id="cbNombreCliente" disable="true" layoutX="20.0" layoutY="144.0" prefHeight="25.0" prefWidth="179.0" />
+                                    <Text layoutX="291.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comentarios" />
+                                    <TextArea disable="true" layoutX="282.0" layoutY="144.0" prefHeight="98.0" prefWidth="212.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Productos">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                 <children>
+                                    <SplitPane dividerPositions="0.19769673704414586" layoutX="128.0" layoutY="63.0" prefHeight="287.0" prefWidth="523.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                             <children>
+                                                <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" />
+                                                <ChoiceBox disable="true" layoutX="14.0" layoutY="50.0" prefWidth="150.0" />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="363.0">
+                                             <children>
+                                                <Text layoutX="183.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pasteles y postres" wrappingWidth="105.0">
+                                                   <stroke>
+                                                      <LinearGradient endX="1.0" endY="1.0" startX="0.5571428571428572" startY="0.4">
+                                                         <stops>
+                                                            <Stop color="BLACK" />
+                                                            <Stop color="WHITE" offset="1.0" />
+                                                         </stops>
+                                                      </LinearGradient>
+                                                   </stroke>
+                                                </Text>
+                                                <Text layoutX="183.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base" />
+                                                <ComboBox fx:id="cbBases" disable="true" layoutX="183.0" layoutY="143.0" prefWidth="150.0" />
+                                                <ComboBox fx:id="cbPastYpost" disable="true" layoutX="183.0" layoutY="48.0" prefWidth="150.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Total">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                 <children>
+                                    <Text layoutX="27.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base" />
+                                    <Text layoutX="27.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Importe de base" />
+                                    <Text layoutX="242.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
+                                    <Text layoutX="242.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anticipo" />
+                                    <Text layoutX="242.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Debiendo" />
+                                    <TextField fx:id="lbBase" disable="true" layoutX="27.0" layoutY="51.0" prefWidth="65.0" />
+                                    <TextField fx:id="lbImporBase" disable="true" layoutX="27.0" layoutY="124.0" prefWidth="65.0" />
+                                    <TextField fx:id="lbDebiendo" disable="true" layoutX="242.0" layoutY="202.0" prefWidth="65.0" />
+                                    <TextField fx:id="lbAnticipo" disable="true" layoutX="242.0" layoutY="124.0" prefWidth="65.0" />
+                                    <TextField fx:id="lbTotal" disable="true" layoutX="242.0" layoutY="51.0" prefWidth="65.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="135.0" prefHeight="265.0" prefWidth="660.0" text="Datos Registrados">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="239.0" prefWidth="660.0">
+                     <columns>
+                        <TableColumn prefWidth="132.0" text="Cliente" />
+                        <TableColumn prefWidth="132.0" text="Producto" />
+                        <TableColumn prefWidth="132.0" text="Pastel o postre" />
+                        <TableColumn prefWidth="132.0" text="Total" />
+                        <TableColumn prefWidth="132.0" text="Anticipo" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
