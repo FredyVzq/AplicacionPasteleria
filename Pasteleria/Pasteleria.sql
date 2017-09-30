@@ -3,42 +3,35 @@ drop table productos
 --Creando la tabla
 create table productos(
 	id serial primary key,
-	nombre varchar(25) not null,
-	codigo varchar(15) not null,
-	tipo varchar(10) not null,
+	nombre varchar(50) not null,
+	codigo varchar(25) not null,
+	tipo varchar(25) not null,
 	precio varchar(7) not null,
 	estatus boolean not null,
 	idmarca int,
 	idcategoria int
 );
---Revisando si esta creada
-select * from productos --where estatus='TRUE'
 
 --Agregando las llaves foraneas para categoria y marca
 alter table productos add constraint prodmarca foreign key (idmarca) references marca(id)
-
 alter table productos add constraint prodcat foreign key (idcategoria) references categoria(id)
-
---Haciendo inserccion a ver si funca
-insert into productos values(default,'Insert','Insert','Insert','25',true,1,1);
-
-insert into marca values(default,'pan','panadero');
 
 drop  table marca
 --Creando la tabla marca
 create table marca (
 	id serial primary key,
 	nombremarca varchar (25) not null,
-	proveedormarca varchar(25) not null
+	proveedormarca varchar(25) not null,
+	estatus boolean not null
 );
 
 drop table categoria
 --creando la tabla categoria
 create table categoria(
 	id serial primary key,
-	nombre varchar(25) not null
+	nombre varchar(25) not null,
+	estatus boolean not null
 );
-insert into categoria values(default,'pan');
 --------------------------------------------------------------------------------------------------------------
 Drop table usuarios
 CREATE TABLE usuarios(
@@ -76,7 +69,7 @@ numeroCel varchar(15) not null,
 numeroCasa varchar(15) not null,
 estatus boolean not null
 );
-
+------------------------------------------------------------------------------------------------
 create table bases
 (
 idBases serial not null primary key,
@@ -85,3 +78,17 @@ precio int not null,
 existencia int not null,
 estatus boolean not null
 );
+drop table pedido
+create table pedido
+(
+  id serial primary key,
+  comentario character varying(250),
+  idcliente integer,
+  idproducto integer,
+  idbase integer
+ );
+alter table pedido add constraint pedidocliente foreign key (idcliente) references cliente(idcliente)
+alter table pedido add constraint pedidoproducto foreign key (idproducto) references productos(id)
+alter table pedido add constraint pedidobase foreign key (idbase) references bases(idBases)
+
+
