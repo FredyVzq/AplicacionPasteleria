@@ -123,9 +123,9 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tableViewR" layoutX="5.6" layoutY="37.6" prefHeight="177.0" prefWidth="550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+				  <TableView fx:id="tableViewR"  prefHeight="277.0" prefWidth="509.0">
                      <columns>
-                       <TableColumn maxWidth="165.0" prefWidth="165.0" text="Marca">
+                        <TableColumn maxWidth="180.0" prefWidth="180.0" text="Marca">
 							<cellValueFactory>
                               <PropertyValueFactory property="nombremarca" />
                            </cellValueFactory>

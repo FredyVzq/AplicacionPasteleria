@@ -69,6 +69,8 @@ public class ControladorMarcas {
     			alert.setHeaderText(null);
     			alert.setContentText("La informacion se ha guardado de forma exitosa!");
     			alert.showAndWait();
+    			listadeMarcas=datosMarcas.mostrar();
+    			tableViewR.setItems(datosMarcas.mostrar());
         	}
         	else{
         		System.out.println("Error al insertar los datos");

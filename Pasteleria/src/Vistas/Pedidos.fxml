@@ -79,13 +79,16 @@
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="310.0" prefWidth="523.0" style="-fx-background-color: #fff;">
                                  <children>
                                     <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
-                                    <Text layoutX="20.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo de pedido" />
+                                    <Text layoutX="20.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de pedido" />
                                     <Text layoutX="291.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de entrega" />
                                     <TextField fx:id="lbCodigo" disable="true" layoutX="20.0" layoutY="45.0" />
                                     <DatePicker disable="true" layoutX="291.0" layoutY="45.0" />
                                     <ComboBox fx:id="cbNombreCliente" disable="true" layoutX="20.0" layoutY="144.0" prefHeight="25.0" prefWidth="179.0" />
                                     <Text layoutX="291.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comentarios" />
                                     <TextArea disable="true" layoutX="282.0" layoutY="144.0" prefHeight="98.0" prefWidth="212.0" />
+                                    <Text fill="RED" layoutX="116.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                                    <Text fill="RED" layoutX="65.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                                    <Text fill="RED" layoutX="385.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -100,6 +103,7 @@
                                              <children>
                                                 <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" />
                                                 <ChoiceBox disable="true" layoutX="14.0" layoutY="50.0" prefWidth="150.0" />
+                                                <Text fill="RED" layoutX="68.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="363.0">

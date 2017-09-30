@@ -79,11 +79,11 @@
                <children>
                   <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                   <TextField fx:id="txtNombre" disable="true" layoutX="4.0" layoutY="22.0" prefHeight="25.0" prefWidth="165.0" />
-                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Precio" />
+                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" />
                   <TextField fx:id="txtPrecio" disable="true" layoutX="184.0" layoutY="22.0" prefHeight="25.0" prefWidth="168.0" />
                   <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <TextField fx:id="txtExistencia" disable="true" layoutX="360.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" />
-                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Existencia" />
+                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existencia" />
                   <Text fill="#ff0101" layoutX="58.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />
                   <Text fill="#ff0101" layoutX="228.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />
                   <Text fill="#ff0101" layoutX="430.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />

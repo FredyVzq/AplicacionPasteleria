@@ -61,15 +61,14 @@ public class DAOMarcas {
 			cone.desconectar();
 			}
 		 return idCat;
-		 //Wtf? Pense que no lo tenia :3......okkkkkkkkkkkkkkk...ejecutalo :X
 	 }
 
-	public Boolean insertar(){//?? que quieres ver? o hacer? esperaaaaaaa  oks<_<
+	public Boolean insertar(){
         Boolean bandera = false;
 
         try{
             if(cone.conectar()) {
-            	String sql = "insert into marca values(default,?,?)";
+            	String sql = "insert into marca values(default,?,?,true)";
                 comando = cone.getConexion().prepareStatement(sql);
                 comando.setString(1, nombre);
                 comando.setString(2, proveedor);
@@ -92,7 +91,7 @@ public class DAOMarcas {
 	        ResultSet rs = null;
 	        try{
 	            if(cone.conectar()) {
-	            	String sql = "select * from marca";
+	            	String sql = "select * from marca where estatus='TRUE'";
 	                comando = cone.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){

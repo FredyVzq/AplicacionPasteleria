@@ -3,6 +3,8 @@ package Controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import Modelo.DAOCategoria;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,6 +34,7 @@ public class ControladorCategorias implements Initializable{
 		categoria=new DAOCategoria();
 		listaCategoria=categoria.mostrar();
 		tablaCategoria.setItems(categoria.mostrar());
+		tfNombre.setDisable(true);
 	}
 
 
@@ -42,7 +45,7 @@ public class ControladorCategorias implements Initializable{
 	}
 
 	@FXML public void clickCancelar(){
-
+		tfNombre.setDisable(true);
 		btnNuevo.setDisable(false);
 		btnGuardar.setDisable(true);
 		btnCancelar.setDisable(true);
@@ -69,6 +72,10 @@ public class ControladorCategorias implements Initializable{
     			//Actualiza la tabla
     			listaCategoria=categoria.mostrar();
     			tablaCategoria.setItems(categoria.mostrar());
+    			btnEditar.setDisable(true);
+    			btnCancelar.setDisable(true);
+    			tfNombre.setText("");
+    			tfNombre.setDisable(true);
         	}
         	else{
         		System.out.println("Error al insertar los datos");
@@ -84,16 +91,21 @@ public class ControladorCategorias implements Initializable{
 			btnGuardar.setDisable(true);
 			btnEditar.setDisable(false);
 			tfNombre.setDisable(false);
+			btnEliminar.setDisable(false);
 		}
 			else{
-
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Por favor seleccione un registro de la tabla.");
+				alert.showAndWait();
 			}
 
 	}
 	@FXML public void clickEditar(){
 		if(tfNombre.getText().trim().isEmpty()){
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("DATOS FALTANTES");
+				alert.setTitle("Datos faltantes");
 				alert.setHeaderText(null);
 				alert.setContentText("Por favor llena todos los campos.");
 				alert.showAndWait();
@@ -106,23 +118,36 @@ public class ControladorCategorias implements Initializable{
 
 						if(categoria.editar()==true){
 							Alert alert = new Alert(AlertType.INFORMATION);
-							alert.setTitle("Exitoso");
+							alert.setTitle("Cambio realizado!");
 							alert.setHeaderText(null);
 							alert.setContentText("Se han modificado los datos exitosamente");
 							alert.showAndWait();
 							listaCategoria=categoria.mostrar();
 							tablaCategoria.setItems(categoria.mostrar());
 							tfNombre.setText("");
+							btnEditar.setDisable(true);
+							btnNuevo.setDisable(false);
 						}
 						else{
-							Alert alert = new Alert(AlertType.WARNING);
+							Alert alert = new Alert(AlertType.ERROR);
 							alert.setTitle("Error");
 							alert.setHeaderText(null);
 							alert.setContentText("La información no se ha podido editar.");
 							alert.showAndWait();
-						}
 				}
 			}
+		}
+	}
+	@FXML public void clickEliminar(){
+        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar este producto?");
+
+        if (confirmarEliminar == 0) {
+        	categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
+            categoria.eliminar();
+            System.out.println("Realizado Eliminado");
+    		listaCategoria=categoria.mostrar();
+			tablaCategoria.setItems(categoria.mostrar());
+        }
 	}
 }
 

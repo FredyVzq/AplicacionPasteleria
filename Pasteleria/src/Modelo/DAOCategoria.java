@@ -157,4 +157,22 @@ public class DAOCategoria {
 	 public String toString(){
 		 return this.getNombre();
 	 }
+	 public boolean eliminar(){
+			try {
+	 			if(con.conectar()){
+	 				String sql="update categoria set estatus = false where id=?";
+	 				comando=con.getConexion().prepareStatement(sql);
+	 				comando.setInt(1, this.id);
+	 				comando.executeUpdate();
+	 				System.out.println("Eliminado");
+	 			}
+	 			return true;
+
+	 		} catch (Exception e) {
+	 			return false;
+	 		}
+	 		finally{
+	 			con.desconectar();
+	 		}
+		}
 }

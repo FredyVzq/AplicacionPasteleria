@@ -26,6 +26,7 @@ public class ControladorBases implements Initializable{
 	@FXML TableView<DAOBases> tablaBases;
 	ObservableList<DAOBases> listaBases;
 	DAOBases bases;
+	@SuppressWarnings("unused")
 	private ControladorVentanas ins;
 
 	public  ControladorBases() {

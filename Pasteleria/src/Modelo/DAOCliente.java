@@ -158,7 +158,33 @@ public class DAOCliente {
 	        }
 	        return lista;
 	    }
-
+	public ObservableList<DAOCliente>nombreCliente(){
+		 ObservableList<DAOCliente> lista=FXCollections.observableArrayList();
+	        DAOCliente cat = null;
+	        ResultSet rs = null;
+	        try{
+	            if(con.conectar()) {
+	            	String sql = "select nombre from cliente";
+	                comando = con.getConexion().prepareStatement(sql);
+	                rs = comando.executeQuery();
+	                while(rs.next()){
+	                	cat = new DAOCliente();
+	                	cat.nombre = rs.getString("nombre");
+	                	lista.add(cat);
+	                }
+	            }
+	        }
+	        catch (Exception ex){
+	            ex.printStackTrace();
+	        }
+	        finally {
+	            con.desconectar();
+	        }
+	        return lista;
+	    }
+	public String toString(){
+		 return this.getNombre();
+	 }
 	//---------------------------------------------------
 	 public boolean editar(){
 			String sql="";

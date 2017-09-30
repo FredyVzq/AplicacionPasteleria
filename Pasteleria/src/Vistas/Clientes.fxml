@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" >
+            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -75,13 +75,13 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
                <children>
-                  <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                  <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                   <TextField fx:id="txtNombre" disable="true" layoutX="4.0" layoutY="22.0" prefHeight="25.0" prefWidth="165.0" />
-                  <Text layoutX="11.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" />
+                  <Text layoutX="11.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
                   <TextField fx:id="txtCiudad" disable="true" layoutX="4.0" layoutY="81.0" prefWidth="165.0" />
-                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno:" />
+                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno" />
                   <TextField fx:id="txtApePat" disable="true" layoutX="184.0" layoutY="22.0" prefHeight="25.0" prefWidth="168.0" />
-                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno:" />
+                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno" />
                   <TextField fx:id="txtApeMat" disable="true" layoutX="360.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" />
                   <Text layoutX="184.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle" />
                   <Text layoutX="362.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Celular" />
@@ -89,6 +89,13 @@
                   <TextField fx:id="txtCalle" disable="true" layoutX="184.0" layoutY="81.0" prefWidth="165.0" />
                   <TextField fx:id="txtNumCel" disable="true" layoutX="360.0" layoutY="81.0" prefWidth="165.0" />
                   <TextField fx:id="txtNumCasa" disable="true" layoutX="4.0" layoutY="154.0" prefWidth="165.0" />
+                  <Text fill="RED" layoutX="52.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="454.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="272.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="210.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="49.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="84.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="451.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                </children>
             </AnchorPane>
          </content>
@@ -99,39 +106,29 @@
                <children>
                   <TableView fx:id="tablaCliente" onSort="#clickTableView" prefHeight="239.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn prefWidth="88.0" text="Nombre">
+                        <TableColumn prefWidth="132.0" text="Nombre">
                            <cellValueFactory>
                               <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="121.0" text="Apellido Paterno">
+                        <TableColumn prefWidth="132.0" text="Apellido Paterno">
                            <cellValueFactory>
                               <PropertyValueFactory property="apPat" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn minWidth="0.0" prefWidth="126.0" text="Apellido Materno">
+                        <TableColumn minWidth="0.0" prefWidth="132.0" text="Apellido Materno">
                            <cellValueFactory>
                               <PropertyValueFactory property="apMat" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="91.0" text="Ciudad">
+                        <TableColumn prefWidth="132.0" text="Ciudad">
                            <cellValueFactory>
                               <PropertyValueFactory property="ciudad" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="76.0" text="Calle">
+                        <TableColumn prefWidth="130.0" text="Calle">
                            <cellValueFactory>
                               <PropertyValueFactory property="calle" />
-                           </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="81.0" text="Num. Celular" >
-                        	<cellValueFactory>
-                              <PropertyValueFactory property="numerocel" />
-                           </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="81.0" text="Num. Casa" >
-                        	<cellValueFactory>
-                              <PropertyValueFactory property="numerocasa" />
                            </cellValueFactory>
                         </TableColumn>
                      </columns>

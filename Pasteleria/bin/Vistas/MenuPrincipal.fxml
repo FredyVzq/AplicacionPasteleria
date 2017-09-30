@@ -18,7 +18,7 @@
       </ImageView>
       <Pane prefHeight="62.0" prefWidth="709.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="488.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="234.0" prefHeight="54.0" prefWidth="240.0" styleClass="text_app" text="Menu Principal">
+            <Label layoutX="234.0" prefHeight="54.0" prefWidth="240.0" styleClass="text_app" text="Menú Principal">
                <font>
                   <Font size="43.0" />
                </font>
@@ -45,7 +45,7 @@
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                      <children>
                         <Button fx:id="btnProductos" mnemonicParsing="false" onAction="#clickProductos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Productos" />
-                        <Button fx:id="btnCategorias" mnemonicParsing="false" onAction="#clickCategorias" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Categorias" />
+                        <Button fx:id="btnCategorias" mnemonicParsing="false" onAction="#clickCategorias" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Categorías" />
                         <Button fx:id="btnBases" mnemonicParsing="false" onAction="#clickBases" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Bases" />
                         <Button fx:id="btnMarcas" mnemonicParsing="false" onAction="#clickMarcas" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Marcas" />
                      </children>
@@ -56,7 +56,7 @@
                <content>
                   <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="202.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#clickPedidos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Pedidos" />
+                        <Button disable="true" mnemonicParsing="false" onAction="#clickPedidos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Pedidos" />
                      </children>
                   </VBox>
                </content></TitledPane>

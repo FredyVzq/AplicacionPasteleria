@@ -1,11 +1,10 @@
 package Controlador;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
-
 import Controlador.notificaciones.Notification.Notifier;
 import Modelo.DAOCategoria;
 import Modelo.DAOMarcas;
@@ -19,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 //import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -41,6 +41,7 @@ public class ControladorProductos implements Initializable{
 	@FXML TextField tfNombre;
 	@FXML TextField tfPrecio;
 	@FXML TextField tfId;
+	@FXML Label fechaI;
 	@FXML ComboBox<DAOCategoria> cbCategoria;
 	@FXML ComboBox<DAOMarcas> cbMarca;
 	@FXML Button btnNuevaMarca;
@@ -55,8 +56,6 @@ public class ControladorProductos implements Initializable{
 	DAOMarcas datosMarca;
 	private int enteroCat=0;
 	private int enteroMar=0;
-
-
 	public ControladorProductos() {
 		ins = ControladorVentanas.getInstancia();
 		datosProducto=new DAOProducto();
@@ -71,6 +70,7 @@ public class ControladorProductos implements Initializable{
 		cbCategoria.setItems(listaCategorias);
 		listadeProductos=datosProducto.mostrar();
 		tableView.setItems(datosProducto.mostrar());
+		btnEliminar.setDisable(true);
 	}
 	@FXML public void clickNuevo(){
 		nuevo();
@@ -158,10 +158,40 @@ public class ControladorProductos implements Initializable{
                     		System.out.println("Se insertaron los datos correctamente");
                     		Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos Ingresados",
             						"Los datos se agregaron correctamente", SUCCESS_ICON);
+                    		/*
+                    		 Archivo log (futuras versiones)
+                    		try{
+                				archivo =new FileWriter("log.txt",true);
+                				pw=new PrintWriter(archivo);
+                					pw.println("Se ha guardado " +tfNombre.getText()+" a las:" + fecha );
+                				}catch(Exception ex){
+                					ex.printStackTrace();
+                				}
+                				finally{
+                					try{
+                						if(archivo!=null){
+                							archivo.close();
+                						}
+                					}catch(Exception ex2){
+                						System.out.println("Error");
+                					}
+                				}
+                				*/
 
                 			listadeProductos=datosProducto.mostrar();
                 			tableView.setItems(datosProducto.mostrar());
+                			btnNuevo.setDisable(false);
+                			btnEditar.setDisable(true);
+                			btnEliminar.setDisable(true);
+                			tfPrecio.setText("");
+                			tfNombre.setText("");
+                			tfCodigo.setText("");
+                			tfTipo.setText("");
+                			cbMarca.setItems(null);
+                			cbCategoria.setItems(null);
+
                     	}
+
                     	else{
                     		System.out.println("Error al insertar los datos");
                     	}
@@ -191,13 +221,17 @@ public class ControladorProductos implements Initializable{
 	@FXML public void ayuda(){
 		abrir();
 	}
-	/*
-	 Para el boton de actualizar
+
+
 	@FXML public void actualizar(){
+		listaMarcas=datosMarca.mostrar();
+		cbMarca.setItems(listaMarcas);
+		listaCategorias=datosCategoria.mostrar();
+		cbCategoria.setItems(listaCategorias);
 		listadeProductos=datosProducto.mostrar();
 		tableView.setItems(datosProducto.mostrar());
 	}
-	*/
+
 	@FXML public void editar(){
 		btnEditar.setDisable(false);
 		btnCancelar.setDisable(false);
@@ -215,7 +249,7 @@ public class ControladorProductos implements Initializable{
 				||tfPrecio.getText().trim().isEmpty()||tfPrecio.getText().trim().isEmpty()
 			){
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("DATOS FALTANTES");
+				alert.setTitle("Datos faltantes");
 				alert.setHeaderText(null);
 				alert.setContentText("Por favor llena todos los campos.");
 				alert.showAndWait();
@@ -236,6 +270,12 @@ public class ControladorProductos implements Initializable{
 							editar();
 							listadeProductos=datosProducto.mostrar();
 							tableView.setItems(datosProducto.mostrar());
+							tfPrecio.setText("");
+                			tfNombre.setText("");
+                			tfCodigo.setText("");
+                			tfTipo.setText("");
+                			cbMarca.setItems(null);
+                			cbCategoria.setItems(null);
 
 						}
 						else{
@@ -259,6 +299,7 @@ public class ControladorProductos implements Initializable{
 			editar();
 			btnNuevo.setDisable(true);
 			btnGuardar.setDisable(true);
+			btnEliminar.setDisable(false);
 		}
 			else{
 				Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Tabla de Registros",
@@ -266,7 +307,7 @@ public class ControladorProductos implements Initializable{
 			}
 
 	}
-	@FXML public void clickEliminar(){ {
+	@FXML public void clickEliminar(){
 		        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar este producto??");
 
 		        if (confirmarEliminar == 0) {
@@ -279,7 +320,7 @@ public class ControladorProductos implements Initializable{
 		    }
 		}
 	}
-}
+
 
 
 
