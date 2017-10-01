@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import Modelo.DAOUsuario;
 
 public class ControladorMenu  implements Initializable{
-	@FXML Button btnProductos,btnSalir,btnUsuarios,btnCategorias,btnMarcas;
+	@FXML Button btnProductos,btnSalir,btnUsuarios,btnCategorias,btnMarcas,btnVenta;
 	@FXML Label lblUsuario,lblHora;
 	private ControladorVentanas ins;
 	@SuppressWarnings("unused")
@@ -53,6 +53,9 @@ public class ControladorMenu  implements Initializable{
 	}
 	@FXML public void clickPedidos(){
 		ins.asignarModal("../Vistas/Pedidos.fxml","Pedidos");
+	}
+	@FXML public void clickVentas(){
+		ins.asignarModal("../Vistas/Venta.fxml","Ventas");
 	}
 	@FXML public void salir(){
 		Icon icono = new ImageIcon(getClass().getResource("../Vistas/images/exit.png"));

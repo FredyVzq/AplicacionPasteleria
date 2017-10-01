@@ -6,16 +6,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DAOBases {
-	private Integer idBases;
+	private int idbases;
 	private String nombre;
 	private String Precio;
 	private String Existencia;
 	private boolean estatus;
 	private DAOConexion con;
 	private PreparedStatement comando;
+	private ObservableList<DAOBases> lista;
+
 
 	public DAOBases(){
-		this.idBases=0;
+		this.idbases=0;
 		this.nombre="";
 		this.Precio="";
 		this.Existencia="";
@@ -23,8 +25,8 @@ public class DAOBases {
 		this.con = new DAOConexion();
 
 	}
-	public DAOBases(Integer idBases, String nombre, String precio, String existencia, boolean estatus){ //Constructor que recibe parametros
-		this.idBases=idBases;
+	public DAOBases(int idbases, String nombre, String precio, String existencia, boolean estatus){ //Constructor que recibe parametros
+		this.idbases=idbases;
 		this.nombre= nombre;
 		this.Precio= precio;
 		this.Existencia= existencia;
@@ -32,11 +34,11 @@ public class DAOBases {
 	}
 
 	//Metodos Gey y Set
-		public int getIdBases() {
-	        return idBases;
+		public int getIdbases() {
+	        return idbases;
 	    }
-		public void setIdBases(int Basesid) {
-	        this.idBases = Basesid;
+		public void setIdbases(int Basesid) {
+	        this.idbases = Basesid;
 	    }
 		public String getNombre() {
 	        return nombre;
@@ -53,7 +55,7 @@ public class DAOBases {
 		public String getExistencia() {
 	        return Existencia;
 	    }
-		public void Existencia(String Existecia) {
+		public void setExistencia(String Existecia) {
 	        this.Existencia =Existecia;
 	    }
 		public boolean getEstatus(){
@@ -68,7 +70,7 @@ public class DAOBases {
 
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "insert into cliente values(default,?,?,?,true)";
+	            	String sql = "insert into bases values(default,?,?,?,true)";
 	                comando = con.getConexion().prepareStatement(sql);
 					comando.setString(1, this.nombre);
 					comando.setString(2, this.Precio);
@@ -120,11 +122,12 @@ public class DAOBases {
 				String sql="";
 				try {
 		 			if(con.conectar()){
-		 				sql="update bases set nombre=?, precio=?, Existecia=? where id=?";
+		 				sql="update bases set nombre=?, precio=?, existencia=?, where id=?";
 		 				comando=con.getConexion().prepareStatement(sql);
 		 				comando.setString(1, this.nombre);
-						comando.setString(2, this.Precio);
-						comando.setString(3, this.Existencia);
+		 				comando.setString(2, this.Precio);
+		 				comando.setString(3, this.Existencia);
+		 				comando.setInt(4, this.idbases);
 		 				comando.execute();
 		 				return true;
 		 			}
@@ -140,12 +143,35 @@ public class DAOBases {
 		 		}
 			}
 
+		 public ObservableList<DAOBases> consultar(String consulta){
+		   		ResultSet rs = null;
+		   		try {
+		   			if(con.conectar()){
+		   				comando = con.getConexion().prepareStatement(consulta);
+		   	  			rs =  comando.executeQuery();
+		   	  			while(rs.next()){
+		   	  				DAOBases l = new DAOBases();
+		   	  			    l.setIdbases(rs.getInt("idbases"));
+		   	  				l.setNombre(rs.getString("nombre"));
+		   	  				l.setPrecio(rs.getString("precio"));
+		   	  				l.setExistencia(rs.getString("existencia"));
+		   	  				lista.add(l);
+		   	  			}
+		   			}
+		   		} catch (Exception ex) {
+		   		}
+		   		finally{
+		   			con.desconectar();
+		   		}
+		 		return lista;
+		   	}
+
 		 public boolean eliminar(){
 				try {
 		 			if(con.conectar()){
 		 				String sql="update bases set estatus = false where id=?";
 		 				comando=con.getConexion().prepareStatement(sql);
-		 				comando.setInt(1, this.idBases);
+		 				comando.setInt(1, this.idbases);
 		 				comando.executeUpdate();
 		 			}
 		 			return true;
@@ -157,9 +183,5 @@ public class DAOBases {
 		 			con.desconectar();
 		 		}
 			}
-		public void setExistencia(String text) {
-			// TODO Auto-generated method stub
 
-		}
-
-	}
+}

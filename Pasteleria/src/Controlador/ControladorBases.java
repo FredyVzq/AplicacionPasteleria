@@ -3,6 +3,8 @@ package Controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ public class ControladorBases implements Initializable{
 	@FXML TextField txtNombre;
 	@FXML TextField txtPrecio;
 	@FXML TextField txtExistencia;
+	@FXML TextField txtIdbases;
 	@FXML Button btnNuevo;
 	@FXML Button btnGuardar;
 	@FXML Button btnEliminar;
@@ -26,7 +29,6 @@ public class ControladorBases implements Initializable{
 	@FXML TableView<DAOBases> tablaBases;
 	ObservableList<DAOBases> listaBases;
 	DAOBases bases;
-	@SuppressWarnings("unused")
 	private ControladorVentanas ins;
 
 	public  ControladorBases() {
@@ -40,16 +42,18 @@ public class ControladorBases implements Initializable{
 	}
 
 //-------------------------
-	@FXML public void Editar(){
+	@FXML public void editar(){
+		editar();
 		btnEditar.setDisable(false);
 		btnCancelar.setDisable(false);
+		txtExistencia.setDisable(false);
 		txtNombre.setDisable(false);
 		txtPrecio.setDisable(false);
-		txtExistencia.setDisable(false);
 	}
 	@FXML public void clickEditar(){
-		if(txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()||txtExistencia.getText().isEmpty()){
-
+		if(txtNombre.getText().trim().isEmpty() ||txtPrecio.getText().trim().isEmpty()||
+				txtExistencia.getText().trim().isEmpty()
+			){
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("DATOS FALTANTES");
 				alert.setHeaderText(null);
@@ -62,29 +66,48 @@ public class ControladorBases implements Initializable{
 						this.bases.setNombre(txtNombre.getText());
 						this.bases.setPrecio(txtPrecio.getText());
 						this.bases.setExistencia(txtExistencia.getText());
-
+						this.bases.setIdbases(Integer.parseInt(txtIdbases.getText()));
 
 						if(bases.editar()){
-					    	Alert alert = new Alert(AlertType.WARNING);
-					    	alert.setTitle("Datos Modificados");
-					    	alert.setHeaderText("Datos Modificados");
-					    	alert.setContentText("Los datos se han modificado de manera exitosa!");
-					    	alert.showAndWait();
-							Editar();
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("DATOS MODIFICADOS");
+							alert.setHeaderText(null);
+							alert.setContentText("Datos modificados exitosamente");
+							alert.showAndWait();
+
+							editar();
+							listaBases=bases.mostrar();
+							tablaBases.setItems(bases.mostrar());
 
 						}
 						else{
 							Alert alert = new Alert(AlertType.WARNING);
-					    	alert.setTitle("Error");
-					    	alert.setHeaderText("Error");
-					    	alert.setContentText("La informacion no se ha podido editar, por favor intentelo de nuevo!");
-					    	alert.showAndWait();
+							alert.setTitle("Error");
+							alert.setHeaderText(null);
+							alert.setContentText("La informacion no se ha podido editar, por favor intentelo de nuevo");
+							alert.showAndWait();
 						}
 				}
 			}
 	}
+
+	@FXML public void clickEliminar(){ {
+        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar esta base??");
+
+        if (confirmarEliminar == 0) {
+        	this.bases.setIdbases(Integer.parseInt(txtIdbases.getText()));
+        	bases.eliminar();
+            System.out.println("Realizado Eliminado");
+            listaBases=bases.mostrar();
+    		tablaBases.setItems(bases.mostrar());
+
+    }
+}
+}
 	@FXML public void clickMandarDatos(){
 		clickTableView();
+		btnEliminar.setDisable(false);
+		btnEditar.setDisable(false);
 	}
 	public void clickTableView(){
 		if(tablaBases.getSelectionModel().getSelectedItem() != null){
@@ -93,9 +116,11 @@ public class ControladorBases implements Initializable{
 			txtPrecio.setText(bases.getPrecio());
 			txtExistencia.setText(bases.getExistencia());
 
-			Editar();
+
+			editar();
 			btnNuevo.setDisable(true);
 			btnGuardar.setDisable(true);
+			btnEliminar.setDisable(true);
 		}
 			else{
 				Alert alert = new Alert(AlertType.WARNING);
@@ -107,21 +132,34 @@ public class ControladorBases implements Initializable{
 
 	}
 
+
 	@FXML public void clickNuevo(){
+		nuevo();
+	}
+	public void nuevo(){
 		txtNombre.setDisable(false);
 		txtPrecio.setDisable(false);
 		txtExistencia.setDisable(false);
+		btnNuevo.setDisable(true);
 		btnGuardar.setDisable(false);
 		btnCancelar.setDisable(false);
 	}
 
 	@FXML public void clickCancelar(){
+		cancelar();
+	}
+	public void cancelar(){
 		txtNombre.setDisable(true);
 		txtPrecio.setDisable(true);
 		txtExistencia.setDisable(true);
 		btnNuevo.setDisable(false);
 		btnGuardar.setDisable(true);
 		btnCancelar.setDisable(true);
+		btnEditar.setDisable(false);
+		btnEliminar.setDisable(false);
+		txtNombre.setText("");
+		txtPrecio.setText("");
+		txtExistencia.setText("");
 	}
 public static boolean numeric(String src) {
 	 for(int i = 0; i<src.length(); i++)
