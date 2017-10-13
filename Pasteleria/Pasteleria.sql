@@ -43,6 +43,7 @@ CREATE TABLE usuarios(
 	UsuarioManejador varchar(15) NOT NULL, 
 	primary key(IdUsuario)
 );
+
 INSERT INTO usuarios(IdUsuario,nomUsuario,contrasenia, nivel, estatus,UsuarioManejador) VALUES (default,'admin','12345', 'administrador', true,'UsuarioEjemplo');
 INSERT INTO usuarios(Idusuario,nomUsuario,contrasenia, nivel, estatus,UsuarioManejador) VALUES (default,'user', '67890', 'usuario', true,'UsuarioEjemplo');
 ---------------------------------------------------------------------------------------------------------------
@@ -76,8 +77,8 @@ create table bases
 (
 idBases serial not null primary key,
 nombre varchar(50) not null,
-precio int not null,
-existencia int not null,
+precio varchar(7) not null,
+existencia varchar(3) not null,
 estatus boolean not null
 );
 drop table pedido
