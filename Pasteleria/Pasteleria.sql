@@ -57,14 +57,16 @@ CREATE TABLE FORMULARIO(
 	primary key(IdFormulario)
 );
 -----------------------------------------------------------------------------------------------
+drop table cliente
 create table cliente
 (
 idcliente serial not null primary key,	
 nombre varchar(20) not null,
 apePat varchar(20) not null,
 apeMat varchar(20) not null,
-ciudad varchar(20) not null,
-calle varchar(20) not null,
+ciudad varchar(50) not null,
+colonia varchar(50),
+calle varchar(50) not null,
 numeroCel varchar(15) not null,
 numeroCasa varchar(15) not null,
 estatus boolean not null
@@ -87,8 +89,8 @@ create table pedido
   idproducto integer,
   idbase integer
  );
-alter table pedido add constraint pedidocliente foreign key (idcliente) references cliente(idcliente)
-alter table pedido add constraint pedidoproducto foreign key (idproducto) references productos(id)
-alter table pedido add constraint pedidobase foreign key (idbase) references bases(idBases)
+alter table pedido add constraint pedidocliente foreign key (idcliente) references cliente(idcliente);
+alter table pedido add constraint pedidoproducto foreign key (idproducto) references productos(id);
+alter table pedido add constraint pedidobase foreign key (idbase) references bases(idBases);
 
 
