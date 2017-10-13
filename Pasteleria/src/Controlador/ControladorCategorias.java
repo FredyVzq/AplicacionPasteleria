@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
@@ -19,6 +20,7 @@ public class ControladorCategorias implements Initializable{
 
 	@FXML TextField tfNombre;
 	@FXML TextField tfId;
+	@FXML Label nregistros;
 	@FXML Button btnBuscar;
 	@FXML Button btnNuevo;
 	@FXML Button btnGuardar;
@@ -35,6 +37,10 @@ public class ControladorCategorias implements Initializable{
 		listaCategoria=categoria.mostrar();
 		tablaCategoria.setItems(categoria.mostrar());
 		tfNombre.setDisable(true);
+
+		int r=listaCategoria.size();
+		String reg=Integer.toString(r);
+		nregistros.setText(reg);
 	}
 
 
@@ -122,7 +128,6 @@ public class ControladorCategorias implements Initializable{
 							alert.setHeaderText(null);
 							alert.setContentText("Se han modificado los datos exitosamente");
 							alert.showAndWait();
-							
 							listaCategoria=categoria.mostrar();
 							tablaCategoria.setItems(categoria.mostrar());
 							tfNombre.setText("");
@@ -140,11 +145,11 @@ public class ControladorCategorias implements Initializable{
 		}
 	}
 	@FXML public void clickEliminar(){
-        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar este producto?");
+        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar esta categoría?");
 
         if (confirmarEliminar == 0) {
-        	categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
-            categoria.eliminar();
+        	this.categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
+            this.categoria.eliminar();
             System.out.println("Realizado Eliminado");
     		listaCategoria=categoria.mostrar();
 			tablaCategoria.setItems(categoria.mostrar());

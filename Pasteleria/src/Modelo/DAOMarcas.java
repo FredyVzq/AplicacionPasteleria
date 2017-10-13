@@ -98,6 +98,7 @@ public class DAOMarcas {
 	                	product = new DAOMarcas();
 	                	product.nombre = rs.getString("nombremarca");
 	                	product.proveedor = rs.getString("proveedormarca");
+	                	product.id=rs.getInt("id");
 	                	lista.add(product);
 	                }
 	            }
@@ -113,4 +114,46 @@ public class DAOMarcas {
 	 public String toString(){
 		 return this.getNombre();
 	 }
+
+	 public boolean editar(){
+			String sql="";
+			try {
+	 			if(cone.conectar()){
+	 				sql="update marca set nombre=?, proveedormarca=? where id=?";
+	 				comando=cone.getConexion().prepareStatement(sql);
+	 				comando.setString(1, this.nombre);
+	 				comando.setString(2, this.proveedor);
+	 				comando.setInt(3, this.id);
+
+	 				return true;
+	 			}
+	 			else{
+	 				return false;
+
+	 			}
+	 		} catch (Exception e) {
+	 			return false;
+	 		}
+	 		finally{
+	 			cone.desconectar();
+	 		}
+		}
+
+	 public boolean eliminar(){
+			try {
+	 			if(cone.conectar()){
+	 				String sql="update marca set estatus =false where id=?";
+	 				comando=cone.getConexion().prepareStatement(sql);
+	 				comando.setInt(1, this.id);
+	 				comando.executeUpdate();
+	 			}
+	 			return true;
+
+	 		} catch (Exception e) {
+	 			return false;
+	 		}
+	 		finally{
+	 			cone.desconectar();
+	 		}
+		}
 }

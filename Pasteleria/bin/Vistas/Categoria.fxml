@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="973.0" styleClass="background_app" stylesheets="@css/Categoria.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorCategorias">
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="746.0" styleClass="background_app" stylesheets="@css/Categoria.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorCategorias">
    <children>
       <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -74,9 +74,9 @@
                   <Tooltip text="Cancelar" />
                </tooltip>
             </Button>
-            <Label prefHeight="47.0" prefWidth="539.0" text="Categorias">
+            <Label prefHeight="47.0" prefWidth="290.0" text="Categorías">
                <padding>
-                  <Insets left="450.0" />
+                  <Insets left="200.0" />
                </padding>
             </Label>
             <ImageView fitHeight="54.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -87,7 +87,7 @@
         </items>
       </ToolBar>
       <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
-      <TitledPane animated="false" collapsible="false" layoutX="56.0" layoutY="151.0" prefHeight="213.0" prefWidth="396.0" text="Datos Generales">
+      <TitledPane animated="false" collapsible="false" layoutX="24.0" layoutY="129.0" prefHeight="213.0" prefWidth="396.0" text="Datos Generales">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="394.0">
                <children>
@@ -96,7 +96,7 @@
                         <Font size="15.0" />
                      </font></Text>
                   <TextField fx:id="tfNombre" disable="true" layoutX="96.0" layoutY="68.0" prefHeight="25.0" prefWidth="203.0" />
-                  <Text fill="RED" layoutX="153.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="57.0">
+                  <Text fill="RED" layoutX="153.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="11.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,11 +115,11 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="491.0" layoutY="104.0" prefHeight="307.0" prefWidth="375.0" text="Datos registrados">
+      <TitledPane animated="false" collapsible="false" layoutX="446.0" layoutY="82.0" prefHeight="307.0" prefWidth="267.0" text="Datos registrados">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tablaCategoria" prefHeight="277.0" prefWidth="375.0">
+                  <TableView fx:id="tablaCategoria" prefHeight="277.0" prefWidth="267.0">
                      <columns>
                         <!--
                         <TableColumn prefWidth="150.0" text="ID" >
@@ -128,7 +128,7 @@
                            </cellValueFactory>
                         </TableColumn>
                          -->
-                        <TableColumn prefWidth="373.0" text="Nombre">
+                        <TableColumn prefWidth="267.0" text="Nombre">
                         <cellValueFactory>
                               <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
@@ -139,5 +139,8 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <Label layoutX="24.0" layoutY="456.0" text="(*) Campos obligatorios" />
+      <Label layoutX="448.0" layoutY="389.0" text="Registros:" />
+      <Label fx:id="nregistros" layoutX="526.0" layoutY="389.0" prefHeight="26.0" prefWidth="78.0" />
    </children>
 </AnchorPane>

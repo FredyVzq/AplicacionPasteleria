@@ -124,7 +124,7 @@ public class ControladorBases implements Initializable{
 	}
 
 	@FXML public void clickEliminar(){ {
-        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar esta base??");
+        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar esta base?");
 
         if (confirmarEliminar == 0) {
         	this.bases.setIdbases(Integer.parseInt(idbases.getText()));

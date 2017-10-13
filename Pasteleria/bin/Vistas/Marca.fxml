@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Marca.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorMarcas">
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="1155.0" styleClass="background_app" stylesheets="@css/Marca.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorMarcas">
    <children>
       <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" stylesheets="@css/Marca.css" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -74,9 +74,9 @@
                   <Tooltip text="Cancelar" />
                </tooltip>
             </Button>
-            <Label prefHeight="47.0" prefWidth="786.0" text="Marcas">
+            <Label prefHeight="47.0" prefWidth="686.0" text="Marcas">
                <padding>
-                  <Insets left="700.0" />
+                  <Insets left="600.0" />
                </padding>
             </Label>
             <ImageView fitHeight="54.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
@@ -115,22 +115,47 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
+                  <TextField fx:id="idMarca" layoutX="14.0" layoutY="95.0" prefWidth="45.0" />
+                  <Button layoutX="447.0" layoutY="162.0" mnemonicParsing="false" onAction="#actualizar">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/restaurar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Actualizar" />
+                     </tooltip>
+                  </Button>
+                  <Button layoutX="497.0" layoutY="162.0" mnemonicParsing="false" onAction="#clickTableView">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/183252-16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Enviar datos a los campos" />
+                     </tooltip>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="648.0" layoutY="136.0" prefHeight="242.0" prefWidth="557.0" stylesheets="@css/Marca.css" text="Datos registrados">
+      <TitledPane animated="false" collapsible="false" layoutX="648.0" layoutY="136.0" prefHeight="242.0" prefWidth="471.0" stylesheets="@css/Marca.css" text="Datos registrados">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-				  <TableView fx:id="tableViewR"  prefHeight="277.0" prefWidth="509.0">
+				  <TableView fx:id="tableViewR" layoutX="19.6" layoutY="19.6" prefHeight="211.0" prefWidth="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn maxWidth="180.0" prefWidth="180.0" text="Marca">
+                        <TableColumn maxWidth="235.0" prefWidth="235.0" text="Marca">
 							<cellValueFactory>
                               <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="165.0" text="Proveedor">
+                        <TableColumn prefWidth="235.0" text="Proveedor">
                         	<cellValueFactory>
                               <PropertyValueFactory property="proveedor" />
                            </cellValueFactory>

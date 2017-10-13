@@ -42,6 +42,7 @@ public class ControladorProductos implements Initializable{
 	@FXML TextField tfPrecio;
 	@FXML TextField tfId;
 	@FXML Label fechaI;
+	@FXML Label nregistros;
 	@FXML ComboBox<DAOCategoria> cbCategoria;
 	@FXML ComboBox<DAOMarcas> cbMarca;
 	@FXML Button btnNuevaMarca;
@@ -71,6 +72,9 @@ public class ControladorProductos implements Initializable{
 		listadeProductos=datosProducto.mostrar();
 		tableView.setItems(datosProducto.mostrar());
 		btnEliminar.setDisable(true);
+		int r=listadeProductos.size();
+		String reg=Integer.toString(r);
+		nregistros.setText(reg);
 	}
 	@FXML public void clickNuevo(){
 		nuevo();
@@ -158,25 +162,6 @@ public class ControladorProductos implements Initializable{
                     		System.out.println("Se insertaron los datos correctamente");
                     		Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos Ingresados",
             						"Los datos se agregaron correctamente", SUCCESS_ICON);
-                    		/*
-                    		 Archivo log (futuras versiones)
-                    		try{
-                				archivo =new FileWriter("log.txt",true);
-                				pw=new PrintWriter(archivo);
-                					pw.println("Se ha guardado " +tfNombre.getText()+" a las:" + fecha );
-                				}catch(Exception ex){
-                					ex.printStackTrace();
-                				}
-                				finally{
-                					try{
-                						if(archivo!=null){
-                							archivo.close();
-                						}
-                					}catch(Exception ex2){
-                						System.out.println("Error");
-                					}
-                				}
-                				*/
 
                 			listadeProductos=datosProducto.mostrar();
                 			tableView.setItems(datosProducto.mostrar());
@@ -189,6 +174,9 @@ public class ControladorProductos implements Initializable{
                 			tfTipo.setText("");
                 			cbMarca.setItems(null);
                 			cbCategoria.setItems(null);
+                			int r=listadeProductos.size();
+                			String reg=Integer.toString(r);
+                			nregistros.setText(reg);
 
                     	}
 
@@ -208,7 +196,7 @@ public class ControladorProductos implements Initializable{
 		}
 	 private void abrir() {
 		  //ruta del archivo en el pc
-		  String file = new String("/src/Documentos/Ayuda_Producto.pdf");
+		  String file = new String("C:/Users/Fredy/workspace/Pasteleriasrc/Documentos/Ayuda_Producto.pdf");
 
 		 try{
 		   //definiendo la ruta en la propiedad file
@@ -222,6 +210,7 @@ public class ControladorProductos implements Initializable{
 		abrir();
 	}
 
+
 	@FXML public void actualizar(){
 		listaMarcas=datosMarca.mostrar();
 		cbMarca.setItems(listaMarcas);
@@ -229,6 +218,9 @@ public class ControladorProductos implements Initializable{
 		cbCategoria.setItems(listaCategorias);
 		listadeProductos=datosProducto.mostrar();
 		tableView.setItems(datosProducto.mostrar());
+		int r=listadeProductos.size();
+		String reg=Integer.toString(r);
+		nregistros.setText(reg);
 	}
 
 	@FXML public void editar(){

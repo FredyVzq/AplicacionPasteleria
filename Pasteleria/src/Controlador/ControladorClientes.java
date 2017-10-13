@@ -3,11 +3,14 @@ package Controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import Modelo.DAOCliente;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
@@ -19,8 +22,11 @@ public class ControladorClientes implements Initializable{
 	@FXML TextField txtApeMat;
 	@FXML TextField txtCiudad;
 	@FXML TextField txtCalle;
+	@FXML TextField txtColonia;
 	@FXML TextField txtNumCel;
 	@FXML TextField txtNumCasa;
+	@FXML TextField idCliente;
+	@FXML Label txtRegistros;
 	@FXML Button btnBuscar;
 	@FXML Button btnNuevo;
 	@FXML Button btnGuardar;
@@ -40,22 +46,26 @@ public class ControladorClientes implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		listaCliente=cliente.mostrar();
 		tablaCliente.setItems(cliente.mostrar());
+		int r=listaCliente.size();
+		String reg=Integer.toString(r);
+		txtRegistros.setText(reg);
 }
 
-	@FXML public void Editar(){
+	public void Editar(){
 		btnEditar.setDisable(false);
 		btnCancelar.setDisable(false);
 		txtNombre.setDisable(false);
 		txtApePat.setDisable(false);
 		txtApeMat.setDisable(false);
 		txtCiudad.setDisable(false);
+		txtColonia.setDisable(false);
 		txtCalle.setDisable(false);
 		txtNumCel.setDisable(false);
 		txtNumCasa.setDisable(false);
 	}
 	@FXML public void clickEditar(){
 		if(txtNombre.getText().isEmpty() || txtApePat.getText().isEmpty()|| txtApeMat.getText().isEmpty() ||
-				txtNumCel.getText().isEmpty()||txtNumCasa.getText().isEmpty()){
+				txtNumCel.getText().isEmpty()||txtColonia.getText().isEmpty()){
 
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("DATOS FALTANTES");
@@ -67,12 +77,14 @@ public class ControladorClientes implements Initializable{
 				boolean confirmar2=false;
 				if(confirmar2==false){
 						this.cliente.setNombre(txtNombre.getText());
-						this.cliente.setApMat(txtApePat.getText());
+						this.cliente.setApPat(txtApePat.getText());
 						this.cliente.setApMat(txtApeMat.getText());
 						this.cliente.setCiudad(txtCiudad.getText());
+						this.cliente.setColonia(txtColonia.getText());
 						this.cliente.setCalle(txtCalle.getText());
 						this.cliente.setNumeroCel(txtNumCel.getText());
 						this.cliente.setNumeroCasa(txtNumCasa.getText());
+						this.cliente.setIdCliente(Integer.parseInt(idCliente.getText()));
 
 
 						if(cliente.editar()){
@@ -85,25 +97,44 @@ public class ControladorClientes implements Initializable{
 
 						}
 						else{
-							Alert alert = new Alert(AlertType.WARNING);
-					    	alert.setTitle("Warning Dialog");
+							Alert alert = new Alert(AlertType.INFORMATION);
+					    	alert.setTitle("Datos Correctos!");
 					    	alert.setHeaderText("Datos modificados");
 					    	alert.setContentText("Datos modificados correctamente!");
 					    	alert.showAndWait();
+					    	listaCliente=cliente.mostrar();
+							tablaCliente.setItems(cliente.mostrar());
+							int r=listaCliente.size();
+							String reg=Integer.toString(r);
+							txtRegistros.setText(reg);
 						}
 				}
 			}
 	}
+	@FXML public void clickActualizar(){
+		listaCliente=cliente.mostrar();
+		tablaCliente.setItems(cliente.mostrar());
+		int r=listaCliente.size();
+		String reg=Integer.toString(r);
+		txtRegistros.setText(reg);
+	}
 	@FXML public void clickMandarDatos(){
 		clickTableView();
+		btnEliminar.setDisable(false);
+
 	}
 	public void clickTableView(){
 		if(tablaCliente.getSelectionModel().getSelectedItem() != null){
 			cliente = tablaCliente.getSelectionModel().getSelectedItem();
+			idCliente.setText(String.valueOf(cliente.getIdCliente()));
+			txtApePat.setText(cliente.getApPat());
+			txtApeMat.setText(cliente.getApMat());
+			txtCiudad.setText(cliente.getCiudad());
+			txtCalle.setText(cliente.getCalle());
+			txtColonia.setText(cliente.getColonia());
 			txtNombre.setText(cliente.getNombre());
 			txtNumCel.setText(cliente.getNumeroCel());
 			txtNumCasa.setText(cliente.getNumeroCasa());
-
 			Editar();
 			btnNuevo.setDisable(true);
 			btnGuardar.setDisable(true);
@@ -123,6 +154,7 @@ public class ControladorClientes implements Initializable{
 		txtApePat.setDisable(false);
 		txtApeMat.setDisable(false);
 		txtCiudad.setDisable(false);
+		txtColonia.setDisable(false);
 		txtCalle.setDisable(false);
 		txtNumCel.setDisable(false);
 		txtNumCasa.setDisable(false);
@@ -141,6 +173,15 @@ public class ControladorClientes implements Initializable{
 		btnNuevo.setDisable(false);
 		btnGuardar.setDisable(true);
 		btnCancelar.setDisable(true);
+		txtColonia.setDisable(true);
+		txtNombre.clear();
+		txtApePat.clear();
+		txtApeMat.clear();
+		txtCiudad.clear();
+		txtColonia.clear();
+		txtCalle.clear();
+		txtNumCel.clear();
+		txtNumCasa.clear();
 	}
 public static boolean numeric(String src) {
 	 for(int i = 0; i<src.length(); i++)
@@ -156,7 +197,7 @@ public static boolean numeric(String src) {
 		String cadena=txtNumCel.getText();
 		String cad=txtNumCasa.getText();
 		if(txtNombre.getText().isEmpty() || txtApePat.getText().isEmpty()|| txtApeMat.getText().isEmpty() ||
-				txtNumCel.getText().isEmpty()||txtNumCasa.getText().isEmpty()){
+				txtNumCel.getText().isEmpty()||txtColonia.getText().isEmpty()){
 
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Ingrese Datos");
@@ -191,7 +232,7 @@ public static boolean numeric(String src) {
 				    	alert.showAndWait();
 	        		}
 	        		else{
-	            		if(txtNumCasa.getLength()<10){
+	            		if(txtNumCasa.getLength()<0){
 	            			Alert alert = new Alert(AlertType.WARNING);
 					    	alert.setTitle("Datos no validos");
 					    	alert.setHeaderText("Numero no cumple con requerido");
@@ -206,6 +247,7 @@ public static boolean numeric(String src) {
 						cliente.setApPat(txtApePat.getText());
 						cliente.setApMat(txtApeMat.getText());
 						cliente.setCiudad(txtCiudad.getText());
+						cliente.setColonia(txtColonia.getText());
 						cliente.setCalle(txtCalle.getText());
 						cliente.setNumeroCel(txtNumCel.getText());
 						cliente.setNumeroCasa(txtNumCasa.getText());
@@ -219,20 +261,47 @@ public static boolean numeric(String src) {
 	    	    			//Actualiza la tabla
 	    	    			listaCliente=cliente.mostrar();
 	    	    			tablaCliente.setItems(cliente.mostrar());
+	    	    			int r=listaCliente.size();
+	    	    			String reg=Integer.toString(r);
+	    	    			txtRegistros.setText(reg);
+	    	    			btnGuardar.setDisable(true);
+	    	    			btnNuevo.setDisable(false);
+	    	    			txtNombre.clear();txtNombre.setDisable(true);
+	    	    			txtApePat.clear();txtApePat.setDisable(true);
+	    	    			txtApeMat.clear();txtApeMat.setDisable(true);
+	    	    			txtCiudad.clear();txtCiudad.setDisable(true);
+	    	    			txtColonia.clear();txtColonia.setDisable(true);
+	    	    			txtCalle.clear();txtCalle.setDisable(true);
+	    	    			txtNumCel.clear();txtNumCel.setDisable(true);
+	    	    			txtNumCasa.clear();txtNumCasa.setDisable(true);
 	    	        	}
 	    	        	else{
 	    	        		System.out.println("Error al insertar los datos");
 	    		        	}
 
 						}
-
 	        		}
-
+				}
 			}
+	    }
+	}
+	@FXML public void clickEliminar(){
+		int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar este registro de cliente?");
 
-		  }
-
-	  }
+        if (confirmarEliminar == 0) {
+        	this.cliente.setIdCliente(Integer.parseInt(idCliente.getText()));
+        	cliente.eliminar();
+            System.out.println("Realizado Eliminado");
+            clickActualizar();
+        	txtNombre.clear();txtNombre.setDisable(true);
+			txtApePat.clear();txtApePat.setDisable(true);
+			txtApeMat.clear();txtApeMat.setDisable(true);
+			txtCiudad.clear();txtCiudad.setDisable(true);
+			txtColonia.clear();txtColonia.setDisable(true);
+			txtCalle.clear();txtCalle.setDisable(true);
+			txtNumCel.clear();txtNumCel.setDisable(true);
+			txtNumCasa.clear();txtNumCasa.setDisable(true);
+        }
 	}
 }
 

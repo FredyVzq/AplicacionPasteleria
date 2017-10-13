@@ -25,9 +25,7 @@ public class DAOCategoria {
 		this.nombre= nombre;
 	}
 
-	//---[Getters and Setters]--->
 
-	/*  ID */
 	public int getIdCategoria(){
 		return id;
 	}
@@ -70,7 +68,7 @@ public class DAOCategoria {
 
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "insert into categoria values(default,?,true)";
+	            	String sql = "insert into categoria values(default,?,TRUE)";
 	                comando = con.getConexion().prepareStatement(sql);
 	                comando.setString(1, this.nombre);
 	                bandera = comando.execute();

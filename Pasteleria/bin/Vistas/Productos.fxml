@@ -190,17 +190,17 @@
                <children>
                   <TableView fx:id="tableView" onSort="#clickTableView" prefHeight="277.0" prefWidth="509.0">
                      <columns>
-                        <TableColumn maxWidth="180.0" prefWidth="180.0" text="Nombre">
+                        <TableColumn maxWidth="180.0" prefWidth="169.0" text="Nombre">
 							<cellValueFactory>
                               <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="165.0" text="Tipo">
+                        <TableColumn prefWidth="169.0" text="Tipo">
                         	<cellValueFactory>
                               <PropertyValueFactory property="tipo" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="162.0" text="Precio">
+                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="169.0" text="Precio">
                         	<cellValueFactory>
                               <PropertyValueFactory property="precio" />
                            </cellValueFactory>
@@ -212,5 +212,7 @@
          </content>
       </TitledPane>
       <Label layoutX="14.0" layoutY="442.0" text="(*) Campos obligatorios" />
+      <Label layoutX="641.0" layoutY="423.0" text="Registros:" />
+      <Label fx:id="nregistros" layoutX="719.0" layoutY="423.0" prefHeight="26.0" prefWidth="78.0" />
    </children>
 </AnchorPane>

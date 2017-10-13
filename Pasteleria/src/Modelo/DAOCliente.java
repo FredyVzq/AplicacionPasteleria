@@ -13,11 +13,13 @@ public class DAOCliente {
 	private String apMat;
 	private String ciudad;
 	private String calle;
+	private String colonia;
 	private String numeroCel;
 	private String numeroCasa;
 	private boolean estatus;
 	private DAOConexion con;
 	private PreparedStatement comando;
+	private ObservableList<DAOCliente> lista;
 
 	public DAOCliente(){
 		this.idCliente=0;
@@ -25,6 +27,7 @@ public class DAOCliente {
 		this.apPat="";
 		this.apMat="";
 		this.ciudad="";
+		this.colonia="";
 		this.calle="";
 		this.numeroCel="";
 		this.numeroCasa="";
@@ -32,12 +35,13 @@ public class DAOCliente {
 		this.con = new DAOConexion();
 
 	}
-	public DAOCliente(Integer idCliente, String nombre, String ApePat,String ApeMat, String Ciudad, String Calle, String NumeroCel, String NumeroCasa){ //Constructor que recibe parametros
+	public DAOCliente(Integer idCliente, String nombre, String ApePat,String ApeMat, String Ciudad,String Colonia, String Calle, String NumeroCel, String NumeroCasa){ //Constructor que recibe parametros
 		this.idCliente=idCliente;
 		this.nombre= nombre;
 		this.apPat=ApePat;
 		this.apMat=ApeMat;
 		this.ciudad=Ciudad;
+		this.colonia=Colonia;
 		this.calle=Calle;
 		this.numeroCel=NumeroCel;
 		this.numeroCasa=NumeroCasa;
@@ -74,6 +78,12 @@ public class DAOCliente {
 	public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
+	public String getColonia() {
+        return colonia;
+    }
+	public void setColonia(String colonia) {
+        this.colonia = colonia;
+    }
 	public String getCalle() {
         return calle;
     }
@@ -104,15 +114,16 @@ public class DAOCliente {
 
         try{
             if(con.conectar()) {
-            	String sql = "insert into cliente values(default,?,?,?,?,?,?,?,true)";
+            	String sql = "insert into cliente values(default,?,?,?,?,?,?,?,?,true)";
                 comando = con.getConexion().prepareStatement(sql);
 				comando.setString(1, this.nombre);
 				comando.setString(2, this.apPat);
 				comando.setString(3, this.apMat);
 				comando.setString(4, this.ciudad);
-				comando.setString(5, this.calle);
-				comando.setString(6, this.numeroCel);
-				comando.setString(7, this.numeroCasa);
+				comando.setString(5, this.colonia);
+				comando.setString(6, this.calle);
+				comando.setString(7, this.numeroCel);
+				comando.setString(8, this.numeroCasa);
 				result = comando.execute();
 
 				 result=true;
@@ -134,7 +145,7 @@ public class DAOCliente {
 	        ResultSet rs = null;
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "select * from cliente";
+	            	String sql = "select * from cliente where estatus='TRUE'";
 	                comando = con.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){
@@ -143,9 +154,11 @@ public class DAOCliente {
 	                	cat.apPat = rs.getString("apepat");
 	                	cat.apMat = rs.getString("apemat");
 	                	cat.ciudad = rs.getString("ciudad");
+	                	cat.colonia=rs.getString("colonia");
 	                	cat.calle = rs.getString("calle");
 	                	cat.numeroCel = rs.getString("numerocel");
 	                	cat.numeroCasa = rs.getString("numerocasa");
+	                	cat.idCliente=rs.getInt("idcliente");
 	                	lista.add(cat);
 	                }
 	            }
@@ -190,15 +203,17 @@ public class DAOCliente {
 			String sql="";
 			try {
 	 			if(con.conectar()){
-	 				sql="update categoria set nombre=?, apepat=?, apemat=?, ciudad=?, calle=?, numerocel, numerocasa=? where id=?";
+	 				sql="update cliente set nombre=?, apepat=?, apemat=?, ciudad=?,colonia=?, calle=?, numerocel=?, numerocasa=? where idcliente=?";
 	 				comando=con.getConexion().prepareStatement(sql);
 	 				comando.setString(1, this.nombre);
 					comando.setString(2, this.apPat);
 					comando.setString(3, this.apMat);
 					comando.setString(4, this.ciudad);
-					comando.setString(5, this.calle);
-					comando.setString(6, this.numeroCel);
-					comando.setString(7, this.numeroCasa);
+					comando.setString(5, this.colonia);
+					comando.setString(6, this.calle);
+					comando.setString(7, this.numeroCel);
+					comando.setString(8, this.numeroCasa);
+					comando.setInt(9, this.idCliente);
 	 				comando.execute();
 	 				return true;
 	 			}
@@ -217,7 +232,7 @@ public class DAOCliente {
 	 public boolean eliminar(){
 			try {
 	 			if(con.conectar()){
-	 				String sql="update productos set estatus = false where id=?";
+	 				String sql="update cliente set estatus =false where idcliente=?";
 	 				comando=con.getConexion().prepareStatement(sql);
 	 				comando.setInt(1, this.idCliente);
 	 				comando.executeUpdate();
@@ -231,5 +246,25 @@ public class DAOCliente {
 	 			con.desconectar();
 	 		}
 		}
+	 public ObservableList<DAOCliente> consultar(String consulta){
+	   		ResultSet rs = null;
+	   		try {
+	   			if(con.conectar()){
+	   				comando = con.getConexion().prepareStatement(consulta);
+	   	  			rs =  comando.executeQuery();
+	   	  			while(rs.next()){
+	   	  				DAOCliente l = new DAOCliente();
+	   	  			    l.setIdCliente(rs.getInt("idcliente"));
+	   	  				lista.add(l);
+	   	  			}
+	   			}
+	   		} catch (Exception ex) {
+
+	   		}
+	   		finally{
+	   			con.desconectar();
+	   		}
+	 		return lista;
+	   	}
 
 }
