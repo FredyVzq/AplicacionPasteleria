@@ -127,12 +127,12 @@
                      <columns>
                         <TableColumn maxWidth="180.0" prefWidth="180.0" text="Marca">
 							<cellValueFactory>
-                              <PropertyValueFactory property="nombremarca" />
+                              <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="165.0" text="Proveedor">
                         	<cellValueFactory>
-                              <PropertyValueFactory property="proveedormarca" />
+                              <PropertyValueFactory property="proveedor" />
                            </cellValueFactory>
                         </TableColumn>
                      </columns>

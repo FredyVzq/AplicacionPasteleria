@@ -8,8 +8,8 @@ import javafx.collections.ObservableList;
 public class DAOBases {
 	private int idbases;
 	private String nombre;
-	private String Precio;
-	private String Existencia;
+	private String precio;
+	private String existencia;
 	private boolean estatus;
 	private DAOConexion con;
 	private PreparedStatement comando;
@@ -19,8 +19,8 @@ public class DAOBases {
 	public DAOBases(){
 		this.idbases=0;
 		this.nombre="";
-		this.Precio="";
-		this.Existencia="";
+		this.precio="";
+		this.existencia="";
 		this.estatus= true;
 		this.con = new DAOConexion();
 
@@ -28,8 +28,8 @@ public class DAOBases {
 	public DAOBases(int idbases, String nombre, String precio, String existencia, boolean estatus){ //Constructor que recibe parametros
 		this.idbases=idbases;
 		this.nombre= nombre;
-		this.Precio= precio;
-		this.Existencia= existencia;
+		this.precio= precio;
+		this.existencia= existencia;
 		this.estatus= estatus;
 	}
 
@@ -37,26 +37,26 @@ public class DAOBases {
 		public int getIdbases() {
 	        return idbases;
 	    }
-		public void setIdbases(int Basesid) {
-	        this.idbases = Basesid;
+		public void setIdbases(int idbases) {
+	        this.idbases = idbases;
 	    }
 		public String getNombre() {
 	        return nombre;
 	    }
-		public void setNombre(String nomBase) {
-	        this.nombre = nomBase;
+		public void setNombre(String nombre) {
+	        this.nombre = nombre;
 	    }
 		public String getPrecio() {
-	        return Precio;
+	        return precio;
 	    }
-		public void setPrecio(String precioBase) {
-	        this.Precio =precioBase;
+		public void setPrecio(String precio) {
+	        this.precio =precio;
 	    }
 		public String getExistencia() {
-	        return Existencia;
+	        return existencia;
 	    }
-		public void setExistencia(String Existecia) {
-	        this.Existencia =Existecia;
+		public void setExistencia(String existecia) {
+	        this.existencia =existecia;
 	    }
 		public boolean getEstatus(){
 			return estatus;
@@ -73,8 +73,8 @@ public class DAOBases {
 	            	String sql = "insert into bases values(default,?,?,?,true)";
 	                comando = con.getConexion().prepareStatement(sql);
 					comando.setString(1, this.nombre);
-					comando.setString(2, this.Precio);
-					comando.setString(3, this.Existencia);
+					comando.setString(2, this.precio);
+					comando.setString(3, this.existencia);
 					result = comando.execute();
 
 					 result=true;
@@ -96,14 +96,15 @@ public class DAOBases {
 		        ResultSet rs = null;
 		        try{
 		            if(con.conectar()) {
-		            	String sql = "select nombre, precio, existencia from bases";
+		            	String sql = "select * from bases where estatus='TRUE'";
 		                comando = con.getConexion().prepareStatement(sql);
 		                rs = comando.executeQuery();
 		                while(rs.next()){
 		                	cat = new DAOBases();
 		                	cat.nombre = rs.getString("nombre");
-		                	cat.Precio = rs.getString("precio");
-		                	cat.Existencia = rs.getString("existencia");
+		                	cat.precio = rs.getString("precio");
+		                	cat.existencia = rs.getString("existencia");
+		                	cat.idbases = rs.getInt("idbases");
 		                	lista.add(cat);
 		                }
 		            }
@@ -122,11 +123,11 @@ public class DAOBases {
 				String sql="";
 				try {
 		 			if(con.conectar()){
-		 				sql="update bases set nombre=?, precio=?, existencia=?, where id=?";
+		 				sql="update bases set nombre=?, precio=?, existencia=? where idbases=?";
 		 				comando=con.getConexion().prepareStatement(sql);
 		 				comando.setString(1, this.nombre);
-		 				comando.setString(2, this.Precio);
-		 				comando.setString(3, this.Existencia);
+		 				comando.setString(2, this.precio);
+		 				comando.setString(3, this.existencia);
 		 				comando.setInt(4, this.idbases);
 		 				comando.execute();
 		 				return true;
@@ -169,7 +170,7 @@ public class DAOBases {
 		 public boolean eliminar(){
 				try {
 		 			if(con.conectar()){
-		 				String sql="update bases set estatus = false where id=?";
+		 				String sql="update bases set estatus = false where idbases=?";
 		 				comando=con.getConexion().prepareStatement(sql);
 		 				comando.setInt(1, this.idbases);
 		 				comando.executeUpdate();

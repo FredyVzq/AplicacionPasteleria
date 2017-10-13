@@ -57,6 +57,11 @@
                   <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="202.0">
                      <children>
                         <Button disable="true" mnemonicParsing="false" onAction="#clickPedidos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Pedidos" />
+                        <Button fx:id="btnVenta" mnemonicParsing="false" onAction="#clickVentas" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Ventas">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                   </VBox>
                </content></TitledPane>

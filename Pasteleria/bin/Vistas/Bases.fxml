@@ -22,9 +22,10 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Nuevo" />
+               </tooltip>
             </Button>
-
-
             <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickGuardar">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -33,8 +34,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Guardar" />
+               </tooltip>
             </Button>
-            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#clickEliminar">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,6 +46,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Eliminar registro" />
+               </tooltip>
             </Button>
             <Button fx:id="btnEditar" disable="true" mnemonicParsing="false" onAction="#clickEditar">
                <graphic>
@@ -51,6 +58,9 @@
                      </image>
                   </ImageView>
                </graphic>
+                <tooltip>
+                  <Tooltip text="Modificar registro" />
+               </tooltip>
             </Button>
             <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
                <graphic>
@@ -60,16 +70,19 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Cancelar acción" />
+               </tooltip>
             </Button>
+            <Label prefHeight="26.0" prefWidth="813.0" text="Bases">
+               <padding>
+                  <Insets left="750.0" />
+               </padding></Label>
             <ImageView fitHeight="55.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/Bases2.png" />
                </image>
             </ImageView>
-            <Label prefHeight="26.0" prefWidth="813.0" text="Bases">
-               <padding>
-                  <Insets left="750.0" />
-               </padding></Label>
         </items>
       </ToolBar>
       <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
@@ -79,14 +92,39 @@
                <children>
                   <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                   <TextField fx:id="txtNombre" disable="true" layoutX="4.0" layoutY="22.0" prefHeight="25.0" prefWidth="165.0" />
-                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" />
+                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Precio" />
                   <TextField fx:id="txtPrecio" disable="true" layoutX="184.0" layoutY="22.0" prefHeight="25.0" prefWidth="168.0" />
                   <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <TextField fx:id="txtExistencia" disable="true" layoutX="360.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" />
-                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existencia" />
+                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Existencia" />
                   <Text fill="#ff0101" layoutX="58.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />
                   <Text fill="#ff0101" layoutX="228.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />
                   <Text fill="#ff0101" layoutX="430.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="14.00390625" />
+                  <TextField fx:id="idbases" disable="true" editable="false" layoutX="5.0" layoutY="112.0" prefWidth="164.0" visible="false" />
+                  <Button layoutX="397.0" layoutY="149.0" mnemonicParsing="false" onAction="#actualizar">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/restaurar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Actualizar" />
+                     </tooltip>
+                  </Button>
+                  <Button layoutX="459.0" layoutY="149.0" mnemonicParsing="false" onAction="#clickMandarDatos">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconos/183252-16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Enviar datos a los campos" />
+                     </tooltip>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
@@ -99,17 +137,17 @@
                      <columns>
                         <TableColumn prefWidth="217.0" text="Nombre">
                            <cellValueFactory>
-                              <PropertyValueFactory property="Nombre" />
+                              <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="248.0" text="Precio">
                            <cellValueFactory>
-                              <PropertyValueFactory property="Precio" />
+                              <PropertyValueFactory property="precio" />
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn minWidth="0.0" prefWidth="193.0" text="Existecia">
                            <cellValueFactory>
-                              <PropertyValueFactory property="Existencia" />
+                              <PropertyValueFactory property="existencia" />
                            </cellValueFactory>
                         </TableColumn>
                      </columns>
@@ -120,10 +158,10 @@
       </TitledPane>
       <Text layoutX="575.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos obligatorios">
          <font>
-            <Font name="Arial" size="36.0" />
+            <Font name="Arial" size="31.0" />
          </font>
       </Text>
-      <Text fill="#ff0101" layoutX="872.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+      <Text fill="#ff0101" layoutX="852.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
          <font>
             <Font size="26.0" />
          </font>

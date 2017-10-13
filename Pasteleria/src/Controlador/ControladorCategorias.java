@@ -122,6 +122,7 @@ public class ControladorCategorias implements Initializable{
 							alert.setHeaderText(null);
 							alert.setContentText("Se han modificado los datos exitosamente");
 							alert.showAndWait();
+							
 							listaCategoria=categoria.mostrar();
 							tablaCategoria.setItems(categoria.mostrar());
 							tfNombre.setText("");

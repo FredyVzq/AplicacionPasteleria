@@ -222,7 +222,6 @@ public class ControladorProductos implements Initializable{
 		abrir();
 	}
 
-
 	@FXML public void actualizar(){
 		listaMarcas=datosMarca.mostrar();
 		cbMarca.setItems(listaMarcas);
