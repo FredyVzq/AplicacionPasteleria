@@ -124,7 +124,6 @@ public class DAOMarcas {
 	 				comando.setString(1, this.nombre);
 	 				comando.setString(2, this.proveedor);
 	 				comando.setInt(3, this.id);
-
 	 				return true;
 	 			}
 	 			else{

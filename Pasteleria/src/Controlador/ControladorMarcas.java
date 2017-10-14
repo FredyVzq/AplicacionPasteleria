@@ -3,6 +3,8 @@ package Controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import Modelo.DAOMarcas;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -112,6 +114,50 @@ public class ControladorMarcas implements Initializable {
 
 	}
 
-	@FXML public void clickModificar(){}
-	@FXML public void clickEliminar(){}
+	@FXML public void clickModificar(){
+		if(tfNombre.getText().isEmpty() || tfProveedor.getText().isEmpty()){
+
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("DATOS FALTANTES");
+				alert.setHeaderText(null);
+				alert.setContentText("Por favor llena todos los campos.");
+				alert.showAndWait();
+			}
+			else{
+				boolean confirmar2=false;
+				if(confirmar2==false){
+						this.datosMarcas.setNombre(tfNombre.getText());
+						this.datosMarcas.setNombre(tfProveedor.getText());
+						this.datosMarcas.setId(Integer.parseInt(idMarca.getText()));
+
+						if(datosMarcas.editar()){
+					    	Alert alert = new Alert(AlertType.WARNING);
+					    	alert.setTitle("Error");
+					    	alert.setHeaderText("verifica los datos");
+					    	alert.setContentText("verifica los datos!");
+					    	alert.showAndWait();
+
+						}
+						else{
+							Alert alert = new Alert(AlertType.INFORMATION);
+					    	alert.setTitle("Datos Correctos!");
+					    	alert.setHeaderText("Datos modificados");
+					    	alert.setContentText("Datos modificados correctamente!");
+					    	alert.showAndWait();
+					    	listadeMarcas=datosMarcas.mostrar();
+							tableViewR.setItems(datosMarcas.mostrar());
+						}
+				}
+			}
+	}
+	@FXML public void clickEliminar(){
+		int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar este registro de datosMarcas?");
+
+        if (confirmarEliminar == 0) {
+        	this.datosMarcas.setId(Integer.parseInt(idMarca.getText()));
+        	datosMarcas.eliminar();
+            System.out.println("Realizado Eliminado");
+            actualizar();
+	}
+}
 }
