@@ -59,7 +59,7 @@ public class ControladorBases implements Initializable{
 				txtExistencia.getText().trim().isEmpty()
 			){
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("DATOS FALTANTES");
+				alert.setTitle("Datos faltantes");
 				alert.setHeaderText(null);
 				alert.setContentText("Por favor llena todos los campos.");
 				alert.showAndWait();
@@ -74,7 +74,7 @@ public class ControladorBases implements Initializable{
 
 						if(bases.editar()){
 							Alert alert = new Alert(AlertType.WARNING);
-							alert.setTitle("DATOS MODIFICADOS");
+							alert.setTitle("Datos modificados");
 							alert.setHeaderText(null);
 							alert.setContentText("Datos modificados exitosamente");
 							alert.showAndWait();
@@ -89,9 +89,9 @@ public class ControladorBases implements Initializable{
 						}
 						else{
 							Alert alert = new Alert(AlertType.WARNING);
-							alert.setTitle("Error");
+							alert.setTitle("Advertencia");
 							alert.setHeaderText(null);
-							alert.setContentText("La informacion no se ha podido editar, por favor intentelo de nuevo");
+							alert.setContentText("La información no se ha podido editar, por favor intentelo de nuevo");
 							alert.showAndWait();
 						}
 				}
@@ -115,12 +115,11 @@ public class ControladorBases implements Initializable{
 		}
 			else{
 				Alert alert = new Alert(AlertType.WARNING);
-		    	alert.setTitle("Tabla de Registros");
-		    	alert.setHeaderText("Tabla de Registros");
-		    	alert.setContentText("Seleccione una fila con registros!");
+		    	alert.setTitle("Tabla de registros");
+		    	alert.setHeaderText("Seleccione un registros");
+		    	alert.setContentText("Seleccione un registros!");
 		    	alert.showAndWait();
 			}
-
 	}
 
 	@FXML public void clickEliminar(){ {
@@ -182,9 +181,9 @@ public static boolean numeric(String src) {
 		if(txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()||txtExistencia.getText().isEmpty()){
 
 		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Ingrese Datos");
-		alert.setHeaderText("Campos Vacios");
-    	alert.setContentText("Por favor ingrese la informacion solicitada!");
+		alert.setTitle("Ingrese datos");
+		alert.setHeaderText("Campos vacios");
+    	alert.setContentText("Por favor ingrese la información solicitada!");
     	alert.showAndWait();
 
 		}
@@ -193,7 +192,7 @@ public static boolean numeric(String src) {
 				Alert alert = new Alert(AlertType.WARNING);
 		    	alert.setTitle("Datos no validos");
 		    	alert.setHeaderText("No se admiten letras");
-		    	alert.setContentText("Numero de celular contiene letras");
+		    	alert.setContentText("El campo precio contiene letras");
 		    	alert.showAndWait();
                 }
 			else{
@@ -202,30 +201,35 @@ public static boolean numeric(String src) {
 					Alert alert = new Alert(AlertType.WARNING);
 			    	alert.setTitle("Datos no validos");
 			    	alert.setHeaderText("No se admiten letras");
-			    	alert.setContentText("Numero de casa contiene letras");
+			    	alert.setContentText("El campo existencia contiene letras");
 			    	alert.showAndWait();
 				}
-
 				else{
 	        		if(txtPrecio.getLength()>7){
-	        			Alert alert =
-
-	        					new Alert(AlertType.WARNING);
+	        			Alert alert = new Alert(AlertType.WARNING);
 				    	alert.setTitle("Datos no validos");
 				    	alert.setHeaderText("Numero no cumple con requerido");
-				    	alert.setContentText("Numero demaciado corto");
+				    	alert.setContentText("Precio demaciado largo");
 				    	alert.showAndWait();
 	        		}
 						else{
+							if(txtExistencia.getLength()>3){
+								Alert alert = new Alert(AlertType.WARNING);
+						    	alert.setTitle("Datos no validos");
+						    	alert.setHeaderText("Numero no cumple con requerido");
+						    	alert.setContentText("Existencia demaciado largo");
+						    	alert.showAndWait();
+
+							}
 						bases.setNombre(txtNombre.getText());
 						bases.setPrecio(txtPrecio.getText());
 						bases.setExistencia(txtExistencia.getText());
 						if(bases.insertar()==true){
 	    	        		System.out.println("Se insertaron los datos correctamente");
 	    	        		Alert alert = new Alert(AlertType.INFORMATION);
-	    	    			alert.setTitle("Informacion Agregada");
+	    	    			alert.setTitle("Información Agregada");
 	    	    			alert.setHeaderText(null);
-	    	    			alert.setContentText("La informacion se ha guardado de forma exitosa!");
+	    	    			alert.setContentText("La información se ha guardado de forma exitosa!");
 	    	    			alert.showAndWait();
 	    	    			//Actualiza la tabla
 	    	    			listaBases=bases.mostrar();
@@ -239,7 +243,7 @@ public static boolean numeric(String src) {
 
 	        		}
 
-			}
+			 }
 
 		  }
 

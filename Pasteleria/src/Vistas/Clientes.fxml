@@ -59,15 +59,15 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label prefHeight="26.0" prefWidth="822.0" text="Clientes">
+               <padding>
+                  <Insets left="750.0" />
+               </padding></Label>
             <ImageView fitHeight="53.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/cliente.png" />
                </image>
             </ImageView>
-            <Label prefHeight="26.0" prefWidth="822.0" text="Clientes">
-               <padding>
-                  <Insets left="750.0" />
-               </padding></Label>
         </items>
       </ToolBar>
       <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
@@ -90,7 +90,6 @@
                   <TextField fx:id="txtNumCel" disable="true" layoutX="4.0" layoutY="154.0" prefWidth="165.0" />
                   <TextField fx:id="txtNumCasa" disable="true" layoutX="184.0" layoutY="154.0" prefWidth="165.0" />
                   <Text fill="RED" layoutX="52.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="454.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="RED" layoutX="272.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="RED" layoutX="389.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="RED" layoutX="49.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />

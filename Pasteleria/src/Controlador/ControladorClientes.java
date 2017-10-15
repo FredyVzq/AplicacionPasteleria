@@ -68,7 +68,7 @@ public class ControladorClientes implements Initializable{
 				txtNumCel.getText().isEmpty()||txtColonia.getText().isEmpty()){
 
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("DATOS FALTANTES");
+				alert.setTitle("Datos faltantes");
 				alert.setHeaderText(null);
 				alert.setContentText("Por favor llena todos los campos.");
 				alert.showAndWait();
@@ -88,19 +88,19 @@ public class ControladorClientes implements Initializable{
 
 
 						if(cliente.editar()){
-					    	Alert alert = new Alert(AlertType.WARNING);
-					    	alert.setTitle("Error");
-					    	alert.setHeaderText("verifica los datos");
-					    	alert.setContentText("verifica los datos!");
+							Alert alert = new Alert(AlertType.INFORMATION);
+					    	alert.setTitle("Datos Correctos!");
+					    	alert.setHeaderText("Datos modificados");
+					    	alert.setContentText("Datos modificados correctamente!");
 					    	alert.showAndWait();
 							Editar();
 
 						}
 						else{
-							Alert alert = new Alert(AlertType.INFORMATION);
-					    	alert.setTitle("Datos Correctos!");
-					    	alert.setHeaderText("Datos modificados");
-					    	alert.setContentText("Datos modificados correctamente!");
+							Alert alert = new Alert(AlertType.WARNING);
+					    	alert.setTitle("Advertencia");
+					    	alert.setHeaderText("verifica los datos");
+					    	alert.setContentText("verifica los datos!");
 					    	alert.showAndWait();
 					    	listaCliente=cliente.mostrar();
 							tablaCliente.setItems(cliente.mostrar());
@@ -196,13 +196,13 @@ public static boolean numeric(String src) {
 	@FXML public void clickGuardar(){
 		String cadena=txtNumCel.getText();
 		String cad=txtNumCasa.getText();
-		if(txtNombre.getText().isEmpty() || txtApePat.getText().isEmpty()|| txtApeMat.getText().isEmpty() ||
+		if(txtNombre.getText().isEmpty() || txtApePat.getText().isEmpty()||
 				txtNumCel.getText().isEmpty()||txtColonia.getText().isEmpty()){
 
 		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Ingrese Datos");
-		alert.setHeaderText("Campos Vacios");
-    	alert.setContentText("Por favor ingrese la informacion solicitada!");
+		alert.setTitle("Ingrese datos");
+		alert.setHeaderText("Campos vacios");
+    	alert.setContentText("Por favor ingrese la informacón solicitada!");
     	alert.showAndWait();
 
 		}
@@ -228,21 +228,33 @@ public static boolean numeric(String src) {
 	        			Alert alert = new Alert(AlertType.WARNING);
 				    	alert.setTitle("Datos no validos");
 				    	alert.setHeaderText("Numero no cumple con requerido");
-				    	alert.setContentText("Numero demaciado corto");
+				    	alert.setContentText("Numero de celular demaciado corto");
 				    	alert.showAndWait();
 	        		}
 	        		else{
-	            		if(txtNumCasa.getLength()<0){
+	            		if(txtNumCasa.getLength()<10){
 	            			Alert alert = new Alert(AlertType.WARNING);
 					    	alert.setTitle("Datos no validos");
 					    	alert.setHeaderText("Numero no cumple con requerido");
-					    	alert.setContentText("Numero demaciado corto");
+					    	alert.setContentText("Numero de casa demaciado corto");
 					    	alert.showAndWait();
 	            		}
-
-
-
 						else{
+							if(txtNumCel.getLength()>10 ){
+								Alert alert = new Alert(AlertType.WARNING);
+						    	alert.setTitle("Datos no validos");
+						    	alert.setHeaderText("Numero no cumple con requerido");
+						    	alert.setContentText("Numero de celular demaciado largo");
+						    	alert.showAndWait();
+
+							}else{
+								if(txtNumCasa.getLength()>10 ){
+									Alert alert = new Alert(AlertType.WARNING);
+							    	alert.setTitle("Datos no validos");
+							    	alert.setHeaderText("Numero no cumple con requerido");
+							    	alert.setContentText("Numero de casa demaciado largo");
+							    	alert.showAndWait();
+						}else{
 						cliente.setNombre(txtNombre.getText());
 						cliente.setApPat(txtApePat.getText());
 						cliente.setApMat(txtApeMat.getText());
@@ -254,10 +266,11 @@ public static boolean numeric(String src) {
 						if(cliente.insertar()==true){
 	    	        		System.out.println("Se insertaron los datos correctamente");
 	    	        		Alert alert = new Alert(AlertType.INFORMATION);
-	    	    			alert.setTitle("Informacion Agregada");
+	    	    			alert.setTitle("Información agregada");
 	    	    			alert.setHeaderText(null);
-	    	    			alert.setContentText("La informacion se ha guardado de forma exitosa!");
+	    	    			alert.setContentText("La información se ha guardado de forma exitosa!");
 	    	    			alert.showAndWait();
+
 	    	    			//Actualiza la tabla
 	    	    			listaCliente=cliente.mostrar();
 	    	    			tablaCliente.setItems(cliente.mostrar());
@@ -278,12 +291,13 @@ public static boolean numeric(String src) {
 	    	        	else{
 	    	        		System.out.println("Error al insertar los datos");
 	    		        	}
-
-						}
-	        		}
-				}
-			}
-	    }
+						 }
+	        		  }
+				   }
+			    }
+		     }
+	      }
+	   }
 	}
 	@FXML public void clickEliminar(){
 		int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar este registro de cliente?");
@@ -291,7 +305,7 @@ public static boolean numeric(String src) {
         if (confirmarEliminar == 0) {
         	this.cliente.setIdCliente(Integer.parseInt(idCliente.getText()));
         	cliente.eliminar();
-            System.out.println("Realizado Eliminado");
+            System.out.println("Realizado eliminado");
             clickActualizar();
         	txtNombre.clear();txtNombre.setDisable(true);
 			txtApePat.clear();txtApePat.setDisable(true);

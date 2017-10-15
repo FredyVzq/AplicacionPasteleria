@@ -12,9 +12,9 @@ public class DAOConexion {
 	public DAOConexion(){
 		this.servidor = "localhost"; //127.0.0.1
 		this.usuario = "postgres";
-		this.contrasenia = "qwerty123";
+		this.contrasenia = "12345";
 		this.puerto = "5432";
-		this.baseDatos = "PasteleriaDB2.0";
+		this.baseDatos = "Pasteleria";
 	}
 
 	//Para conectar a la base de datos
