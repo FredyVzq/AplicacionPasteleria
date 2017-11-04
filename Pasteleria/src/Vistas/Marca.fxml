@@ -74,9 +74,9 @@
                   <Tooltip text="Cancelar" />
                </tooltip>
             </Button>
-            <Label prefHeight="47.0" prefWidth="686.0" text="Marcas">
+            <Label prefHeight="47.0" prefWidth="686.0" styleClass="label2" text="Marcas">
                <padding>
-                  <Insets left="600.0" />
+                  <Insets left="550.0" />
                </padding>
             </Label>
             <ImageView fitHeight="54.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
@@ -86,37 +86,27 @@
             </ImageView>
         </items>
       </ToolBar>
-      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0">
-         <items>
-            <Label text="En esta parte va el usuario que esta activo" textFill="WHITE" />
-         </items></ToolBar>
+      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
       <TitledPane animated="false" collapsible="false" layoutX="41.0" layoutY="136.0" prefHeight="242.0" prefWidth="563.0" stylesheets="@css/Marca.css" text="Datos generales">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
                <children>
-                  <Text layoutX="118.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-                     <font>
-                        <Font size="17.0" />
-                     </font></Text>
+                  <Text layoutX="118.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                   <TextField fx:id="tfNombre" disable="true" layoutX="127.0" layoutY="36.0" prefHeight="25.0" prefWidth="289.0" />
-                  <Text layoutX="118.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proveedor">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
+                  <Text layoutX="118.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proveedor" />
                   <TextField fx:id="tfProveedor" disable="true" layoutX="127.0" layoutY="116.0" prefHeight="25.0" prefWidth="289.0" />
-                  <Text fill="RED" layoutX="180.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                  <Text fill="RED" layoutX="166.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fill="RED" layoutX="195.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                  <Text fill="RED" layoutX="183.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="idMarca" layoutX="14.0" layoutY="95.0" opacity="0.0" prefWidth="45.0" visible="false" />
-                  <Button layoutX="447.0" layoutY="162.0" mnemonicParsing="false" onAction="#actualizar">
+                  <TextField fx:id="idMarca" layoutX="14.0" layoutY="95.0" prefWidth="45.0" visible="false" />
+                  <Button layoutX="494.0" layoutY="119.0" mnemonicParsing="false" onAction="#actualizar">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -128,18 +118,7 @@
                         <Tooltip text="Actualizar" />
                      </tooltip>
                   </Button>
-                  <Button layoutX="497.0" layoutY="162.0" mnemonicParsing="false" onAction="#clickTableView">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@iconos/183252-16.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="Enviar datos a los campos" />
-                     </tooltip>
-                  </Button>
+                  <Label layoutX="409.0" layoutY="187.0" text="(*) Datos oligatorios" />
                </children>
             </AnchorPane>
          </content>
@@ -148,7 +127,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-				  <TableView fx:id="tableViewR" layoutX="19.6" layoutY="19.6" prefHeight="211.0" prefWidth="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+				  <TableView fx:id="tableViewR" layoutX="19.6" layoutY="19.6" onMouseClicked="#clickTableView" prefHeight="211.0" prefWidth="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn maxWidth="235.0" prefWidth="235.0" text="Marca">
 							<cellValueFactory>
@@ -166,5 +145,7 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <Label layoutX="963.0" layoutY="116.0" text="Registros:" />
+      <Label fx:id="numMarcas" layoutX="1035.0" layoutY="116.0" prefHeight="20.0" prefWidth="82.0" />
    </children>
 </AnchorPane>

@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 import Modelo.DAOCategoria;
+import Modelo.DAOUsuario;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,18 +31,35 @@ public class ControladorCategorias implements Initializable{
 	@FXML Button btnCancelar;
 	@FXML TableView<DAOCategoria> tablaCategoria;
 	ObservableList<DAOCategoria> listaCategoria;
+	private ControladorVentanas ins;
 	DAOCategoria categoria;
-
+	ControladorLog log;
+	String usuariologeado;
+	ControladorMenu usuario;
+	public ControladorCategorias() {
+		log=new ControladorLog();
+		usuariologeado="";
+		categoria=new DAOCategoria();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		categoria=new DAOCategoria();
+		usuario =new ControladorMenu();
+		usuariologeado=usuario.getNombre();
 		listaCategoria=categoria.mostrar();
 		tablaCategoria.setItems(categoria.mostrar());
 		tfNombre.setDisable(true);
-
 		int r=listaCategoria.size();
 		String reg=Integer.toString(r);
 		nregistros.setText(reg);
+		restricciones();
+	}
+	public void restricciones(){
+		tfNombre.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[a-zA-Z0-9' ']{0,25}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
 	}
 
 
@@ -54,7 +73,9 @@ public class ControladorCategorias implements Initializable{
 		tfNombre.setDisable(true);
 		btnNuevo.setDisable(false);
 		btnGuardar.setDisable(true);
-		btnCancelar.setDisable(true);
+		btnEliminar.setDisable(true);
+		btnEditar.setDisable(true);
+		tfNombre.setText("");
 	}
 	@FXML public void clickGuardar(){
 
@@ -78,10 +99,9 @@ public class ControladorCategorias implements Initializable{
     			//Actualiza la tabla
     			listaCategoria=categoria.mostrar();
     			tablaCategoria.setItems(categoria.mostrar());
-    			btnEditar.setDisable(true);
-    			btnCancelar.setDisable(true);
-    			tfNombre.setText("");
-    			tfNombre.setDisable(true);
+    			log.nuevo(usuariologeado,"Categoria",tfNombre.getText() );
+    			clickCancelar();
+
         	}
         	else{
         		System.out.println("Error al insertar los datos");
@@ -98,6 +118,7 @@ public class ControladorCategorias implements Initializable{
 			btnEditar.setDisable(false);
 			tfNombre.setDisable(false);
 			btnEliminar.setDisable(false);
+			btnCancelar.setDisable(false);;
 		}
 			else{
 				Alert alert = new Alert(AlertType.WARNING);
@@ -117,6 +138,7 @@ public class ControladorCategorias implements Initializable{
 				alert.showAndWait();
 			}
 			else{
+				btnCancelar.setDisable(false);
 				boolean confirmar2=false;
 				if(confirmar2==false){
 						this.categoria.setNombre(tfNombre.getText());
@@ -130,9 +152,9 @@ public class ControladorCategorias implements Initializable{
 							alert.showAndWait();
 							listaCategoria=categoria.mostrar();
 							tablaCategoria.setItems(categoria.mostrar());
-							tfNombre.setText("");
-							btnEditar.setDisable(true);
-							btnNuevo.setDisable(false);
+							log.editado(usuariologeado,"Categoria",tfNombre.getText() );
+							clickCancelar();
+
 						}
 						else{
 							Alert alert = new Alert(AlertType.ERROR);
@@ -150,9 +172,11 @@ public class ControladorCategorias implements Initializable{
         if (confirmarEliminar == 0) {
         	this.categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
             this.categoria.eliminar();
+            log.eliminado(usuariologeado,"Categoria",tfNombre.getText());
             System.out.println("Realizado Eliminado");
     		listaCategoria=categoria.mostrar();
 			tablaCategoria.setItems(categoria.mostrar());
+			clickCancelar();
         }
 	}
 }

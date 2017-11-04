@@ -10,11 +10,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Usuarios.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorVentas">
+<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="863.0" styleClass="background_app" stylesheets="@css/Venta.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorVentas">
    <children>
-      <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ToolBar prefHeight="0.0" prefWidth="775.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="635.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <Button  mnemonicParsing="false" >
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -23,7 +23,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button  disable="true" mnemonicParsing="false" >
+            <Button disable="true" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button  disable="true" mnemonicParsing="false">
+            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button  disable="true" mnemonicParsing="false">
+            <Button disable="true" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button  disable="true" mnemonicParsing="false" >
+            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#cancelar">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -59,112 +59,118 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="62.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/empleado.png" />
-               </image>
-            </ImageView>
         </items>
       </ToolBar>
-      <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
-      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="101.0" prefHeight="342.0" prefWidth="544.0" stylesheets="@css/Usuarios.css" text="Datos generales">
+      <ToolBar layoutY="635.0" prefHeight="65.0" prefWidth="863.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="635.0">
+         <items>
+            <Label styleClass="label3" text="Total:" />
+            <Label fx:id="totalC" prefHeight="31.0" prefWidth="150.0" styleClass="label3" text="0.00" />
+         </items>
+         <padding>
+            <Insets left="15.0" />
+         </padding></ToolBar>
+      <TitledPane animated="false" collapsible="false" layoutX="461.0" layoutY="98.0" prefHeight="526.0" prefWidth="390.0" stylesheets="@css/Usuarios.css" text="Datos generales">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
-               <children>
-                  <GridPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="14.0" layoutY="28.0" prefHeight="145.0" prefWidth="501.0" vgap="10.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="92.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="139.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+            <SplitPane dividerPositions="0.93" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="97.0">
                      <children>
-                        <Text layoutX="246.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Cantidad:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Cliente:" />
-                        <Text layoutX="14.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Producto:" GridPane.rowIndex="1" />
-                        <ComboBox disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ComboBox disable="true" prefWidth="150.0" GridPane.columnIndex="1" />
-                        <ComboBox disable="true" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <ComboBox disable="true" prefWidth="150.0" GridPane.columnIndex="4" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*Pedido:" GridPane.columnIndex="3" />
-                        <Button disable="true" mnemonicParsing="false" GridPane.columnIndex="2">
+                        <TextArea layoutX="15.0" layoutY="320.0" prefHeight="99.0" prefWidth="318.0" promptText="Notas y comentarios" scrollLeft="1.0" scrollTop="10.0" />
+                        <Button fx:id="btnClientes" disable="true" layoutX="281.0" layoutY="59.0" mnemonicParsing="false" onAction="#irClientes" prefHeight="0.0" prefWidth="0.0">
                            <graphic>
-                              <ImageView disable="true" fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@iconos/nuevo.png" />
+                                    <Image url="@images/cliente.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip text="Consultar clientes" />
+                           </tooltip>
                         </Button>
-                        <Button disable="true" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="btnInventario" disable="true" layoutX="281.0" layoutY="118.0" mnemonicParsing="false" onAction="#irInventario" prefHeight="0.0" prefWidth="0.0">
                            <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@iconos/nuevo.png" />
+                                    <Image url="@images/productos.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip text="Consultar inventario" />
+                           </tooltip>
                         </Button>
+                        <Label layoutX="14.0" layoutY="266.0" text="Precio base" />
+                        <TextField fx:id="precio" disable="true" layoutX="119.0" layoutY="246.0" prefWidth="70.0" />
+                        <RadioButton fx:id="rbPrecio" disable="true" layoutX="13.0" layoutY="232.0" mnemonicParsing="false" onAction="#selecCortesia" text="Cortesía">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="precios" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <Text fill="#ff0202" layoutX="93.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#ff0202" layoutX="79.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Label layoutX="15.0" layoutY="186.0" text="Cantidad" />
+                        <Label layoutX="17.0" layoutY="126.0" text="Código" />
+                        <Label layoutX="145.0" layoutY="462.0" text="(*) Campos obligatorios" />
+                        <Button fx:id="btnBuscar" disable="true" layoutX="20.0" layoutY="447.0" mnemonicParsing="false" onAction="#busqueda" styleClass="button_app" text="Agregar" />
+                        <TextField fx:id="cantidad" alignment="CENTER" disable="true" layoutX="119.0" layoutY="166.0" prefWidth="70.0" text="1" />
+                        <ComboBox fx:id="cbClientes" disable="true" layoutX="14.0" layoutY="68.0" prefHeight="25.0" prefWidth="242.0" promptText="Seleccione un cliente" />
+                        <RadioButton fx:id="rbClientes" disable="true" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#elegirCliente" text="Clientes">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="ventas" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbPublico" disable="true" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#elegirPublico" selected="true" text="Público en general" toggleGroup="$ventas" />
+                        <TextField fx:id="codigo" alignment="CENTER" disable="true" layoutX="115.0" layoutY="106.0" prefWidth="141.0" />
+                        <Button fx:id="btnCambiarPrecio" disable="true" layoutX="215.0" layoutY="252.0" mnemonicParsing="false" onAction="#cambiarPrecio" styleClass="button_appPrecio" text="Cambiar precio" />
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </GridPane>
-                  <Button disable="true" layoutX="466.0" layoutY="204.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="49.0">
-                     <graphic>
-                        <ImageView fitHeight="48.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/venta.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="pagar" />
-                     </tooltip>
-                  </Button>
-               </children>
-            </AnchorPane>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="123.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-68.0" layoutY="81.0" rotate="90.0" text="Ventas por pedidos" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+              </items>
+               <opaqueInsets>
+                  <Insets left="15.0" />
+               </opaqueInsets>
+            </SplitPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="135.0" prefHeight="265.0" prefWidth="660.0" text="Venta">
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="98.0" prefHeight="526.0" prefWidth="435.0" text="Venta">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView prefHeight="239.0" prefWidth="669.0">
+                  <TableView fx:id="tabla" prefHeight="498.0" prefWidth="434.0">
                      <columns>
-                        <TableColumn minWidth="0.0" prefWidth="204.0" text="Productos">
+                        <TableColumn minWidth="0.0" prefWidth="235.0" text="Productos">
                            <cellValueFactory>
-                              <PropertyValueFactory property="ApMat" />
+                              <PropertyValueFactory property="nombre" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="171.0" text="Precio">
-                           <cellValueFactory>
-                              <PropertyValueFactory property="Calle" />
+                        <TableColumn prefWidth="100.0" text="Precio">
+							<cellValueFactory>
+                              <PropertyValueFactory property="precio" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="357.0" text="Cantidad" />
+                        <TableColumn prefWidth="100.0" text="Cantidad">
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="cantidadVenta" />
+                           </cellValueFactory>
+                        </TableColumn>
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </TitledPane>
-      <Text layoutX="592.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos obligatorios">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text fill="#ff5800" layoutX="821.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="31.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Label layoutX="1143.0" layoutY="400.0" text="Total: " />
-      <Label layoutX="1192.0" layoutY="400.0" prefHeight="26.0" prefWidth="43.0" />
    </children>
 </AnchorPane>

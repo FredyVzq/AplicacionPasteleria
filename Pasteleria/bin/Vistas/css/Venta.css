@@ -1,0 +1,172 @@
+.background_app{
+    -fx-background-color: #E3DEE2;
+}
+
+/* cajas de texto */
+.text_app{
+    -fx-background-color: #7f112f;
+    -fx-text-fill: #fff;
+    -fx-prompt-text-fill: #ffacdc;
+    -fx-text-box-border: transparent;        
+    -fx-background-radius: 0;
+    -fx-padding: 8;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size:12px;
+    -fx-alignment: CENTER;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.text_app:focused {
+    -fx-text-fill: #7f112f;
+    -fx-background-color: #ffacdc;     
+    -fx-font-family: "Century Gothic";
+}
+
+/*botones*/
+.button_app{
+    -fx-background-color: #7f112f;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #ffacdc;    
+    -fx-alignment: CENTER;
+    -fx-font-family: "Century Gothic";
+}
+.button_app:hover{
+    -fx-background-color: #F78DEA;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #7f112f;    
+    -fx-alignment: CENTER;
+}
+.button_appPrecio{
+    -fx-background-color: #7f112f;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #ffacdc;    
+    -fx-alignment: CENTER;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 8pt;
+}
+.button_appPrecio:hover{
+    -fx-background-color: #F78DEA;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #7f112f;    
+    -fx-alignment: CENTER;
+}
+.button_appPrecio:focused{
+	-fx-background-color: #7f112f;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #ffacdc;    
+    -fx-alignment: CENTER;
+    -fx-font-family: "Century Gothic";
+}
+
+/**Titulo*/
+.textb_app{
+    -fx-text-fill: #7f112f;
+    -fx-font-size:46px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 0,0,3,3 );
+    -fx-font-family: "Century Gothic";
+}
+
+.titled-pane {
+    -fx-animated: true;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 50, 0.0 , 0 , 0 );
+    -fx-padding: 0px;
+    -fx-size:38px;
+    -fx-font-family: "Century Gothic";
+}
+
+.titled-pane> .title  {
+    -fx-background-radius: 0, 0, 0;
+    -fx-font-size:25px;
+    -fx-border-color:transparent;
+    -fx-padding: 0;
+    -fx-background-color: #7f112f;
+    -fx-pref-height: 30px;
+    -fx-font-family: "Century Gothic";
+}
+
+.image-view{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) ,4, 0.0 , 0 , 2 );
+    -fx-border-radius: 10px;
+    -fx-opacity:1;
+}
+.text-field {
+    -fx-background-color: #727272 , #F4F4F4 , #F4F4F4;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;  
+    -fx-text-fill: #727272;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: #B6B6B6;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;
+    -fx-pref-height: 40px;
+    -fx-padding: 0;
+}
+
+.text-field:focused {
+    -fx-background-color: #D32F2F , #F4F4F4 , #F4F4F4;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;
+    -fx-background-size: 10px;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;    
+    -fx-background-radius:5px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:focused {
+    -fx-text-fill: white;
+}
+.label {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill:  #7f112f;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.label2 {
+    -fx-font-size: 23pt;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+
+}
+.label3 {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+
+}
+.he  {
+    -fx-background-radius: 0, 0, 0;
+    -fx-font-size:25px;
+    -fx-font-family: "Century Gothic";
+    -fx-padding: 0; 
+    -fx-background-color: #7f112f;
+    -fx-pref-height: 30px;
+}
+.generales{
+    -fx-background-color: #727272 , #F4F4F4 , #F4F4F4;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 50, 0.0 , 0 , 0 );
+    -fx-font-family: "Century Gothic";
+     -fx-size:35px;
+}

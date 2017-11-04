@@ -3,13 +3,18 @@ package Controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
 import javax.swing.JOptionPane;
+
 import Controlador.notificaciones.Notification.Notifier;
 import Modelo.DAOCategoria;
 import Modelo.DAOMarcas;
 import Modelo.DAOProducto;
+import Modelo.DAOUsuario;
 import Controlador.ControladorVentanas;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,8 +22,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 //import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,39 +36,32 @@ public class ControladorProductos implements Initializable{
 	private static final Image WARNING_ICON= new Image(Notifier.class.getResourceAsStream("/Vistas/iconos/warning.png"));
 	public static final Image SUCCESS_ICON = new Image(Notifier.class.getResourceAsStream("/Vistas/iconos/success.png"));
 	private ControladorVentanas ins;
-	@FXML Button btnBuscar;
-	@FXML Button btnNuevo;
-	@FXML Button btnGuardar;
-	@FXML Button btnRefrescar;
-	@FXML Button btnEliminar;
-	@FXML Button btnEditar;
-	@FXML Button btnCancelar;
-	@FXML TextField tfCodigo;
-	@FXML TextField txtBuscador;
-	@FXML TextField tfNombre;
-	@FXML TextField tfPrecio;
-	@FXML TextField tfId;
-	@FXML Label fechaI;
-	@FXML Label nregistros;
+	@FXML Button btnBuscar,btnNuevo,btnGuardar,btnRefrescar,btnEliminar,btnEditar,btnCancelar,btnNuevaMarca,btnNuevaCategoria;
+	@FXML TextField tfCodigo,txtBuscador,tfNombre,tfPrecio,tfId,cantidad,tfTipo;
+	@FXML RadioButton seleccion;
+	@FXML Label fechaI, nregistros;
 	@FXML ComboBox<DAOCategoria> cbCategoria;
 	@FXML ComboBox<DAOMarcas> cbMarca;
-	@FXML Button btnNuevaMarca;
-	@FXML TextField tfTipo;
-	@FXML Button btnNuevaCategoria;
 	@FXML TableView<DAOProducto> tableView;
 	ObservableList<DAOProducto> listadeProductos;
 	ObservableList<DAOCategoria> listaCategorias;
 	ObservableList<DAOMarcas> listaMarcas;
-	DAOProducto datosProducto;
+	private DAOProducto datosProducto;
 	DAOCategoria datosCategoria;
 	DAOMarcas datosMarca;
+	DAOUsuario usuario;
 	private int enteroCat=0;
 	private int enteroMar=0;
+	ControladorLog log;
+	ControladorAcceso nua;
 	public ControladorProductos() {
 		ins = ControladorVentanas.getInstancia();
 		datosProducto=new DAOProducto();
 		datosCategoria=new DAOCategoria();
 		datosMarca=new DAOMarcas();
+		log=new ControladorLog();
+		nua=new ControladorAcceso();
+		usuario=new DAOUsuario();
 		}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -75,9 +75,46 @@ public class ControladorProductos implements Initializable{
 		int r=listadeProductos.size();
 		String reg=Integer.toString(r);
 		nregistros.setText(reg);
+		//Asignando la longitud de los TEXTFIELD
+		restricciones();
+	}
+	public void restricciones(){
+		tfNombre.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[a-zA-Z0-9' ']{0,50}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
+		tfCodigo.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[a-zA-Z0-9' ']{0,25}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
+		tfPrecio.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[0-9.]{0,7}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
+		cantidad.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[0-9]{0,5}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
+		tfTipo.textProperty().addListener((observable, oldValue, newValue)->{
+	        if(!newValue.matches("[a-zA-Z0-9' ']{0,25}"))
+	            ((StringProperty)observable).setValue(oldValue);
+	        else
+	            ((StringProperty)observable).setValue(newValue);
+    	});
 	}
 	@FXML public void clickNuevo(){
 		nuevo();
+	}
+	@FXML public void seleccion(){
+		cantidad.setDisable(false);
 	}
 	public void nuevo(){
 		btnNuevo.setDisable(true);
@@ -113,16 +150,8 @@ public class ControladorProductos implements Initializable{
 		tfPrecio.setText("");
 		btnEditar.setDisable(true);
 	}
-	public static boolean isNumeric(String src) {
-		 for(int i = 0; i<src.length(); i++)
-			 if( !Character.isDigit(src.charAt(i)) )
-			if(src.equals("."))
-			 return false;
 
-			 return true;
-    }
 	@FXML public void clickGuardar(){
-		String cadena=tfPrecio.getText();
 		if(tfCodigo.getText().isEmpty() || tfNombre.getText().isEmpty()||tfPrecio.getText().isEmpty()||
 				tfTipo.getText().isEmpty()||cbCategoria.getSelectionModel().getSelectedItem()==null||cbMarca.getSelectionModel().getSelectedItem()==null){
 
@@ -130,24 +159,20 @@ public class ControladorProductos implements Initializable{
 
 		}
 		else{
-			if (isNumeric(cadena) == false) {
-				Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos no validos en 'Precio'",
-						"Solo se aceptan numeros", WARNING_ICON);
-                }
-            else {
             	if(tfCodigo.getLength()>16){
             		Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos no validos en 'Codigo'",
     						"Codigo solo acepta max. 15 caracteres", WARNING_ICON);
             	}
             	else{
-            		if(tfPrecio.getLength()>4){
+            		if(tfPrecio.getLength()>7){
             			Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos no validos en 'Precio'",
         						"Valor demasiado grande.", WARNING_ICON);
             		}
             		else{
             			datosProducto.setCodigo(tfCodigo.getText());
                     	datosProducto.setNombre(tfNombre.getText());
-                    	datosProducto.setPrecio(tfPrecio.getText());
+                    	datosProducto.setPrecio(Double.parseDouble(tfPrecio.getText()));
+                    	datosProducto.setCantidad(Integer.parseInt(cantidad.getText()));
                     	datosProducto.setTipo(tfTipo.getText());
 
                     	String idc=cbCategoria.getSelectionModel().getSelectedItem().toString();
@@ -159,25 +184,18 @@ public class ControladorProductos implements Initializable{
                     	datosProducto.setIdMarca(enteroMar);
 
                     	if(datosProducto.insertar()==true){
-                    		System.out.println("Se insertaron los datos correctamente");
                     		Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos Ingresados",
             						"Los datos se agregaron correctamente", SUCCESS_ICON);
 
+                    		log.nuevo(nua.getUsuarioActivo(),"Producto",tfNombre.getText());
                 			listadeProductos=datosProducto.mostrar();
                 			tableView.setItems(datosProducto.mostrar());
-                			btnNuevo.setDisable(false);
-                			btnEditar.setDisable(true);
-                			btnEliminar.setDisable(true);
-                			tfPrecio.setText("");
-                			tfNombre.setText("");
-                			tfCodigo.setText("");
-                			tfTipo.setText("");
+                			cancelar();
                 			cbMarca.setItems(null);
                 			cbCategoria.setItems(null);
                 			int r=listadeProductos.size();
                 			String reg=Integer.toString(r);
                 			nregistros.setText(reg);
-
                     	}
 
                     	else{
@@ -187,7 +205,7 @@ public class ControladorProductos implements Initializable{
             	}
             }
 		}
-	}
+
 	@FXML public void clickIrMarca(){
 		ins.asignarModal("../Vistas/Marca.fxml","Marcas para productos");
 		}
@@ -196,7 +214,7 @@ public class ControladorProductos implements Initializable{
 		}
 	 private void abrir() {
 		  //ruta del archivo en el pc
-		  String file = new String("C:/Users/Fredy/workspace/Pasteleriasrc/Documentos/Ayuda_Producto.pdf");
+		  String file = new String("C:/Users/Fredy/workspace/Pasteleria/src/Documentos/Ayuda_Producto.pdf");
 
 		 try{
 		   //definiendo la ruta en la propiedad file
@@ -251,10 +269,11 @@ public class ControladorProductos implements Initializable{
 						this.datosProducto.setNombre(tfNombre.getText());
 						this.datosProducto.setCodigo(tfCodigo.getText());
 						this.datosProducto.setTipo(tfTipo.getText());
-						this.datosProducto.setPrecio(tfPrecio.getText());
+						this.datosProducto.setPrecio(Double.parseDouble(tfPrecio.getText()));
 						this.datosProducto.setIdProducto(Integer.parseInt(tfId.getText()));
 
 						if(datosProducto.editar()){
+							log.editado(nua.getUsuarioActivo(),"Producto",tfNombre.getText() );
 							Controlador.notificaciones.Notification.Notifier.INSTANCE.notify("Datos Modificados",
 		    						"Los datos se han modificado de manera exitosa", SUCCESS_ICON);
 
@@ -276,16 +295,13 @@ public class ControladorProductos implements Initializable{
 				}
 			}
 	}
-	@FXML public void clickMandarDatos(){
-		clickTableView();
-	}
-	public void clickTableView(){
+	@FXML public void clickTableView(){
 		if(tableView.getSelectionModel().getSelectedItem() != null){
 			datosProducto = tableView.getSelectionModel().getSelectedItem();
 			tfNombre.setText(datosProducto.getNombre());
 			tfTipo.setText(datosProducto.getTipo());
-			tfPrecio.setText(datosProducto.getPrecio());
-			tfCodigo.setText(datosProducto.geCodigo());
+			tfPrecio.setText(String.valueOf(datosProducto.getPrecio()));
+			tfCodigo.setText(datosProducto.getCodigo());
 			tfId.setText(String.valueOf(datosProducto.getIdProducto()));
 			editar();
 			btnNuevo.setDisable(true);
@@ -299,18 +315,27 @@ public class ControladorProductos implements Initializable{
 
 	}
 	@FXML public void clickEliminar(){
-		        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar este producto??");
-
-		        if (confirmarEliminar == 0) {
-		        	this.datosProducto.setIdProducto(Integer.parseInt(tfId.getText()));
-		            datosProducto.eliminar();
-		            System.out.println("Realizado Eliminado");
-		            listadeProductos=datosProducto.mostrar();
-		    		tableView.setItems(datosProducto.mostrar());
-
-		    }
-		}
+		Confirmacion();
 	}
+	public void Confirmacion(){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+//    	alert.setTitle("Favor de confirmar la eliminación del producto");
+	alert.setHeaderText("Look, a Confirmation Dialog");
+    	alert.setContentText("¿Desea eliminar el registro del producto?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    		datosProducto.setIdProducto(Integer.parseInt(tfId.getText()));
+	    	datosProducto.eliminar();
+	        System.out.println("Realizado Eliminado");
+	    	log.eliminado(nua.getUsuarioActivo(),"Producto",tfNombre.getText());
+	    	cancelar();
+	    	btnEliminar.setDisable(true);
+	    	actualizar();
+    	} else {
+    		System.out.println("Se ha cancelado");
+    	}
+	}
+}
 
 
 

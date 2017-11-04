@@ -145,7 +145,7 @@ public class DAOCliente {
 	        ResultSet rs = null;
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "select * from cliente where estatus='TRUE'";
+	            	String sql = "select * from cliente where estatus='TRUE' and idcliente>1" ;
 	                comando = con.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){
@@ -196,7 +196,7 @@ public class DAOCliente {
 	        return lista;
 	    }
 	public String toString(){
-		 return this.getNombre();
+		 return this.getNombre()+" "+this.getApPat()+" "+this.getApMat();
 	 }
 	//---------------------------------------------------
 	 public boolean editar(){
@@ -266,5 +266,4 @@ public class DAOCliente {
 	   		}
 	 		return lista;
 	   	}
-
 }

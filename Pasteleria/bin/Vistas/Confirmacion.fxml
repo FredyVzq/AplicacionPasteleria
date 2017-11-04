@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="131.0" prefWidth="324.0" stylesheets="@css/Confirmacion.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorConfirmacion">
+   <children>
+      <Pane prefHeight="39.0" prefWidth="324.0" style="-fx-background-color: #7f112f;">
+         <children>
+            <Label layoutX="9.0" layoutY="7.0" prefHeight="26.0" prefWidth="306.0" text="¿Desea eliminar el registro seleccionado?" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="125.0" layoutY="66.0" mnemonicParsing="false" text="Aceptar"  onAction="#Aceptar"/>
+      <Button layoutX="218.0" layoutY="66.0" mnemonicParsing="false" text="Cancelar" onAction="#Cancelar"/>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="34.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Error-128.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

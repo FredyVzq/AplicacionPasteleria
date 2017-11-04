@@ -74,9 +74,9 @@
                   <Tooltip text="Eliminar" />
                </tooltip>
             </Button>
-            <Label prefHeight="47.0" prefWidth="751.0" text="Producto">
+            <Label prefHeight="47.0" prefWidth="751.0" styleClass="label2" text="Producto">
                <padding>
-                  <Insets left="650.0" />
+                  <Insets left="600.0" />
                </padding>
             </Label>
             <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
@@ -115,7 +115,7 @@
                   <TextField fx:id="tfPrecio" disable="true" layoutX="440.0" layoutY="40.0" prefHeight="25.0" prefWidth="57.0" />
                   <Text layoutX="222.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                   <TextField fx:id="tfNombre" disable="true" layoutX="222.0" layoutY="40.0" prefHeight="25.0" prefWidth="170.0" />
-                  <ComboBox fx:id="cbCategoria" disable="true" layoutX="15.0" layoutY="129.0" prefHeight="25.0" prefWidth="173.0" />
+                  <ComboBox fx:id="cbCategoria" disable="true" layoutX="15.0" layoutY="129.0" prefHeight="25.0" prefWidth="173.0" promptText="Seleccionar categoría" />
                   <Text layoutX="17.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código" />
                   <TextField fx:id="tfCodigo" disable="true" layoutX="16.0" layoutY="40.0" prefHeight="25.0" prefWidth="170.0" />
                   <Button fx:id="btnNuevaMarca" disable="true" layoutX="457.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickIrMarca" prefHeight="1.0" prefWidth="30.0">
@@ -130,7 +130,7 @@
                         <Tooltip text="Agregar marca" />
                      </tooltip>
                   </Button>
-                  <ComboBox fx:id="cbMarca" disable="true" layoutX="273.0" layoutY="131.0" prefHeight="25.0" prefWidth="173.0" />
+                  <ComboBox fx:id="cbMarca" disable="true" layoutX="273.0" layoutY="131.0" prefHeight="25.0" prefWidth="173.0" promptText="Seleccionar marca" />
                   <Text layoutX="424.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" wrappingWidth="9.46875">
                      <font>
                         <Font size="24.0" />
@@ -139,7 +139,7 @@
                   <Text layoutX="17.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" />
                   <TextField fx:id="tfTipo" disable="true" layoutX="16.0" layoutY="195.0" prefHeight="25.0" prefWidth="170.0" />
 
-                  <Text fill="#f20000" layoutX="56.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="#f20000" layoutX="58.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="#f20000" layoutX="268.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="#f20000" layoutX="457.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="#f20000" layoutX="40.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
@@ -155,20 +155,7 @@
                         <Tooltip text="Agregar Categoría" />
                      </tooltip>
                   </Button>
-                  <Button layoutX="486.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickMandarDatos">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@iconos/183252-16.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="Enviar datos a los campos" />
-                     </tooltip>
-                  </Button>
-                  <TextField fx:id="tfId" layoutX="233.0" layoutY="203.0" prefWidth="81.0" visible="false" />
-                  <Button layoutX="436.0" layoutY="199.0" mnemonicParsing="false" onAction="#actualizar">
+                  <Button layoutX="472.0" layoutY="199.0" mnemonicParsing="false" onAction="#actualizar">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -180,6 +167,9 @@
                         <Tooltip text="Actualizar" />
                      </tooltip>
                   </Button>
+                  <Label layoutX="346.0" layoutY="254.0" text="(*) Campos obligatorios" />
+                  <RadioButton fx:id="seleccion" layoutX="232.0" layoutY="178.0" mnemonicParsing="false" onAction="#seleccion" text="Elegir cantidad inicial" />
+                  <TextField fx:id="cantidad" disable="true" layoutX="232.0" layoutY="195.0" prefWidth="57.0" text="0" />
                </children>
             </AnchorPane>
          </content>
@@ -188,7 +178,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tableView" onSort="#clickTableView" prefHeight="277.0" prefWidth="509.0">
+                  <TableView fx:id="tableView" onMouseClicked="#clickTableView" prefHeight="277.0" prefWidth="509.0">
                      <columns>
                         <TableColumn maxWidth="180.0" prefWidth="169.0" text="Nombre">
 							<cellValueFactory>
@@ -211,8 +201,8 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Label layoutX="14.0" layoutY="442.0" text="(*) Campos obligatorios" />
-      <Label layoutX="641.0" layoutY="423.0" text="Registros:" />
-      <Label fx:id="nregistros" layoutX="719.0" layoutY="423.0" prefHeight="26.0" prefWidth="78.0" />
+      <Label layoutX="994.0" layoutY="90.0" text="Registros:" />
+      <Label fx:id="nregistros" layoutX="1066.0" layoutY="87.0" prefHeight="26.0" prefWidth="78.0" />
+      <TextField fx:id="tfId" layoutX="594.0" layoutY="431.0" prefWidth="65.0" visible="false" />
    </children>
 </AnchorPane>

@@ -1,19 +1,21 @@
 .background_app{
-    -fx-background-color: #fff;
+    -fx-background-color: 
+     linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(127,17,46,1) 100%);
+
 }
 
 /* cajas de texto */
 .text_app{
     -fx-background-color: #7f112f;
     -fx-text-fill: #fff;
-    -fx-prompt-text-fill: #ffacdc;
+    -fx-prompt-text-fill: #fff;
     -fx-text-box-border: transparent;
     -fx-background-radius: 0;
-    -fx-padding: 8;
-    -fx-font-size:14px;
+    -fx-font-size:16px;
     -fx-alignment: CENTER;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
+        -fx-font-family: "Century Gothic";
 }
 
 .text_app:focused {
@@ -28,14 +30,22 @@
     -fx-background-radius: 46;
     -fx-text-fill: #7f112f;
     -fx-alignment: CENTER;
+        -fx-font-family: "Century Gothic";
 }
-
+.button_app:hover{
+    -fx-background-color: #7f112f;
+    -fx-border-radius: 46;
+    -fx-background-radius: 46;
+    -fx-text-fill: #ffacdc;
+    -fx-alignment: CENTER;
+}
 /**etiqueta de inicio de sesion*/
 .textb_app{
     -fx-text-fill: #7f112f;
-    -fx-font-size:16px;
+    -fx-font-size:20px;
     -fx-font-weight: bold;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+        -fx-font-family: "Century Gothic";
 }
 
 /**etiqueta ¿no puede...*/

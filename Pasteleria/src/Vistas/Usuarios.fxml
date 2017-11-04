@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Usuarios.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorUsuarios">
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="574.0" styleClass="background_app" stylesheets="@css/Usuarios.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorUsuarios">
    <children>
       <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnEditar" disable="true" mnemonicParsing="false">
+            <Button fx:id="btnEditar" disable="true" mnemonicParsing="false" onAction="#clickEditar">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +67,7 @@
         </items>
       </ToolBar>
       <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
-      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="135.0" prefHeight="342.0" prefWidth="544.0" stylesheets="@css/Usuarios.css" text="Datos generales">
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="84.0" prefHeight="171.0" prefWidth="519.0" stylesheets="@css/Usuarios.css" text="Datos generales">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
                <children>
@@ -77,45 +77,32 @@
                   <PasswordField fx:id="pswContrasenia" disable="true" layoutX="187.0" layoutY="30.0" prefWidth="159.0" />
                   <Text layoutX="360.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repite contraseña" />
                   <PasswordField fx:id="pswRepContrasenia" disable="true" layoutX="360.0" layoutY="30.0" prefWidth="159.0" />
-                  <TitledPane animated="false" collapsible="false" layoutY="141.0" prefHeight="170.0" prefWidth="544.0" stylesheets="@css/Usuarios.css" text="Permisos">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="137.0" prefWidth="542.0">
-                           <children>
-                              <ComboBox fx:id="cbCatalogos" disable="true" layoutX="14.0" layoutY="56.0" prefHeight="25.0" prefWidth="167.0" promptText="Seleccione un catálogo" />
-                              <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catálogos permitidos " />
-                              <Text fill="#ff5800" layoutX="133.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                              <Text layoutX="260.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
-                              <ComboBox fx:id="cbUsuario" disable="true" layoutX="260.0" layoutY="57.0" prefHeight="25.0" prefWidth="163.0" promptText="Seleccione un usuario" />
-                              <Text fill="#ff5800" layoutX="308.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                              <Button fx:id="btnAgregar" disable="true" layoutX="448.0" layoutY="57.0" mnemonicParsing="false" text="Agregar" />
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
                   <Text fill="#ff5800" layoutX="54.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="#ff5800" layoutX="247.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="#ff5800" layoutX="455.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <ComboBox fx:id="cbNivel" disable="true" layoutX="14.0" layoutY="101.0" prefWidth="150.0" promptText="Seleccione un nivel" />
                   <Text layoutX="14.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nivel" />
                   <Text fill="#ff5800" layoutX="41.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <TextField fx:id="txtId" disable="true" layoutX="473.0" layoutY="94.0" prefWidth="55.0" visible="false" />
+                  <Label layoutX="346.0" layoutY="113.0" text="(*) Campos obligatorios" />
                </children>
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="135.0" prefHeight="265.0" prefWidth="660.0" text="Usarios-permisos">
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="272.0" prefHeight="199.0" prefWidth="544.0" text="Registros">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="184.0" prefWidth="383.0">
                <children>
-                  <TableView prefHeight="239.0" prefWidth="669.0">
+                  <TableView fx:id="tablaUsuarios" onMouseClicked="#clickTableView" prefHeight="165.0" prefWidth="544.0">
                      <columns>
-                        <TableColumn minWidth="0.0" prefWidth="334.0" text="Catálogo">
+                        <TableColumn minWidth="0.0" prefWidth="272.0" text="Usuarios">
                            <cellValueFactory>
-                              <PropertyValueFactory property="ApMat" />
+                              <PropertyValueFactory property="nomUsuario" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="323.0" text="Usuario">
+                        <TableColumn prefWidth="272.0" text="Nivel">
                            <cellValueFactory>
-                              <PropertyValueFactory property="Calle" />
+                              <PropertyValueFactory property="nivel" />
                            </cellValueFactory>
                         </TableColumn>
                      </columns>
@@ -124,15 +111,5 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Text layoutX="592.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos obligatorios">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text fill="#ff5800" layoutX="821.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="31.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

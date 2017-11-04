@@ -14,7 +14,7 @@ public class DAOConexion {
 		this.usuario = "postgres";
 		this.contrasenia = "12345";
 		this.puerto = "5432";
-		this.baseDatos = "Pasteleria";
+		this.baseDatos = "Pasteleria1Nov";
 	}
 
 	//Para conectar a la base de datos
@@ -22,7 +22,6 @@ public class DAOConexion {
 		try {
 			Class.forName("org.postgresql.Driver");
 			conexion = DriverManager.getConnection("jdbc:postgresql://" + servidor + ":" + puerto + "/" + baseDatos, usuario, contrasenia);
-			System.out.println("Conectado a: " + conexion.getCatalog());
 			return true;
 		} catch (Exception ex) {
 			//ex.printStackTrace();
@@ -34,7 +33,6 @@ public class DAOConexion {
 	public boolean desconectar(){
 		try {
 			conexion.close();
-			System.out.println("Conexión cerrada");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

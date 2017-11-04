@@ -83,6 +83,7 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
                     usuario.nivel = rs.getString("estatus");
                     usuario.idUsuario = rs.getInt("idusuario");
                 }
+
             }
         }
         catch (Exception ex){
@@ -98,7 +99,7 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
 		try {
 			String sql = "";
 			if(con.conectar()){//validar si se establecio la conexion
-				sql = "insert into usuarios values (default,?,?,?,true,admin)";
+				sql = "insert into usuarios values (default,?,?,?,true,'admin')";
 				comando = con.getConexion().prepareStatement(sql); //Esta es toda la ruta de ejecucion de la consulta
 				comando.setString(1, this.nomUsuario);
 				comando.setString(2, this.contrasenia);
@@ -118,7 +119,29 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
 			con.desconectar();
 		}
 	}
-
+    public ObservableList<DAOUsuario> obtenerNivel(){
+    	ObservableList<DAOUsuario> lista=FXCollections.observableArrayList();
+    	ResultSet rs =null;
+    	try {
+    		if (con.conectar()) {
+				String sql="Select nivel from usuarios where idusuario="+getIdUsuario()+";";
+				comando = con.getConexion().prepareStatement(sql);
+				rs=comando.executeQuery();
+				while (rs.next()) {
+					DAOUsuario user = new DAOUsuario();
+					user.setNivel(rs.getString("nivel"));
+					lista.add(user);
+				}
+			}
+		} catch (Exception e) {
+		}finally {
+			con.desconectar();
+		}
+		return lista;
+    }
+    public String toString(){
+		 return this.getNivel();
+	 }
     public boolean eliminar(){
 		try {
 			if(con.conectar()){
@@ -161,32 +184,32 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
 			con.desconectar();
 		}
 	}
-
-
-  	public ObservableList<DAOUsuario> consultar(String consulta){
-  		ResultSet rs = null;
-  		try {
-  			if(con.conectar()){
-  				comando = con.getConexion().prepareStatement(consulta);
-  	  			rs =  comando.executeQuery();
-  	  			while(rs.next()){
-  	  				DAOUsuario l = new DAOUsuario();
-  	  				l.setIdUsuario(rs.getInt("idusuario"));
-  	  				l.setNomUsuario(rs.getString("nomusuario"));
-  	  				l.setContrasenia(rs.getString("contrasenia"));
-  	  				l.setNivel(rs.getString("nivel"));
-
-  	  				lista.add(l);
-  	  			}
-  			}
-  		} catch (Exception ex) {
-  			ex.printStackTrace();
-  		}
-  		finally{
-  			con.desconectar();
-  		}
-		return lista;
-  	}
+    public ObservableList<DAOUsuario>mostrar(){
+		 ObservableList<DAOUsuario> lista=FXCollections.observableArrayList();
+	        DAOUsuario product = null;
+	        ResultSet rs = null;
+	        try{
+	            if(con.conectar()) {
+	            	String sql = "select * from usuarios where estatus='TRUE'";
+	                comando = con.getConexion().prepareStatement(sql);
+	                rs = comando.executeQuery();
+	                while(rs.next()){
+	                	product = new DAOUsuario();
+	                	product.nomUsuario = rs.getString("nomusuario");
+	                	product.contrasenia = rs.getString("contrasenia");
+	                	product.nivel = rs.getString("nivel");
+	                	lista.add(product);
+	                }
+	            }
+	        }
+	        catch (Exception ex){
+	            ex.printStackTrace();
+	        }
+	        finally {
+	            con.desconectar();
+	        }
+	        return lista;
+	    }
 
   	public boolean reactivar(){
 		try{

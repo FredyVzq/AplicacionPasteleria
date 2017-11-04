@@ -59,10 +59,13 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label prefHeight="26.0" prefWidth="822.0" text="Clientes">
+            <Label prefHeight="26.0" prefWidth="822.0" styleClass="label2" text="Clientes">
                <padding>
-                  <Insets left="750.0" />
-               </padding></Label>
+                  <Insets left="700.0" />
+               </padding>
+               <font>
+                  <Font size="35.0" />
+               </font></Label>
             <ImageView fitHeight="53.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/cliente.png" />
@@ -71,69 +74,15 @@
         </items>
       </ToolBar>
       <ToolBar layoutY="482.0" prefHeight="53.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="482.0" />
-      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="109.0" prefHeight="242.0" prefWidth="544.0" text="Datos Generales">
+      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="109.0" prefHeight="296.0" prefWidth="660.0" text="Datos registrados">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="542.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="658.0">
                <children>
-                  <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <TextField fx:id="txtNombre" disable="true" layoutX="4.0" layoutY="22.0" prefHeight="25.0" prefWidth="165.0" />
-                  <Text layoutX="11.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
-                  <TextField fx:id="txtCiudad" disable="true" layoutX="4.0" layoutY="81.0" prefWidth="165.0" />
-                  <Text layoutX="184.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno" />
-                  <TextField fx:id="txtApePat" disable="true" layoutX="184.0" layoutY="22.0" prefHeight="25.0" prefWidth="168.0" />
-                  <Text layoutX="362.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno" />
-                  <TextField fx:id="txtApeMat" disable="true" layoutX="360.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" />
-                  <Text layoutX="363.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle" />
-                  <Text layoutX="7.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Celular" />
-                  <Text layoutX="182.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Casa" />
-                  <TextField fx:id="txtCalle" disable="true" layoutX="363.0" layoutY="81.0" prefWidth="165.0" />
-                  <TextField fx:id="txtNumCel" disable="true" layoutX="4.0" layoutY="154.0" prefWidth="165.0" />
-                  <TextField fx:id="txtNumCasa" disable="true" layoutX="184.0" layoutY="154.0" prefWidth="165.0" />
-                  <Text fill="RED" layoutX="52.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="272.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="389.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="49.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="97.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="225.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text layoutX="182.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colonia" />
-                  <TextField fx:id="txtColonia" disable="true" layoutX="178.0" layoutY="81.0" />
-                  <Button layoutX="425.0" layoutY="158.0" mnemonicParsing="false" onAction="#clickActualizar">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@iconos/restaurar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="Actualizar" />
-                     </tooltip>
-                  </Button>
-                  <Button layoutX="473.0" layoutY="158.0" mnemonicParsing="false" onAction="#clickMandarDatos">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@iconos/183252-16.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="Enviar datos a los campos" />
-                     </tooltip>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="109.0" prefHeight="265.0" prefWidth="660.0" text="Datos Registrados">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <ScrollPane prefHeight="235.0" prefWidth="660.0">
+                  <ScrollPane layoutX="-1.0" prefHeight="265.0" prefWidth="660.0">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="1056.0">
                            <children>
-                              <TableView fx:id="tablaCliente" onSort="#clickTableView" prefHeight="239.0" prefWidth="1056.0">
+                              <TableView fx:id="tablaCliente" onMouseClicked="#clickTableView" prefHeight="265.0" prefWidth="1056.0" style="-fx-text-fill: #000;">
                                  <columns>
                                     <TableColumn prefWidth="132.0" text="Nombre">
                                        <cellValueFactory>
@@ -185,8 +134,57 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Label layoutX="575.0" layoutY="374.0" text="Registros:" />
-      <Label fx:id="txtRegistros" layoutX="653.0" layoutY="374.0" prefHeight="26.0" prefWidth="53.0" />
       <TextField fx:id="idCliente" layoutX="14.0" layoutY="388.0" visible="false" />
+      <AnchorPane layoutX="13.0" layoutY="139.0" prefHeight="265.0" prefWidth="546.0" styleClass="generales">
+         <children>
+            <Button layoutX="483.0" layoutY="193.0" mnemonicParsing="false" onAction="#clickActualizar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconos/restaurar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Actualizar" />
+               </tooltip>
+            </Button>
+            <TextField fx:id="txtColonia" disable="true" layoutX="184.0" layoutY="121.0" />
+            <Text layoutX="188.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colonia" />
+            <Text fill="RED" layoutX="234.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+            <Text fill="RED" layoutX="104.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.09765625" />
+            <Text fill="RED" layoutX="61.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.09765625" />
+            <Text fill="RED" layoutX="401.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="30.556640625" />
+            <Text fill="RED" layoutX="285.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="30.556640625" />
+            <Text fill="RED" layoutX="61.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="42.0" />
+            <TextField fx:id="txtNumCasa" disable="true" layoutX="190.0" layoutY="211.0" prefWidth="165.0" />
+            <TextField fx:id="txtNumCel" disable="true" layoutX="10.0" layoutY="211.0" prefWidth="165.0" />
+            <TextField fx:id="txtCalle" disable="true" layoutX="369.0" layoutY="121.0" prefWidth="165.0" />
+            <Text layoutX="188.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Casa" />
+            <Text layoutX="13.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Celular" />
+            <Text layoutX="369.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle" />
+            <TextField fx:id="txtApeMat" disable="true" layoutX="364.0" layoutY="31.0" prefHeight="25.0" prefWidth="170.0" />
+            <Text layoutX="366.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno" />
+            <TextField fx:id="txtApePat" disable="true" layoutX="188.0" layoutY="31.0" prefHeight="25.0" prefWidth="168.0" />
+            <Text layoutX="188.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno" />
+            <TextField fx:id="txtCiudad" disable="true" layoutX="10.0" layoutY="121.0" prefWidth="165.0" />
+            <Text layoutX="17.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
+            <TextField fx:id="txtNombre" layoutX="8.0" layoutY="31.0" prefHeight="25.0" prefWidth="165.0" />
+            <Text layoutX="12.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+         </children>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </AnchorPane>
+      <TitledPane collapsible="false" layoutX="13.0" layoutY="109.0" prefHeight="265.0" prefWidth="546.0" styleClass="he" text="Datos generales">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="87.0" prefWidth="544.0" />
+         </content>
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </TitledPane>
+      <Label layoutX="1113.0" layoutY="82.0" text="Registros:" />
+      <Label fx:id="txtRegistros" layoutX="1185.0" layoutY="79.0" prefHeight="26.0" prefWidth="53.0" />
    </children>
 </AnchorPane>

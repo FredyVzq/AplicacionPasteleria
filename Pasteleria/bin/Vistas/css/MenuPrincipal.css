@@ -14,7 +14,7 @@
     -fx-alignment: CENTER;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Century Gothic";
 
 }
 
@@ -24,22 +24,37 @@
 }
 .texto{
     -fx-alignment: CENTER;
-     -fx-font-size:20px;
-    -fx-font-family: "Segoe UI Semibold";
+     -fx-font-size:50px;
+    -fx-font-family: "Century Gothic";
 
 }
 
 /*botones*/
 .button_app{
     -fx-background-color: #7f112f;
-    -fx-border-radius: 46;
+    -fx-border-radius: 50;
     -fx-background-radius: 46;
     -fx-text-fill: #ffacdc;
+    -fx-font-family: "Century Gothic";
     -fx-alignment: CENTER;
 }
 .button_app:hover{
     -fx-background-color: #F78DEA;
-    -fx-border-radius: 46;
+    -fx-border-radius: 50   ;
+    -fx-background-radius: 46;
+    -fx-text-fill: #7f112f;
+    -fx-alignment: CENTER;
+}
+.salir{
+    -fx-background-color: #ffacdc;
+    -fx-border-radius: 50;
+    -fx-background-radius: 46;
+    -fx-text-fill: #7f112f;
+    -fx-alignment: CENTER;
+}
+.salir:hover{
+    -fx-background-color: #F78DEA;
+    -fx-border-radius: 50   ;
     -fx-background-radius: 46;
     -fx-text-fill: #7f112f;
     -fx-alignment: CENTER;
@@ -48,7 +63,7 @@
 /**Titulo*/
 .textb_app{
     -fx-text-fill: #7f112f;
-    -fx-font-size:36px;
+    -fx-font-size:56px;
     -fx-font-weight: bold;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 0,0,3,3 );
 }
@@ -71,4 +86,18 @@
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;
     -fx-background-size: 10px;
 }
+.label {
+    -fx-font-size: 13pt;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
 
+.titulo {
+    -fx-font-size: 23pt;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}

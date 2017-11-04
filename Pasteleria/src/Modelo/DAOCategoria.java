@@ -92,7 +92,7 @@ public class DAOCategoria {
 	        ResultSet rs = null;
 	        try{
 	            if(con.conectar()) {
-	            	String sql = "select * from categoria";
+	            	String sql = "select * from categoria where estatus='TRUE'";
 	                comando = con.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){

@@ -119,16 +119,16 @@ public class DAOMarcas {
 			String sql="";
 			try {
 	 			if(cone.conectar()){
-	 				sql="update marca set nombre=?, proveedormarca=? where id=?";
+	 				sql="update marca set nombremarca=?, proveedormarca=? where id=?";
 	 				comando=cone.getConexion().prepareStatement(sql);
 	 				comando.setString(1, this.nombre);
 	 				comando.setString(2, this.proveedor);
 	 				comando.setInt(3, this.id);
+	 				comando.execute();
 	 				return true;
 	 			}
 	 			else{
 	 				return false;
-
 	 			}
 	 		} catch (Exception e) {
 	 			return false;

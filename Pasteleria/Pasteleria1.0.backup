@@ -1,0 +1,712 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.23
+-- Dumped by pg_dump version 9.2.23
+-- Started on 2017-10-19 21:17:36
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 1 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2008 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 169 (class 1259 OID 16464)
+-- Name: bases; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE bases (
+    idbases integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    precio integer NOT NULL,
+    existencia integer NOT NULL,
+    estatus boolean NOT NULL
+);
+
+
+ALTER TABLE public.bases OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 16467)
+-- Name: bases_idbases_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE bases_idbases_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bases_idbases_seq OWNER TO postgres;
+
+--
+-- TOC entry 2009 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: bases_idbases_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE bases_idbases_seq OWNED BY bases.idbases;
+
+
+--
+-- TOC entry 171 (class 1259 OID 16469)
+-- Name: categoria; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE categoria (
+    id integer NOT NULL,
+    nombre character varying(25) NOT NULL,
+    estatus boolean NOT NULL
+);
+
+
+ALTER TABLE public.categoria OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16472)
+-- Name: categoria_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE categoria_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categoria_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2010 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: categoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE categoria_id_seq OWNED BY categoria.id;
+
+
+--
+-- TOC entry 173 (class 1259 OID 16474)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cliente (
+    idcliente integer NOT NULL,
+    nombre character varying(20) NOT NULL,
+    apepat character varying(20) NOT NULL,
+    apemat character varying(20) NOT NULL,
+    ciudad character varying(20) NOT NULL,
+    calle character varying(20) NOT NULL,
+    numerocel character varying(15) NOT NULL,
+    numerocasa character varying(15) NOT NULL,
+    estatus boolean NOT NULL
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 16477)
+-- Name: cliente_idcliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cliente_idcliente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cliente_idcliente_seq OWNER TO postgres;
+
+--
+-- TOC entry 2011 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: cliente_idcliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cliente_idcliente_seq OWNED BY cliente.idcliente;
+
+
+--
+-- TOC entry 175 (class 1259 OID 16479)
+-- Name: formulario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE formulario (
+    idformulario integer NOT NULL,
+    nombreformulario character varying(15) NOT NULL,
+    descripcionformulario character varying(30) NOT NULL,
+    fechacreacion date NOT NULL,
+    fechaedicion date,
+    usuariomanejador character varying(15) NOT NULL,
+    estatus boolean
+);
+
+
+ALTER TABLE public.formulario OWNER TO postgres;
+
+--
+-- TOC entry 176 (class 1259 OID 16482)
+-- Name: formulario_idformulario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE formulario_idformulario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.formulario_idformulario_seq OWNER TO postgres;
+
+--
+-- TOC entry 2012 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: formulario_idformulario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE formulario_idformulario_seq OWNED BY formulario.idformulario;
+
+
+--
+-- TOC entry 177 (class 1259 OID 16484)
+-- Name: marca; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE marca (
+    id integer NOT NULL,
+    nombremarca character varying(25) NOT NULL,
+    proveedormarca character varying(25) NOT NULL,
+    estatus boolean NOT NULL
+);
+
+
+ALTER TABLE public.marca OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 16487)
+-- Name: marca_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE marca_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.marca_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2013 (class 0 OID 0)
+-- Dependencies: 178
+-- Name: marca_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE marca_id_seq OWNED BY marca.id;
+
+
+--
+-- TOC entry 179 (class 1259 OID 16489)
+-- Name: pedido; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE pedido (
+    id integer NOT NULL,
+    comentario character varying(250),
+    idcliente integer,
+    idproducto integer,
+    idbase integer
+);
+
+
+ALTER TABLE public.pedido OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 16492)
+-- Name: pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE pedido_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pedido_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2014 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE pedido_id_seq OWNED BY pedido.id;
+
+
+--
+-- TOC entry 181 (class 1259 OID 16494)
+-- Name: productos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE productos (
+    id integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    codigo character varying(25) NOT NULL,
+    tipo character varying(25) NOT NULL,
+    precio character varying(7) NOT NULL,
+    estatus boolean NOT NULL,
+    idmarca integer,
+    idcategoria integer
+);
+
+
+ALTER TABLE public.productos OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 16497)
+-- Name: productos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE productos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.productos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2015 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: productos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE productos_id_seq OWNED BY productos.id;
+
+
+--
+-- TOC entry 183 (class 1259 OID 16499)
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuarios (
+    idusuario integer NOT NULL,
+    nomusuario character varying(10) NOT NULL,
+    contrasenia character varying(15) NOT NULL,
+    nivel character varying(15) NOT NULL,
+    estatus boolean NOT NULL,
+    usuariomanejador character varying(15) NOT NULL
+);
+
+
+ALTER TABLE public.usuarios OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 16502)
+-- Name: usuarios_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_idusuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuarios_idusuario_seq OWNER TO postgres;
+
+--
+-- TOC entry 2016 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: usuarios_idusuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE usuarios_idusuario_seq OWNED BY usuarios.idusuario;
+
+
+--
+-- TOC entry 1852 (class 2604 OID 16504)
+-- Name: idbases; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY bases ALTER COLUMN idbases SET DEFAULT nextval('bases_idbases_seq'::regclass);
+
+
+--
+-- TOC entry 1853 (class 2604 OID 16505)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY categoria ALTER COLUMN id SET DEFAULT nextval('categoria_id_seq'::regclass);
+
+
+--
+-- TOC entry 1854 (class 2604 OID 16506)
+-- Name: idcliente; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cliente ALTER COLUMN idcliente SET DEFAULT nextval('cliente_idcliente_seq'::regclass);
+
+
+--
+-- TOC entry 1855 (class 2604 OID 16507)
+-- Name: idformulario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY formulario ALTER COLUMN idformulario SET DEFAULT nextval('formulario_idformulario_seq'::regclass);
+
+
+--
+-- TOC entry 1856 (class 2604 OID 16508)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY marca ALTER COLUMN id SET DEFAULT nextval('marca_id_seq'::regclass);
+
+
+--
+-- TOC entry 1857 (class 2604 OID 16509)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido ALTER COLUMN id SET DEFAULT nextval('pedido_id_seq'::regclass);
+
+
+--
+-- TOC entry 1858 (class 2604 OID 16510)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY productos ALTER COLUMN id SET DEFAULT nextval('productos_id_seq'::regclass);
+
+
+--
+-- TOC entry 1859 (class 2604 OID 16511)
+-- Name: idusuario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios ALTER COLUMN idusuario SET DEFAULT nextval('usuarios_idusuario_seq'::regclass);
+
+
+--
+-- TOC entry 1985 (class 0 OID 16464)
+-- Dependencies: 169
+-- Data for Name: bases; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY bases (idbases, nombre, precio, existencia, estatus) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2017 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: bases_idbases_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('bases_idbases_seq', 1, false);
+
+
+--
+-- TOC entry 1987 (class 0 OID 16469)
+-- Dependencies: 171
+-- Data for Name: categoria; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY categoria (id, nombre, estatus) FROM stdin;
+1	Pasteles	t
+2	Bebidas	t
+3	Velas	t
+\.
+
+
+--
+-- TOC entry 2018 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('categoria_id_seq', 3, true);
+
+
+--
+-- TOC entry 1989 (class 0 OID 16474)
+-- Dependencies: 173
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cliente (idcliente, nombre, apepat, apemat, ciudad, calle, numerocel, numerocasa, estatus) FROM stdin;
+1	Alfredo	Vazquez	Mejia	Cordoba	Av. San Lorenzo	2711254639	2711254639	t
+\.
+
+
+--
+-- TOC entry 2019 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: cliente_idcliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cliente_idcliente_seq', 2, true);
+
+
+--
+-- TOC entry 1991 (class 0 OID 16479)
+-- Dependencies: 175
+-- Data for Name: formulario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY formulario (idformulario, nombreformulario, descripcionformulario, fechacreacion, fechaedicion, usuariomanejador, estatus) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2020 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: formulario_idformulario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('formulario_idformulario_seq', 1, false);
+
+
+--
+-- TOC entry 1993 (class 0 OID 16484)
+-- Dependencies: 177
+-- Data for Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY marca (id, nombremarca, proveedormarca, estatus) FROM stdin;
+1	Jessy	PasteleriaJessy	t
+\.
+
+
+--
+-- TOC entry 2021 (class 0 OID 0)
+-- Dependencies: 178
+-- Name: marca_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('marca_id_seq', 1, true);
+
+
+--
+-- TOC entry 1995 (class 0 OID 16489)
+-- Dependencies: 179
+-- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pedido (id, comentario, idcliente, idproducto, idbase) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2022 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pedido_id_seq', 1, false);
+
+
+--
+-- TOC entry 1997 (class 0 OID 16494)
+-- Dependencies: 181
+-- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY productos (id, nombre, codigo, tipo, precio, estatus, idmarca, idcategoria) FROM stdin;
+1	Pastel de chocolate chico	PasChoChico	Entero	40.5	t	1	1
+2	Pastel chico de fresa	PastChiFresa	Entero	35.4	t	1	1
+\.
+
+
+--
+-- TOC entry 2023 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: productos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('productos_id_seq', 2, true);
+
+
+--
+-- TOC entry 1999 (class 0 OID 16499)
+-- Dependencies: 183
+-- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios (idusuario, nomusuario, contrasenia, nivel, estatus, usuariomanejador) FROM stdin;
+1	admin	12345	administrador	t	UsuarioEjemplo
+2	user	67890	usuario	t	UsuarioEjemplo
+4	freddy	qwerty123	inventario	t	admin
+5	Diego	123	aministrador	t	admin
+3	superbots	qwe	aministrador	t	admin
+6	marco	qwe123	ventas	t	admin
+7	Diego	qwerty123	aministrador	t	admin
+8	no hay pan	qwerty123	aministrador	t	admin
+\.
+
+
+--
+-- TOC entry 2024 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: usuarios_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_idusuario_seq', 8, true);
+
+
+--
+-- TOC entry 1861 (class 2606 OID 16513)
+-- Name: bases_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY bases
+    ADD CONSTRAINT bases_pkey PRIMARY KEY (idbases);
+
+
+--
+-- TOC entry 1863 (class 2606 OID 16515)
+-- Name: categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY categoria
+    ADD CONSTRAINT categoria_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1865 (class 2606 OID 16517)
+-- Name: cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (idcliente);
+
+
+--
+-- TOC entry 1867 (class 2606 OID 16519)
+-- Name: formulario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY formulario
+    ADD CONSTRAINT formulario_pkey PRIMARY KEY (idformulario);
+
+
+--
+-- TOC entry 1869 (class 2606 OID 16521)
+-- Name: marca_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY marca
+    ADD CONSTRAINT marca_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1871 (class 2606 OID 16523)
+-- Name: pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedido_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1873 (class 2606 OID 16525)
+-- Name: productos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY productos
+    ADD CONSTRAINT productos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1875 (class 2606 OID 16527)
+-- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (idusuario);
+
+
+--
+-- TOC entry 1876 (class 2606 OID 16528)
+-- Name: pedidobase; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedidobase FOREIGN KEY (idbase) REFERENCES bases(idbases);
+
+
+--
+-- TOC entry 1877 (class 2606 OID 16533)
+-- Name: pedidocliente; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedidocliente FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 1878 (class 2606 OID 16538)
+-- Name: pedidoproducto; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedidoproducto FOREIGN KEY (idproducto) REFERENCES productos(id);
+
+
+--
+-- TOC entry 2007 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2017-10-19 21:17:37
+
+--
+-- PostgreSQL database dump complete
+--
+

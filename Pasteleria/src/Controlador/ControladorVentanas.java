@@ -26,7 +26,7 @@ public class ControladorVentanas {
     private ProgressIndicator progress;
 
     //Constructor privado
-    private ControladorVentanas() {
+    public ControladorVentanas() {
     	progress= new ProgressIndicator();
     }
 
@@ -72,7 +72,7 @@ public class ControladorVentanas {
             escenario2.setTitle(titulo);
             escenario2.resizableProperty().setValue(Boolean.FALSE);
             escenario2.centerOnScreen();
-            escenario2.initModality(Modality.WINDOW_MODAL); //Comportamiento modal
+            escenario2.initModality(Modality.APPLICATION_MODAL); //Comportamiento modal
             escenario2.initOwner(primaryStage); //Para asignar al propietario
             //escenario2.show();
             cargando();
@@ -80,9 +80,26 @@ public class ControladorVentanas {
             ex.printStackTrace();
         }
     }
+    public void inicio(String titulo) {
+        try {
+            FXMLLoader interfaz = new FXMLLoader(getClass().getResource("../Vistas/LoginView.fxml"));
+            subcontenedor = (AnchorPane) interfaz.load();
+            escenario2 = new Stage(); //Se crea un nuevo escenario
+            escena = new Scene(subcontenedor);
+            escenario2.setScene(escena);
+            escenario2.setTitle(titulo);
+            escenario2.resizableProperty().setValue(Boolean.FALSE);
+            escenario2.centerOnScreen();
+            escenario2.initModality(Modality.APPLICATION_MODAL); //Comportamiento modal
+            escenario2.initOwner(primaryStage); //Para asignar al propietario
+            escenario2.show();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public Stage getPrimaryStage() {
-        return primaryStage;
+    	return primaryStage;
     }
     public void cerrarAcceso(){
         escenario2.close();
@@ -94,8 +111,8 @@ public class ControladorVentanas {
         updatePane.setPadding(new Insets(10));
         updatePane.setSpacing(5.0d);
         updatePane.getChildren().add(progress);
-       // updatePane.setStyle("-fx-background-color: rgba(147, 46, 115, 0.9);" +
-       //                     "-fx-background-insets: 50;");
+      	updatePane.setStyle("-fx-background-color: rgba(147, 46, 115, 0.9);" +
+                         "-fx-background-insets: 50;");
         taskUpdateStage = new Stage(StageStyle.TRANSPARENT);
         escena = new Scene(updatePane);
         escena.setFill(Color.TRANSPARENT);

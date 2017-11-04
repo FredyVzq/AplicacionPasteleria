@@ -170,7 +170,7 @@ public class DAOBases {
 		 public boolean eliminar(){
 				try {
 		 			if(con.conectar()){
-		 				String sql="update bases set estatus =false where idbases=?";
+		 				String sql="update bases set estatus = false where idbases=?";
 		 				comando=con.getConexion().prepareStatement(sql);
 		 				comando.setInt(1, this.idbases);
 		 				comando.executeUpdate();
