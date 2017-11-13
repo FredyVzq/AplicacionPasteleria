@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,7 +40,6 @@ public class ControladorClientes implements Initializable{
 	@FXML TableView<DAOCliente> tablaCliente;
 	ObservableList<DAOCliente> listaCliente;
 	DAOCliente cliente;
-	@SuppressWarnings("unused")
 	private ControladorVentanas ins;
 	private ControladorLog log;
 	DAOUsuario usuario;
@@ -306,17 +307,21 @@ restricciones();
 				}
 	}
 	@FXML public void clickEliminar(){
-		int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar este registro de cliente?");
-
-        if (confirmarEliminar == 0) {
-        	this.cliente.setIdCliente(Integer.parseInt(idCliente.getText()));
-        	cliente.eliminar();
-        	String nombreC=txtNombre.getText()+" "+txtApePat.getText()+" "+txtApeMat.getText();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmar");
+    	alert.setHeaderText("¿Desea eliminar el registro?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+			this.cliente.setIdCliente(Integer.parseInt(idCliente.getText()));
+	    	cliente.eliminar();
+	    	String nombreC=txtNombre.getText()+" "+txtApePat.getText()+" "+txtApeMat.getText();
 			log.eliminado(usuariologeado, "Cliente", nombreC);
-            System.out.println("Realizado Eliminado");
-            clickActualizar();
-        	clickCancelar();
-        }
+	        clickActualizar();
+	    	clickCancelar();
+    	}
+    	else{
+    		alert.close();
+    	}
 	}
 }
 

@@ -2,6 +2,7 @@ package Controlador;
 
 import java.net.URL;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.Icon;
@@ -12,8 +13,11 @@ import Modelo.DAOConexion;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import Modelo.DAOUsuario;
 
 public class ControladorMenu  implements Initializable{
@@ -58,41 +62,42 @@ public class ControladorMenu  implements Initializable{
 			}
 	}
 	@FXML public void clickUsuarios(){
-		ins.asignarModal("../Vistas/Usuarios.fxml", "Usuarios");
+		ins.asignarModal("/Vistas/Usuarios.fxml", "Usuarios");
 	}
 	@FXML public void clickProductos(){
-		ins.asignarModal("../Vistas/Productos.fxml","Productos");
+		ins.asignarModal("/Vistas/Productos.fxml","Productos");
 	}
 	@FXML public void clickMarcas(){
-		ins.asignarModal("../Vistas/Marca.fxml","Marcas de productos");
+		ins.asignarModal("/Vistas/Marca.fxml","Marcas de productos");
 	}
 	@FXML public void clickCategorias(){
-		ins.asignarModal("../Vistas/Categoria.fxml","Categorias de productos");
+		ins.asignarModal("/Vistas/Categoria.fxml","Categorias de productos");
 	}
 	@FXML public void clickBases(){
-		ins.asignarModal("../Vistas/Bases.fxml","Bases");
+		ins.asignarModal("/Vistas/Bases.fxml","Bases");
 	}
 	@FXML public void clickClientes(){
-		ins.asignarModal("../Vistas/Clientes.fxml","Clientes");
+		ins.asignarModal("/Vistas/Clientes.fxml","Clientes");
 	}
 	@FXML public void clickPedidos(){
-		ins.asignarModal("../Vistas/Pedidos.fxml","Pedidos");
+		ins.asignarModal("/Vistas/Pedidos.fxml","Pedidos");
 	}
 	@FXML public void clickVentas(){
-		ins.asignarModal("../Vistas/Venta.fxml","Ventas");
+		ins.asignarModal("/Vistas/Venta.fxml","Ventas");
 	}
 	@FXML public void clickInventario(){
-		ins.asignarModal("../Vistas/Inventario.fxml","Inventario");
+		ins.asignarModal("/Vistas/Inventario.fxml","Inventario");
 	}
 	@FXML public void salir(){
-		Icon icono = new ImageIcon(getClass().getResource("../Vistas/images/exit.png"));
-		int resultado = JOptionPane.showConfirmDialog(null, "Desea salir de la Aplicación?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,icono);
-
-				if (JOptionPane.OK_OPTION == resultado){
-					System.exit(0);
-					System.out.println("Aplicacion terminada");
-				}
-				else{}
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmar");
+    	alert.setHeaderText("¿Desea salir de la aplicación?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    	    System.exit(0);
+    	} else {
+    		alert.close();
+    	}
 	}
 	   public String getNombre(){
 	    	return nombre;

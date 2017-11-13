@@ -82,7 +82,7 @@ public class ControladorVentanas {
     }
     public void inicio(String titulo) {
         try {
-            FXMLLoader interfaz = new FXMLLoader(getClass().getResource("../Vistas/LoginView.fxml"));
+            FXMLLoader interfaz = new FXMLLoader(getClass().getResource("/Vistas/LoginView.fxml"));
             subcontenedor = (AnchorPane) interfaz.load();
             escenario2 = new Stage(); //Se crea un nuevo escenario
             escena = new Scene(subcontenedor);

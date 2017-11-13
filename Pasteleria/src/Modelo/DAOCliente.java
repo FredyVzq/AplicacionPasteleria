@@ -246,24 +246,24 @@ public class DAOCliente {
 	 			con.desconectar();
 	 		}
 		}
-	 public ObservableList<DAOCliente> consultar(String consulta){
+	 public void consultar(String dato){
 	   		ResultSet rs = null;
 	   		try {
 	   			if(con.conectar()){
-	   				comando = con.getConexion().prepareStatement(consulta);
+	   				comando = con.getConexion().prepareStatement(dato);
 	   	  			rs =  comando.executeQuery();
 	   	  			while(rs.next()){
-	   	  				DAOCliente l = new DAOCliente();
-	   	  			    l.setIdCliente(rs.getInt("idcliente"));
-	   	  				lista.add(l);
+	   	  			    this.idCliente=rs.getInt("idcliente");
+	   	  			    this.nombre=rs.getString("nombre");
+	   	  			    this.apPat = rs.getString("apepat");
+	   	  			    this.apMat = rs.getString("apemat");
 	   	  			}
 	   			}
 	   		} catch (Exception ex) {
-
+	   			ex.printStackTrace();
 	   		}
 	   		finally{
 	   			con.desconectar();
 	   		}
-	 		return lista;
 	   	}
 }

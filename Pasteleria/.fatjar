@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Wed Nov 08 11:52:17 CST 2017
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=Pasteleria.jar
+manifest.mergeall=true
+manifest.mainclass=Controlador.Main
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

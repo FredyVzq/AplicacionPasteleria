@@ -55,7 +55,7 @@
       <Button fx:id="btnCategorias" layoutX="381.0" layoutY="362.0" mnemonicParsing="false" onAction="#clickCategorias" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Categorías" />
       <Button fx:id="btnBases" layoutX="200.0" layoutY="362.0" mnemonicParsing="false" onAction="#clickBases" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Bases" />
       <Button fx:id="btnMarcas" layoutX="513.0" layoutY="190.0" mnemonicParsing="false" onAction="#clickMarcas" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Marcas" />
-      <Button disable="true" layoutX="141.0" layoutY="110.0" mnemonicParsing="false" onAction="#clickPedidos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Pedidos" />
+      <Button layoutX="141.0" layoutY="110.0" mnemonicParsing="false" onAction="#clickPedidos" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Pedidos" />
       <Button fx:id="btnVenta" disable="true" layoutX="81.0" layoutY="190.0" mnemonicParsing="false" onAction="#clickVentas" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Ventas" />
       <Button layoutX="295.0" layoutY="425.0" mnemonicParsing="false" onAction="#clickInventario" prefHeight="25.0" prefWidth="119.0" styleClass="button_app" text="Inventario" />
    </children>

@@ -11,6 +11,7 @@ public class DAOBases {
 	private String precio;
 	private String existencia;
 	private boolean estatus;
+	private boolean existe;
 	private DAOConexion con;
 	private PreparedStatement comando;
 	private ObservableList<DAOBases> lista;
@@ -63,6 +64,12 @@ public class DAOBases {
 		}
 		public void setEstatus(boolean estatus){
 			this.estatus=estatus;
+		}
+		public boolean getExiste(){
+			return existe;
+		}
+		public void setExiste(boolean existe){
+			this.existe=existe;
 		}
 
 		public Boolean insertar(){
@@ -117,7 +124,9 @@ public class DAOBases {
 		        }
 		        return lista;
 		    }
-
+		public String toString(){
+			return nombre;
+		}
 		//---------------------------------------------------
 		 public boolean editar(){
 				String sql="";
@@ -144,19 +153,18 @@ public class DAOBases {
 		 		}
 			}
 
-		 public ObservableList<DAOBases> consultar(String consulta){
+		 public void consultar(String dato){
+			 existe=false;
 		   		ResultSet rs = null;
 		   		try {
 		   			if(con.conectar()){
-		   				comando = con.getConexion().prepareStatement(consulta);
+		   				comando = con.getConexion().prepareStatement("select * from bases where nombre='"+dato+"'");
 		   	  			rs =  comando.executeQuery();
 		   	  			while(rs.next()){
-		   	  				DAOBases l = new DAOBases();
-		   	  			    l.setIdbases(rs.getInt("idbases"));
-		   	  				l.setNombre(rs.getString("nombre"));
-		   	  				l.setPrecio(rs.getString("precio"));
-		   	  				l.setExistencia(rs.getString("existencia"));
-		   	  				lista.add(l);
+		   	  			    this.idbases=rs.getInt("idbases");
+		   	  				this.nombre=rs.getString("nombre");
+		   	  				this.precio=rs.getString("precio");
+		   	  				existe=true;
 		   	  			}
 		   			}
 		   		} catch (Exception ex) {
@@ -164,7 +172,6 @@ public class DAOBases {
 		   		finally{
 		   			con.desconectar();
 		   		}
-		 		return lista;
 		   	}
 
 		 public boolean eliminar(){

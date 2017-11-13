@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 
 public class ControladorConfirmacion implements Initializable{
 	@FXML Button aceptar,cancelar;
+	@SuppressWarnings("unused")
 	private boolean res;
 	ControladorProductos aProd;
 

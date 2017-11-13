@@ -1,17 +1,18 @@
 package Controlador;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
 import Modelo.DAOCategoria;
-import Modelo.DAOUsuario;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,6 +32,7 @@ public class ControladorCategorias implements Initializable{
 	@FXML Button btnCancelar;
 	@FXML TableView<DAOCategoria> tablaCategoria;
 	ObservableList<DAOCategoria> listaCategoria;
+	@SuppressWarnings("unused")
 	private ControladorVentanas ins;
 	DAOCategoria categoria;
 	ControladorLog log;
@@ -167,17 +169,22 @@ public class ControladorCategorias implements Initializable{
 		}
 	}
 	@FXML public void clickEliminar(){
-        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar esta categoría?");
-
-        if (confirmarEliminar == 0) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmar");
+    	alert.setHeaderText("¿Desea eliminar el registro?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
         	this.categoria.setIdCategoria(Integer.parseInt(tfId.getText()));
             this.categoria.eliminar();
             log.eliminado(usuariologeado,"Categoria",tfNombre.getText());
-            System.out.println("Realizado Eliminado");
     		listaCategoria=categoria.mostrar();
 			tablaCategoria.setItems(categoria.mostrar());
 			clickCancelar();
-        }
+    	}
+    	else{
+    		alert.close();
+    	}
+
 	}
 }
 

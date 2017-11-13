@@ -91,7 +91,7 @@ public class DAOMarcas {
 	        ResultSet rs = null;
 	        try{
 	            if(cone.conectar()) {
-	            	String sql = "select * from marca where estatus='TRUE'";
+	            	String sql = "select * from marca where estatus='TRUE' order by nombremarca asc";
 	                comando = cone.getConexion().prepareStatement(sql);
 	                rs = comando.executeQuery();
 	                while(rs.next()){

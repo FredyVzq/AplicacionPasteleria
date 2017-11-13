@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="863.0" styleClass="background_app" stylesheets="@css/Venta.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorVentas">
+<AnchorPane id="AnchorPane" prefHeight="711.0" prefWidth="891.0" styleClass="background_app" stylesheets="@css/Venta.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorVentas">
    <children>
       <ToolBar prefHeight="0.0" prefWidth="775.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="635.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -61,7 +61,7 @@
             </Button>
         </items>
       </ToolBar>
-      <ToolBar layoutY="635.0" prefHeight="65.0" prefWidth="863.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="635.0">
+      <ToolBar layoutY="656.0" prefHeight="55.0" prefWidth="891.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="656.0">
          <items>
             <Label styleClass="label3" text="Total:" />
             <Label fx:id="totalC" prefHeight="31.0" prefWidth="150.0" styleClass="label3" text="0.00" />
@@ -69,11 +69,38 @@
          <padding>
             <Insets left="15.0" />
          </padding></ToolBar>
-      <TitledPane animated="false" collapsible="false" layoutX="461.0" layoutY="98.0" prefHeight="526.0" prefWidth="390.0" stylesheets="@css/Usuarios.css" text="Datos generales">
+      <TitledPane animated="false" collapsible="false" layoutX="446.0" layoutY="98.0" prefHeight="544.0" prefWidth="437.0" stylesheets="@css/Usuarios.css" text="Venta">
          <content>
-            <SplitPane dividerPositions="0.93" prefHeight="160.0" prefWidth="200.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="97.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tabla" prefHeight="513.0" prefWidth="434.0">
+                     <columns>
+                        <TableColumn minWidth="0.0" prefWidth="157.0" text="Productos">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="nombre" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="178.0" text="Precio">
+      							<cellValueFactory>
+                              <PropertyValueFactory property="precio" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Cantidad">
+                        	<cellValueFactory>
+                              <PropertyValueFactory property="cantidadVenta" />
+                           </cellValueFactory>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="7.0" layoutY="98.0" prefHeight="544.0" prefWidth="420.0" text="Datos generales">
+         <content>
+            <SplitPane dividerPositions="0.9586374695863747" prefHeight="160.0" prefWidth="200.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="513.0" prefWidth="199.0">
                      <children>
                         <TextArea layoutX="15.0" layoutY="320.0" prefHeight="99.0" prefWidth="318.0" promptText="Notas y comentarios" scrollLeft="1.0" scrollTop="10.0" />
                         <Button fx:id="btnClientes" disable="true" layoutX="281.0" layoutY="59.0" mnemonicParsing="false" onAction="#irClientes" prefHeight="0.0" prefWidth="0.0">
@@ -100,14 +127,9 @@
                               <Tooltip text="Consultar inventario" />
                            </tooltip>
                         </Button>
-                        <Label layoutX="14.0" layoutY="266.0" text="Precio base" />
-                        <TextField fx:id="precio" disable="true" layoutX="119.0" layoutY="246.0" prefWidth="70.0" />
-                        <RadioButton fx:id="rbPrecio" disable="true" layoutX="13.0" layoutY="232.0" mnemonicParsing="false" onAction="#selecCortesia" text="Cortesía">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="precios" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <Text fill="#ff0202" layoutX="93.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                        <Label layoutX="14.0" layoutY="281.0" text="Precio base" />
+                        <TextField fx:id="precio" disable="true" layoutX="119.0" layoutY="261.0" prefWidth="70.0" />
+                        <Text fill="#ff0202" layoutX="89.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -117,11 +139,11 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Label layoutX="15.0" layoutY="186.0" text="Cantidad" />
+                        <Label layoutX="10.0" layoutY="218.0" text="Cantidad" />
                         <Label layoutX="17.0" layoutY="126.0" text="Código" />
                         <Label layoutX="145.0" layoutY="462.0" text="(*) Campos obligatorios" />
                         <Button fx:id="btnBuscar" disable="true" layoutX="20.0" layoutY="447.0" mnemonicParsing="false" onAction="#busqueda" styleClass="button_app" text="Agregar" />
-                        <TextField fx:id="cantidad" alignment="CENTER" disable="true" layoutX="119.0" layoutY="166.0" prefWidth="70.0" text="1" />
+                        <TextField fx:id="cantidad" alignment="CENTER" disable="true" layoutX="119.0" layoutY="199.0" prefWidth="70.0" text="1" />
                         <ComboBox fx:id="cbClientes" disable="true" layoutX="14.0" layoutY="68.0" prefHeight="25.0" prefWidth="242.0" promptText="Seleccione un cliente" />
                         <RadioButton fx:id="rbClientes" disable="true" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#elegirCliente" text="Clientes">
                            <toggleGroup>
@@ -129,47 +151,22 @@
                            </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="rbPublico" disable="true" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#elegirPublico" selected="true" text="Público en general" toggleGroup="$ventas" />
-                        <TextField fx:id="codigo" alignment="CENTER" disable="true" layoutX="115.0" layoutY="106.0" prefWidth="141.0" />
-                        <Button fx:id="btnCambiarPrecio" disable="true" layoutX="215.0" layoutY="252.0" mnemonicParsing="false" onAction="#cambiarPrecio" styleClass="button_appPrecio" text="Cambiar precio" />
+                        <TextField fx:id="codigo" alignment="CENTER" disable="true" layoutX="115.0" layoutY="106.0" onKeyPressed="#pulsarEnter" prefWidth="141.0" />
+                        <Label layoutX="12.0" layoutY="171.0" text="Producto" />
+                        <TextField fx:id="producto" disable="true" layoutX="115.0" layoutY="161.0" prefHeight="22.0" prefWidth="142.0" />
+                        <CheckBox fx:id="ckPrecio" disable="true" layoutX="12.0" layoutY="253.0" mnemonicParsing="false" onAction="#selecCortesia" text="Cortecia" />
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="123.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="513.0" prefWidth="31.0">
                      <children>
                         <Label alignment="CENTER" layoutX="-68.0" layoutY="81.0" rotate="90.0" text="Ventas por pedidos" wrapText="true" />
                      </children>
                   </AnchorPane>
-              </items>
+               </items>
                <opaqueInsets>
                   <Insets left="15.0" />
                </opaqueInsets>
             </SplitPane>
-         </content>
-      </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="98.0" prefHeight="526.0" prefWidth="435.0" text="Venta">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TableView fx:id="tabla" prefHeight="498.0" prefWidth="434.0">
-                     <columns>
-                        <TableColumn minWidth="0.0" prefWidth="235.0" text="Productos">
-                           <cellValueFactory>
-                              <PropertyValueFactory property="nombre" />
-                           </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Precio">
-							<cellValueFactory>
-                              <PropertyValueFactory property="precio" />
-                           </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Cantidad">
-                        	<cellValueFactory>
-                              <PropertyValueFactory property="cantidadVenta" />
-                           </cellValueFactory>
-                        </TableColumn>
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
          </content>
       </TitledPane>
    </children>

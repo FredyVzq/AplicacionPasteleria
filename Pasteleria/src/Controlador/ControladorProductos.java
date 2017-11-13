@@ -6,8 +6,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
-
 import Controlador.notificaciones.Notification.Notifier;
 import Modelo.DAOCategoria;
 import Modelo.DAOMarcas;
@@ -207,10 +205,10 @@ public class ControladorProductos implements Initializable{
 		}
 
 	@FXML public void clickIrMarca(){
-		ins.asignarModal("../Vistas/Marca.fxml","Marcas para productos");
+		ins.asignarModal("/Vistas/Marca.fxml","Marcas para productos");
 		}
 	@FXML public void clickIrCategoria(){
-		ins.asignarModal("../Vistas/Categoria.fxml","Categorias de productos");
+		ins.asignarModal("/Vistas/Categoria.fxml","Categorias de productos");
 		}
 	 private void abrir() {
 		  //ruta del archivo en el pc
@@ -320,7 +318,7 @@ public class ControladorProductos implements Initializable{
 	public void Confirmacion(){
         Alert alert = new Alert(AlertType.CONFIRMATION);
 //    	alert.setTitle("Favor de confirmar la eliminación del producto");
-	alert.setHeaderText("Look, a Confirmation Dialog");
+	alert.setHeaderText("Confirmar");
     	alert.setContentText("¿Desea eliminar el registro del producto?");
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
@@ -332,7 +330,7 @@ public class ControladorProductos implements Initializable{
 	    	btnEliminar.setDisable(true);
 	    	actualizar();
     	} else {
-    		System.out.println("Se ha cancelado");
+    		alert.close();
     	}
 	}
 }

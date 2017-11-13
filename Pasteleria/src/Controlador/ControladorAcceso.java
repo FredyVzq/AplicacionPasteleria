@@ -4,11 +4,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.beans.property.StringProperty;
 import Modelo.DAOUsuario;
 import Controlador.notificaciones.Notification;
@@ -60,7 +58,7 @@ public class ControladorAcceso implements Initializable{
                     //Para cerrar el stage de la notificación
                     Notification.Notifier.INSTANCE.stop();
                     //Para visualizar la ventana de menú
-                    cv.asignarMenu("../Vistas/MenuPrincipal.fxml", "Bienvenido "+ temp.getNomUsuario().toUpperCase(), temp);
+                    cv.asignarMenu("/Vistas/MenuPrincipal.fxml", "Bienvenido "+ temp.getNomUsuario().toUpperCase(), temp);
                     setUsuarioActivo(txtNomUsuario.getText());
                     log.acceso(txtNomUsuario.getText());
 

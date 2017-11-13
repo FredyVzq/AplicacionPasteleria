@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import Modelo.DAOMarcas;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,6 +35,7 @@ public class ControladorMarcas implements Initializable {
 	ControladorLog log;
 	String usuariologeado;
 	ControladorMenu usuario;
+	@SuppressWarnings("unused")
 	private ControladorVentanas ins;
 
 	public ControladorMarcas() {
@@ -184,19 +187,23 @@ public class ControladorMarcas implements Initializable {
 				}
 	}
 	@FXML public void clickEliminar(){
-		int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar este registro de datosMarcas?");
-
-        if (confirmarEliminar == 0) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmar");
+    	alert.setHeaderText("¿Desea eliminar el registro?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
         	this.datosMarcas.setId(Integer.parseInt(idMarca.getText()));
         	datosMarcas.eliminar();
         	log.eliminado(usuariologeado,"Marca",tfNombre.getText());
-            System.out.println("Realizado Eliminado");
             actualizar();
             tfNombre.setText("");
             tfProveedor.setText("");
             btnNuevo.setDisable(false);
             btnEditar.setDisable(true);
             btnEliminar.setDisable(true);
-	}
+    	}
+    	else{
+    		alert.close();
+    	}
 }
 }

@@ -12,7 +12,8 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
     private boolean estatus;
     private DAOConexion con;
     private PreparedStatement comando;
-    private ObservableList<DAOUsuario> lista;
+    @SuppressWarnings("unused")
+	private ObservableList<DAOUsuario> lista;
 
     public DAOUsuario(){
         this.idUsuario = 0;
@@ -170,7 +171,7 @@ public class DAOUsuario { //por cada tabla se crea clase dao, es la que va a la 
 				comando.setString(2, this.contrasenia);
 				comando.setString(3, this.nivel);
 				comando.setInt(4, this.idUsuario);//El ID del usuario a modificar
-				comando.execute();
+				comando.executeUpdate();
 				return true;
 			}
 			else{

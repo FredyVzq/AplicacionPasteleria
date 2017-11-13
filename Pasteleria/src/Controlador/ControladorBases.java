@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -155,17 +157,20 @@ public class ControladorBases implements Initializable{
 	}
 
 	@FXML public void clickEliminar(){ {
-        int confirmarEliminar = JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar esta base?");
-
-        if (confirmarEliminar == 0) {
-        	this.bases.setIdbases(Integer.parseInt(idbases.getText()));
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmar");
+    	alert.setHeaderText("¿Desea eliminar el registro?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    		this.bases.setIdbases(Integer.parseInt(idbases.getText()));
         	bases.eliminar();
         	log.eliminado(usuariologeado,"Bases para pastel",txtNombre.getText());
-            System.out.println("Realizado Eliminado");
             listaBases=bases.mostrar();
     		tablaBases.setItems(bases.mostrar());
     		clickCancelar();
-        }
+    	} else {
+    		alert.close();
+    	}
 	  }
 	}
 

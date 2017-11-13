@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.itextpdf.text.pdf.Pfm2afm;
 
 import Controlador.notificaciones.Notification.Notifier;
 import Modelo.DAOUsuario;
@@ -87,7 +86,7 @@ public class ControladorUsuarios implements Initializable{
 		}else{
 			//Comparar contraseñas
 			if(cbNivel.getSelectionModel().getSelectedItem()==null){
-				
+
 				Alert alert = new Alert(AlertType.WARNING);
 		    	alert.setTitle("Ingresar datos");
 		    	alert.setHeaderText("Usuarios");
@@ -95,7 +94,7 @@ public class ControladorUsuarios implements Initializable{
 		    	alert.showAndWait();
 
 					}else{
-						
+
 						if(contra==contra2){
 							Alert alert = new Alert(AlertType.WARNING);
 					    	alert.setTitle("Ingresar datos");
@@ -131,7 +130,7 @@ public class ControladorUsuarios implements Initializable{
 						}else{
 							System.out.println("Error al insertar los datos");
 						}
-						
+
 						 }
 					}
 				}

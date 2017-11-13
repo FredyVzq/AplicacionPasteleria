@@ -1,6 +1,5 @@
 package Controlador;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -10,7 +9,6 @@ import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -21,7 +19,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import Controlador.notificaciones.Notification.Notifier;
 import Modelo.DAOConexion;
 import Modelo.DAOProducto;
@@ -176,7 +173,7 @@ public class ControladorInventario implements Initializable{
 		}
 	}
 	@FXML public void nuevoProducto(){
-		ins.asignarModal("../Vistas/Productos.fxml","Productos");
+		ins.asignarModal("/Vistas/Productos.fxml","Productos");
 	}
 	@FXML public void clickPDf(){
 		generarPDF();
@@ -192,7 +189,7 @@ public class ControladorInventario implements Initializable{
 		try{
 	        ResultSet rs = null;
 	        PreparedStatement comando;
-			 OutputStream file = new FileOutputStream(new File("C://VAMA980429HVZZJL02//Rep_Inv"+dia+"-"+mes+"-"+año+"_"+hora+"~"+minuto+".pdf"));
+			 OutputStream file = new FileOutputStream(new File("C://PerfLogs//Rep_Inv"+dia+"-"+mes+"-"+año+"_"+hora+"~"+minuto+".pdf"));
 		      Document document = new Document(PageSize.A4, 35, 30, 50, 50);
 
 

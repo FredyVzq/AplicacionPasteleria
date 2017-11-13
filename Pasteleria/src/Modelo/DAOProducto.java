@@ -221,6 +221,7 @@ public class DAOProducto {
 		   	  				this.codigo=rs.getString("codigo");
 		   	  				this.precio=rs.getDouble("precio");
 		   	  				this.tipo=rs.getString("tipo");
+		   	  				this.cantidad=rs.getInt("cantidad");
 		   	  				existe=true;
 		   	  			}
 		   			}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.text.*?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1249.0" styleClass="background_app" stylesheets="@css/Pedidos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorPedidos">
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="1132.0" styleClass="background_app" stylesheets="@css/Pedidos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorPedidos">
    <children>
       <ToolBar prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #7f112f;" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -33,24 +34,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/Eliminar.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/Modificar.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" onAction="#clickCancelar">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -60,9 +43,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label prefHeight="47.0" prefWidth="806.0" text="Pedidos">
+            <Label prefHeight="47.0" prefWidth="769.0" styleClass="label2" text="Pedidos">
                <padding>
-                  <Insets left="730.0" />
+                  <Insets left="650.0" />
                </padding>
             </Label>
         </items>
@@ -78,17 +61,13 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="310.0" prefWidth="523.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
-                                    <Text layoutX="20.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de pedido" />
-                                    <Text layoutX="291.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de entrega" />
-                                    <TextField fx:id="lbCodigo" disable="true" layoutX="20.0" layoutY="45.0" />
-                                    <DatePicker disable="true" layoutX="291.0" layoutY="45.0" />
-                                    <ComboBox fx:id="cbNombreCliente" disable="true" layoutX="20.0" layoutY="144.0" prefHeight="25.0" prefWidth="179.0" />
-                                    <Text layoutX="291.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comentarios" />
-                                    <TextArea disable="true" layoutX="282.0" layoutY="144.0" prefHeight="98.0" prefWidth="212.0" />
-                                    <Text fill="RED" layoutX="116.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                                    <Text fill="RED" layoutX="65.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                                    <Text fill="RED" layoutX="385.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                                    <ComboBox fx:id="cbNombreCliente" disable="true" layoutX="22.0" layoutY="48.0" prefHeight="25.0" prefWidth="214.0" />
+                                    <TextArea disable="true" layoutX="297.0" layoutY="208.0" prefHeight="65.0" prefWidth="212.0" />
+                                    <Label layoutX="282.0" layoutY="21.0" text="Teléfono" />
+                                    <Label layoutX="22.0" layoutY="21.0" text="Cliente" />
+                                    <TextField fx:id="telefonoClnt" disable="true" layoutX="282.0" layoutY="48.0" prefHeight="31.0" prefWidth="187.0" />
+                                    <TextField fx:id="direccionClnt" disable="true" layoutX="22.0" layoutY="135.0" prefWidth="252.0" />
+                                    <Label layoutX="22.0" layoutY="107.0" text="Dirección" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -97,52 +76,41 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <SplitPane dividerPositions="0.19769673704414586" layoutX="128.0" layoutY="63.0" prefHeight="287.0" prefWidth="523.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <items>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                             <children>
-                                                <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" />
-                                                <ChoiceBox disable="true" layoutX="14.0" layoutY="50.0" prefWidth="150.0" />
-                                                <Text fill="RED" layoutX="68.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                                             </children>
-                                          </AnchorPane>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="363.0">
-                                             <children>
-                                                <Text layoutX="183.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pasteles y postres" wrappingWidth="105.0">
-                                                   <stroke>
-                                                      <LinearGradient endX="1.0" endY="1.0" startX="0.5571428571428572" startY="0.4">
-                                                         <stops>
-                                                            <Stop color="BLACK" />
-                                                            <Stop color="WHITE" offset="1.0" />
-                                                         </stops>
-                                                      </LinearGradient>
-                                                   </stroke>
-                                                </Text>
-                                                <Text layoutX="183.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base" />
-                                                <ComboBox fx:id="cbBases" disable="true" layoutX="183.0" layoutY="143.0" prefWidth="150.0" />
-                                                <ComboBox fx:id="cbPastYpost" disable="true" layoutX="183.0" layoutY="48.0" prefWidth="150.0" />
-                                             </children>
-                                          </AnchorPane>
-                                      </items>
-                                    </SplitPane>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Código" />
+                                    <TextField fx:id="txtCodigo" disable="true" layoutX="14.0" layoutY="34.0" onKeyPressed="#pulsarEnter" />
+                                    <TextField fx:id="txtProducto" disable="true" layoutX="224.0" layoutY="34.0" prefWidth="289.0" />
+                                    <Label layoutX="224.0" layoutY="14.0" text="Producto" />
+                                    <Label layoutX="14.0" layoutY="102.0" text="Existencias" />
+                                    <TextField fx:id="txtExistencias" disable="true" layoutX="14.0" layoutY="123.0" prefWidth="82.0" />
+                                    <TextField fx:id="txtPrecio" disable="true" layoutX="144.0" layoutY="122.0" prefWidth="97.0" />
+                                    <Label layoutX="144.0" layoutY="102.0" text="Precio" />
+                                    <Label layoutX="292.0" layoutY="102.0" text="Cantidad" />
+                                    <TextField fx:id="txtCantidad" disable="true" layoutX="292.0" layoutY="122.0" prefWidth="91.0" />
+                                    <Button fx:id="agregar" disable="true" layoutX="429.0" layoutY="244.0" mnemonicParsing="false" styleClass="button_app" text="Agregar" />
+                                    <TextField fx:id="txtTotal" disable="true" layoutX="425.0" layoutY="122.0" prefWidth="86.0" />
+                                    <Label layoutX="425.0" layoutY="102.0" text="Total" />
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="Total">
+                        <Tab text="Información general">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <Text layoutX="27.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base" />
-                                    <Text layoutX="27.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Importe de base" />
-                                    <Text layoutX="242.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
-                                    <Text layoutX="242.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anticipo" />
-                                    <Text layoutX="242.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Debiendo" />
-                                    <TextField fx:id="lbBase" disable="true" layoutX="27.0" layoutY="51.0" prefWidth="65.0" />
-                                    <TextField fx:id="lbImporBase" disable="true" layoutX="27.0" layoutY="124.0" prefWidth="65.0" />
-                                    <TextField fx:id="lbDebiendo" disable="true" layoutX="242.0" layoutY="202.0" prefWidth="65.0" />
-                                    <TextField fx:id="lbAnticipo" disable="true" layoutX="242.0" layoutY="124.0" prefWidth="65.0" />
-                                    <TextField fx:id="lbTotal" disable="true" layoutX="242.0" layoutY="51.0" prefWidth="65.0" />
+                                    <ComboBox fx:id="cbBases" disable="true" layoutX="261.0" layoutY="36.0" onKeyPressed="#pulsarEnterBases" prefHeight="23.0" prefWidth="186.0" />
+                                    <Label layoutX="261.0" layoutY="14.0" text="Bases" />
+                                    <Label layoutX="263.0" layoutY="93.0" text="Precio de base" />
+                                    <TextField fx:id="precioBase" disable="true" layoutX="262.0" layoutY="122.0" prefWidth="120.0" />
+                                    <TextField fx:id="folio" disable="true" layoutX="29.0" layoutY="38.0" prefWidth="144.0" />
+                                    <Label layoutX="29.0" layoutY="17.0" text="Folio" />
+                                    <TextField fx:id="importe" disable="true" layoutX="203.0" layoutY="203.0" prefWidth="120.0" />
+                                    <Label layoutX="203.0" layoutY="182.0" text="Importe" />
+                                    <Label layoutX="29.0" layoutY="93.0" text="Fecha de entrega" />
+                                    <DatePicker disable="true" layoutX="29.0" layoutY="122.0" />
+                                    <Label layoutX="29.0" layoutY="182.0" text="Total" />
+                                    <TextField fx:id="total" disable="true" layoutX="29.0" layoutY="203.0" prefWidth="120.0" />
+                                    <Label layoutX="381.0" layoutY="182.0" text="Adeudo" />
+                                    <TextField fx:id="adeudo" disable="true" layoutX="381.0" layoutY="203.0" prefWidth="120.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -153,17 +121,16 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="135.0" prefHeight="265.0" prefWidth="660.0" text="Datos Registrados">
+      <TitledPane animated="false" collapsible="false" layoutX="575.0" layoutY="135.0" prefHeight="265.0" prefWidth="531.0" text="Datos Registrados">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView prefHeight="239.0" prefWidth="660.0">
+                  <TableView prefHeight="239.0" prefWidth="529.0">
                      <columns>
-                        <TableColumn prefWidth="132.0" text="Cliente" />
-                        <TableColumn prefWidth="132.0" text="Producto" />
-                        <TableColumn prefWidth="132.0" text="Pastel o postre" />
-                        <TableColumn prefWidth="132.0" text="Total" />
-                        <TableColumn prefWidth="132.0" text="Anticipo" />
+                        <TableColumn prefWidth="175.0" text="Producto" />
+                        <TableColumn prefWidth="89.0" text="Cantidad" />
+                        <TableColumn prefWidth="125.0" text="Precio unitario" />
+                        <TableColumn prefWidth="139.0" text="Total" />
                      </columns>
                   </TableView>
                </children>

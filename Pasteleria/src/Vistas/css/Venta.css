@@ -77,7 +77,6 @@
     -fx-text-fill: white;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 50, 0.0 , 0 , 0 );
     -fx-padding: 0px;
-    -fx-size:38px;
     -fx-font-family: "Century Gothic";
 }
 
